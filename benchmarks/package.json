@@ -10,7 +10,9 @@
     "doctor": "node scripts/doctor.mjs",
     "bench:all": "node scripts/benchmark.mjs && node scripts/add-native-results.mjs",
     "prompt:sample": "node scripts/prompt-sample.mjs",
-    "bench:local": "node scripts/local-model.mjs"
+    "bench:local": "node scripts/local-model.mjs",
+    "bench:formats": "node scripts/format-benchmark.mjs",
+    "verify:formats": "node scripts/format-benchmark.mjs --verify"
   },
   "dependencies": {
     "@ast-grep/cli": "0.51.1",

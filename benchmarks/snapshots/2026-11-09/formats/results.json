@@ -1,0 +1,153 @@
+{
+  "date": "2026-11-09T12:17:30.366Z",
+  "tool": "@toon-format/toon",
+  "version": "4.4.0",
+  "tokenizer": "js-tiktoken 1.0.21",
+  "method": "Complete strings including final newline; identical JSON values in three serializations; decode round trip checked. No model calls, provider cache, billing, model output or answer-quality measurements. Format instructions and tool-protocol overhead are excluded.",
+  "cases": [
+    {
+      "id": "native-modules",
+      "task": "List every native module and its supported platforms",
+      "source": "benchmarks/snapshots/2026-11-09/autolinking.json",
+      "sourceSha256": "ddf9230a059d433db2c139cef081907446fdad28bae2b19d5ca64a7e4747334b",
+      "records": 8,
+      "variants": [
+        {
+          "format": "pretty",
+          "file": "native-modules.pretty.json",
+          "bytes": 709,
+          "o200k_base": 216,
+          "cl100k_base": 216,
+          "sha256": "d0d9a129d6c84349cf240e6dcabc9b3a92566df8312541c242ac0fb9c145db96",
+          "roundTrip": true
+        },
+        {
+          "format": "compact",
+          "file": "native-modules.compact.json",
+          "bytes": 516,
+          "o200k_base": 130,
+          "cl100k_base": 130,
+          "sha256": "e395782585073c26930d8b1a053f6a84fcbd67caffe5e0a493bd405a779b670f",
+          "roundTrip": true
+        },
+        {
+          "format": "toon",
+          "file": "native-modules.toon",
+          "bytes": 337,
+          "o200k_base": 82,
+          "cl100k_base": 82,
+          "sha256": "bf8246fe7b5d527e39b74e58c2f3b74dbbe7858fcab13a5b8dc8a2901551b31f",
+          "roundTrip": true
+        }
+      ]
+    },
+    {
+      "id": "demo-tasks",
+      "task": "Preserve all 20 demo tasks and all their fields",
+      "source": "benchmarks/snapshots/2026-11-09/tasks-api.json",
+      "sourceSha256": "a073b26062595d79b9e97384dbccc0ec7d02e646794c637d6ac9e2488820c9fe",
+      "records": 20,
+      "variants": [
+        {
+          "format": "pretty",
+          "file": "demo-tasks.pretty.json",
+          "bytes": 2272,
+          "o200k_base": 767,
+          "cl100k_base": 784,
+          "sha256": "797fb32174d1cb20415c173420385e124353b6c3c350b15951a6119ba981615c",
+          "roundTrip": true
+        },
+        {
+          "format": "compact",
+          "file": "demo-tasks.compact.json",
+          "bytes": 1671,
+          "o200k_base": 467,
+          "cl100k_base": 484,
+          "sha256": "c24ec18cc20192363185a4a4afda2289bf6238667c5b5635531664524a798fec",
+          "roundTrip": true
+        },
+        {
+          "format": "toon",
+          "file": "demo-tasks.toon",
+          "bytes": 982,
+          "o200k_base": 314,
+          "cl100k_base": 347,
+          "sha256": "487a78b1d0555257266dad63b230d9faf84c3e48673bd58740036f17b3047d07",
+          "roundTrip": true
+        }
+      ]
+    },
+    {
+      "id": "direct-dependencies",
+      "task": "Preserve every direct runtime dependency and version",
+      "source": "package-lock.json",
+      "sourceSha256": "c2b6b4d9d7e422e0f3e25323588038ec2103e39dbacbe6b15c8ae1ec3a1abec6",
+      "records": 18,
+      "variants": [
+        {
+          "format": "pretty",
+          "file": "direct-dependencies.pretty.json",
+          "bytes": 1254,
+          "o200k_base": 448,
+          "cl100k_base": 449,
+          "sha256": "d6f41312799d277ea8fb2952129f60c13142f1813e1faf76a16f2f2b95193ad6",
+          "roundTrip": true
+        },
+        {
+          "format": "compact",
+          "file": "direct-dependencies.compact.json",
+          "bytes": 929,
+          "o200k_base": 276,
+          "cl100k_base": 277,
+          "sha256": "603537d4f07df7ec365d8109f899bbdf8593e5238b9c08191f42dbc02acb50ba",
+          "roundTrip": true
+        },
+        {
+          "format": "toon",
+          "file": "direct-dependencies.toon",
+          "bytes": 569,
+          "o200k_base": 227,
+          "cl100k_base": 228,
+          "sha256": "a104cb81b81d52242fb72f0ccf9da590bb6dbce533dbb110ae49f9dea0b05edb",
+          "roundTrip": true
+        }
+      ]
+    },
+    {
+      "id": "full-autolinking",
+      "task": "Preserve the complete nested RN configuration",
+      "source": "benchmarks/snapshots/2026-11-09/autolinking.json",
+      "sourceSha256": "ddf9230a059d433db2c139cef081907446fdad28bae2b19d5ca64a7e4747334b",
+      "records": null,
+      "variants": [
+        {
+          "format": "pretty",
+          "file": "full-autolinking.pretty.json",
+          "bytes": 30204,
+          "o200k_base": 6764,
+          "cl100k_base": 6704,
+          "sha256": "ddf9230a059d433db2c139cef081907446fdad28bae2b19d5ca64a7e4747334b",
+          "roundTrip": true
+        },
+        {
+          "format": "compact",
+          "file": "full-autolinking.compact.json",
+          "bytes": 22278,
+          "o200k_base": 5159,
+          "cl100k_base": 5042,
+          "sha256": "86e9c7b5a1df32b30637c93127fcaa2042fc66cd7ad26de24bd68d362aa5b400",
+          "roundTrip": true
+        },
+        {
+          "format": "toon",
+          "file": "full-autolinking.toon",
+          "bytes": 23620,
+          "o200k_base": 5423,
+          "cl100k_base": 5371,
+          "sha256": "60131df39b8d3cbb85eeb90f350acfa01a4e0bce4ada69e7b74e78598d251315",
+          "roundTrip": true
+        }
+      ]
+    }
+  ]
+}

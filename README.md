@@ -19,6 +19,10 @@ The quick start verifies all 24 published before/after pairs without Xcode, Andr
 
 [60 real local inference requests on Qwen3-Coder 30B / M5 Pro](benchmarks/snapshots/2026-11-09/local-model/RESULTS.md), including cache counters, TTFT, full time, token usage and incorrect answers. [Reproduce the local test](docs/LOCAL-MODEL.md). These results are separate from the original 24 CLI-text comparisons.
 
+## Additional tools
+
+[TOON format comparisons on four real RN datasets](benchmarks/snapshots/2026-11-09/formats/RESULTS.md), including compact JSON and an unfavorable nested-config result. [Setup, tradeoffs and security for TOON, Context Mode, Serena, Caveman and Headroom](docs/ADDITIONAL-TOOLS.md). Upstream claims are separated from local measurements.
+
 ## App
 
 A real React Native Community CLI app for comparing the text that coding agents read before and after local filtering. Created with React Native 0.88.1 and React 19.3.0. This repository contains the app, native projects, reproducible benchmark scripts, published before/after text and the measured results.

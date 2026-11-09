@@ -106,6 +106,10 @@ Short shared rules live in `AGENTS.md`. Claude imports them through `@AGENTS.md`
 
 This English-only example replaces the earlier English/Ukrainian sample. It does not reproduce the presentation's historical language comparison or support a universal language-cost multiplier. The original 24 CLI-text pairs and local-model results are unaffected.
 
+## Additional format tools
+
+The optional TOON experiment compares four real RN datasets in pretty JSON, compact JSON and TOON, with all 12 decode round trips checked. Install its isolated dependencies with `npm --prefix benchmarks/format-tools ci --ignore-scripts`, then run `npm --prefix benchmarks run verify:formats`. See [ADDITIONAL-TOOLS.md](ADDITIONAL-TOOLS.md) for fresh runs, agent setup and the scope of other upstream tool claims. The original 24 comparisons remain unchanged.
+
 ## Additional Appendix examples
 
 `docs/examples/rn-reader.md` is a Claude subagent example; after review, copy it to `.claude/agents/rn-reader.md` if needed. It is not activated automatically. `docs/examples/claude-cache.settings.json` is a fragment to merge into an existing `.claude/settings.json`, not a replacement for the entire file. `promptCacheTtl` requires Claude Code v2.1.242+; 1h cache writes cost more than 5m and are not always more economical. For Codex, check available models/effort through `/model` and `/status`. Do not treat OpenAI API TTL as a Codex client setting.

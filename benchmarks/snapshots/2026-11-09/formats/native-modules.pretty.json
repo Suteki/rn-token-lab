@@ -1,0 +1,42 @@
+[
+  {
+    "name": "@react-native-async-storage/async-storage",
+    "ios": true,
+    "android": true
+  },
+  {
+    "name": "@react-native-community/netinfo",
+    "ios": true,
+    "android": true
+  },
+  {
+    "name": "react-native-gesture-handler",
+    "ios": true,
+    "android": true
+  },
+  {
+    "name": "react-native-reanimated",
+    "ios": true,
+    "android": true
+  },
+  {
+    "name": "react-native-safe-area-context",
+    "ios": true,
+    "android": true
+  },
+  {
+    "name": "react-native-screens",
+    "ios": true,
+    "android": true
+  },
+  {
+    "name": "react-native-svg",
+    "ios": true,
+    "android": true
+  },
+  {
+    "name": "react-native-worklets",
+    "ios": true,
+    "android": true
+  }
+]

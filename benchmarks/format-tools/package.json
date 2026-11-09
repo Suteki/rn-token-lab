@@ -1,0 +1,11 @@
+{
+  "name": "rn-token-lab-format-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Optional English-only format benchmark dependencies",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@toon-format/toon": "4.4.0"
+  }
+}

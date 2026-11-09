@@ -18,9 +18,12 @@ jobs:
           cache-dependency-path: |
             package-lock.json
             benchmarks/package-lock.json
+            benchmarks/format-tools/package-lock.json
       - run: npm ci --no-audit --no-fund
       - run: npm --prefix benchmarks ci --no-audit --no-fund
+      - run: npm --prefix benchmarks/format-tools ci --ignore-scripts --no-audit --no-fund
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test -- --runInBand
       - run: npm run bench:verify
+      - run: npm --prefix benchmarks run verify:formats

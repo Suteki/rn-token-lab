@@ -1,0 +1,9 @@
+[8]{name,ios,android}:
+  @react-native-async-storage/async-storage,true,true
+  @react-native-community/netinfo,true,true
+  react-native-gesture-handler,true,true
+  react-native-reanimated,true,true
+  react-native-safe-area-context,true,true
+  react-native-screens,true,true
+  react-native-svg,true,true
+  react-native-worklets,true,true
