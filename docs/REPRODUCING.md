@@ -101,3 +101,7 @@ rtk proxy npm run android
 ## Мова промптів: окремий локальний приклад
 
 `npm --prefix benchmarks run language:sample` рахує три зіставлені RN-промпти українською та англійською і незмінну CLI-команду. Це підрахунок тексту двома токенізаторами, без викликів моделей. Він не доводить універсальний коефіцієнт вартості, однакову якість перекладів або економію цілої сесії.
+
+## Додаткові приклади з Appendix
+
+`docs/examples/rn-reader.md` — приклад Claude subagent; після рев’ю його можна скопіювати у `.claude/agents/rn-reader.md`. Він не активований автоматично. `docs/examples/claude-cache.settings.json` — фрагмент для об’єднання з наявним `.claude/settings.json`, а не заміна всього settings. `promptCacheTtl` потребує Claude Code v2.1.242+; 1h має вищу ціну запису кешу, ніж 5m, і не завжди вигідніший. Для Codex перевірте доступні моделі/effort через `/model` та `/status`. API TTL OpenAI не слід вважати налаштуванням клієнта Codex.
