@@ -1,0 +1,15 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {spawn} from 'node:child_process';
+const bench=path.dirname(path.dirname(new URL(import.meta.url).pathname));
+const app=path.dirname(bench);
+const mode=process.argv[2]??'pods';
+const args=mode==='pods'?['proxy','pod','install','--project-directory=ios']:['proxy','xcodebuild','-workspace','ios/TokenSavingsRN.xcworkspace','-scheme','TokenSavingsRN','-configuration','Debug','-sdk','iphonesimulator','-destination','generic/platform=iOS Simulator','-derivedDataPath','ios/build/TokenSavingsRN','CODE_SIGNING_ALLOWED=NO','build'];
+const start=Date.now();const child=spawn('rtk',args,{cwd:app,env:{...process.env,CI:'1',NO_COLOR:'1'},stdio:['ignore','pipe','pipe']});
+const out=[],err=[];child.stdout.on('data',b=>out.push(b));child.stderr.on('data',b=>err.push(b));
+const code=await new Promise(r=>child.on('close',r));
+await fs.mkdir(bench+'/results/native',{recursive:true});
+await fs.writeFile(bench+'/results/native/'+mode+'.stdout.log',Buffer.concat(out));
+await fs.writeFile(bench+'/results/native/'+mode+'.stderr.log',Buffer.concat(err));
+await fs.writeFile(bench+'/results/native/'+mode+'.json',JSON.stringify({command:['rtk',...args],exitCode:code,durationMs:Date.now()-start,createdAt:new Date().toISOString()},null,2));
+console.log(JSON.stringify({mode,exitCode:code,seconds:(Date.now()-start)/1000,tail:Buffer.concat([...out,...err]).toString().slice(-2200)}));process.exitCode=code??1;
