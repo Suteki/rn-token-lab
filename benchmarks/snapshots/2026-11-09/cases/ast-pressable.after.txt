@@ -1,0 +1,16 @@
+src/components/TaskCard.tsx:9:      <Pressable
+src/components/TaskCard.tsx:10:        onPress={onPress}
+src/components/TaskCard.tsx:11:        accessibilityRole="button"
+src/components/TaskCard.tsx:12:        accessibilityLabel={`Open task ${task.id}`}
+src/components/TaskCard.tsx:13:        style={styles.card}
+src/components/TaskCard.tsx:14:      >
+src/components/TaskCard.tsx:15:        <View style={styles.heading}>
+src/components/TaskCard.tsx:16:          <Text style={styles.tag}>
+src/components/TaskCard.tsx:17:            #{task.id} {task.completed ? 'Complete' : 'Open'}
+src/components/TaskCard.tsx:18:          </Text>
+src/components/TaskCard.tsx:19:          <Text accessibilityLabel={favorite ? 'Favorite' : 'Not a favorite'}>
+src/components/TaskCard.tsx:20:            {favorite ? '★' : '☆'}
+src/components/TaskCard.tsx:21:          </Text>
+src/components/TaskCard.tsx:22:        </View>
+src/components/TaskCard.tsx:23:        <Text style={styles.title}>{task.title}</Text>
+src/components/TaskCard.tsx:24:      </Pressable>

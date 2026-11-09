@@ -1,0 +1,12 @@
+# Search scope only; this is not a security boundary.
+node_modules/
+ios/Pods/
+**/build/
+**/.gradle/
+benchmarks/results/
+benchmarks/artifacts/
+.agent-context/
+.env
+.env.*
+*.pem
+*.key

@@ -1,0 +1,13 @@
+6-  )', __dir__]).strip
+7-
+8:platform :ios, min_ios_version_supported
+9-prepare_react_native_project!
+10-
+--
+35-    installer.pods_project.targets.each do |target|
+36-      target.build_configurations.each do |build_config|
+37:        minimum = build_config.build_settings['IPHONEOS_DEPLOYMENT_TARGET']
+38:        if minimum && Gem::Version.new(minimum) < Gem::Version.new(min_ios_version_supported)
+39:          build_config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = min_ios_version_supported
+40-        end
+41-      end

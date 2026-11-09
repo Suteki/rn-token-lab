@@ -1,0 +1,56 @@
+
+PASS __tests__/task.test.ts
+  Task API schema
+    ✓ accepts the documented API shape (3 ms)
+    ✓ rejects a missing id field (6 ms)
+    ✓ rejects a missing userId field (1 ms)
+    ✓ rejects a missing title field
+    ✓ rejects a missing completed field
+    ✓ rejects invalid task id 0 (1 ms)
+    ✓ rejects invalid task id -1
+    ✓ rejects invalid task id 1.5
+    ✓ rejects invalid task id "1"
+    ✓ rejects a non-array response
+    ✓ accepts an empty result
+    ✓ trims task titles
+  Task filters
+    ✓ keeps API order by default
+    ✓ hides completed tasks (1 ms)
+    ✓ matches titles case insensitively
+    ✓ trims the search query
+    ✓ applies favorites and completion together
+    ✓ handles an unknown favorite id
+    ✓ does not mutate API data
+  Task summary
+    ✓ handles an empty list without NaN (1 ms)
+    ✓ rounds the visible completion percentage
+    ✓ counts all-complete input
+  Local drafts and favorites
+    ✓ adds a favorite without mutating the original ids
+    ✓ removes an existing favorite
+    ✓ creates a validated local task (1 ms)
+    ✓ rejects a short draft title ""
+    ✓ rejects a short draft title "  "
+    ✓ rejects a short draft title "ab"
+    ✓ rejects an oversized draft
+    ✓ rejects an unknown priority
+    ✓ rejects invalid local ids 0 (1 ms)
+    ✓ rejects invalid local ids -1
+    ✓ rejects invalid local ids 1.5
+
+PASS __tests__/taskApi.test.ts
+  Task HTTP client
+    ✓ requests the public demo endpoint and validates its response (1 ms)
+    ✓ passes cancellation to fetch
+    ✓ surfaces HTTP 401 as a failure (1 ms)
+    ✓ surfaces HTTP 429 as a failure
+    ✓ surfaces HTTP 500 as a failure (1 ms)
+    ✓ rejects a malformed successful response (1 ms)
+    ✓ keeps network failures visible (2 ms)
+
+Test Suites: 2 passed, 2 total
+Tests:       40 passed, 40 total
+Snapshots:   0 total
+Time:        0.332 s, estimated 1 s
+Ran all test suites.
+Test results written to: benchmarks/results/jest.json

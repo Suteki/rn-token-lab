@@ -1,0 +1,5 @@
+3-  plugins: [
+4-    '@babel/plugin-transform-export-namespace-from',
+5:    'react-native-worklets/plugin',
+6-  ],
+7-};

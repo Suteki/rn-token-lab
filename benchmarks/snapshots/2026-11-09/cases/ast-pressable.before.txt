@@ -1,0 +1,448 @@
+
+// FILE: App.tsx
+import React from 'react';
+import { StatusBar, StyleSheet } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { DarkTheme, NavigationContainer } from '@react-navigation/native';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from './src/data/queryClient';
+import { RootNavigator } from './src/navigation/RootNavigator';
+
+export default function App() {
+  return (
+    <GestureHandlerRootView style={styles.root}>
+      <SafeAreaProvider>
+        <QueryClientProvider client={queryClient}>
+          <NavigationContainer theme={DarkTheme}>
+            <StatusBar barStyle="light-content" />
+            <RootNavigator />
+          </NavigationContainer>
+        </QueryClientProvider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
+  );
+}
+const styles = StyleSheet.create({ root: { flex: 1 } });
+
+
+// FILE: src/components/ProgressRing.tsx
+import React from 'react';
+import Svg, { Circle, Text as SvgText } from 'react-native-svg';
+export function ProgressRing({
+  percent,
+  size = 88,
+}: {
+  percent: number;
+  size?: number;
+}) {
+  const value = Math.max(0, Math.min(100, percent));
+  const radius = (size - 12) / 2;
+  const perimeter = 2 * Math.PI * radius;
+  return (
+    <Svg width={size} height={size} accessibilityLabel={`${value}% complete`}>
+      <Circle
+        cx={size / 2}
+        cy={size / 2}
+        r={radius}
+        stroke="#334155"
+        strokeWidth={6}
+        fill="none"
+      />
+      <Circle
+        cx={size / 2}
+        cy={size / 2}
+        r={radius}
+        stroke="#a5b4fc"
+        strokeWidth={6}
+        fill="none"
+        strokeDasharray={`${perimeter} ${perimeter}`}
+        strokeDashoffset={perimeter * (1 - value / 100)}
+        rotation={-90}
+        origin={`${size / 2}, ${size / 2}`}
+      />
+      <SvgText x="50%" y="55%" textAnchor="middle" fill="#f8fafc" fontSize={19}>
+        {value}%
+      </SvgText>
+    </Svg>
+  );
+}
+
+
+// FILE: src/components/TaskCard.tsx
+import React from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import Animated, { FadeInDown } from 'react-native-reanimated';
+import { Task } from '../domain/task';
+type Props = { task: Task; favorite: boolean; onPress: () => void };
+export function TaskCard({ task, favorite, onPress }: Props) {
+  return (
+    <Animated.View entering={FadeInDown.duration(180)}>
+      <Pressable
+        onPress={onPress}
+        accessibilityRole="button"
+        accessibilityLabel={`Open task ${task.id}`}
+        style={styles.card}
+      >
+        <View style={styles.heading}>
+          <Text style={styles.tag}>
+            #{task.id} {task.completed ? 'Complete' : 'Open'}
+          </Text>
+          <Text accessibilityLabel={favorite ? 'Favorite' : 'Not a favorite'}>
+            {favorite ? '★' : '☆'}
+          </Text>
+        </View>
+        <Text style={styles.title}>{task.title}</Text>
+      </Pressable>
+    </Animated.View>
+  );
+}
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: '#1e293b',
+    borderRadius: 16,
+    padding: 18,
+    marginBottom: 12,
+  },
+  heading: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
+  tag: { color: '#a5b4fc', fontSize: 13 },
+  title: { color: '#f8fafc', fontSize: 17, lineHeight: 24 },
+});
+
+
+// FILE: src/navigation/RootNavigator.tsx
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { TaskListScreen } from '../screens/TaskListScreen';
+import { TaskDetailsScreen } from '../screens/TaskDetailsScreen';
+import { NewTaskScreen } from '../screens/NewTaskScreen';
+import { SettingsScreen } from '../screens/SettingsScreen';
+export type RootStackParamList = {
+  Tasks: undefined;
+  TaskDetails: { taskId: number };
+  NewTask: undefined;
+  Settings: undefined;
+};
+const Stack = createNativeStackNavigator<RootStackParamList>();
+export function RootNavigator() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#0f172a' },
+        headerTintColor: '#f8fafc',
+        contentStyle: { backgroundColor: '#0f172a' },
+      }}
+    >
+      <Stack.Screen
+        name="Tasks"
+        component={TaskListScreen}
+        options={{ title: 'Token Savings RN' }}
+      />
+      <Stack.Screen
+        name="TaskDetails"
+        component={TaskDetailsScreen}
+        options={{ title: 'Task' }}
+      />
+      <Stack.Screen
+        name="NewTask"
+        component={NewTaskScreen}
+        options={{ title: 'New local task' }}
+      />
+      <Stack.Screen name="Settings" component={SettingsScreen} />
+    </Stack.Navigator>
+  );
+}
+
+
+// FILE: src/screens/NewTaskScreen.tsx
+import React from 'react';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Controller, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/RootNavigator';
+import { TaskDraft, taskDraftSchema } from '../domain/task';
+import { usePreferences } from '../stores/preferences';
+type Props = NativeStackScreenProps<RootStackParamList, 'NewTask'>;
+export function NewTaskScreen({ navigation }: Props) {
+  const addTask = usePreferences(state => state.addTask);
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TaskDraft>({
+    resolver: zodResolver(taskDraftSchema),
+    defaultValues: { title: '', priority: 'normal' },
+  });
+  const submit = handleSubmit(draft => {
+    addTask(draft);
+    navigation.goBack();
+  });
+  return (
+    <View style={styles.page}>
+      <Text style={styles.label}>Title</Text>
+      <Controller
+        control={control}
+        name="title"
+        render={({ field: { value, onChange, onBlur } }) => (
+          <TextInput
+            value={value}
+            onChangeText={onChange}
+            onBlur={onBlur}
+            placeholder="What needs doing?"
+            placeholderTextColor="#94a3b8"
+            style={styles.input}
+            accessibilityLabel="Task title"
+          />
+        )}
+      />
+      {errors.title ? (
+        <Text accessibilityRole="alert" style={styles.error}>
+          {errors.title.message}
+        </Text>
+      ) : null}
+      <Controller
+        control={control}
+        name="priority"
+        render={({ field: { value, onChange } }) => (
+          <Button
+            title={`Priority: ${value}`}
+            onPress={() => onChange(value === 'normal' ? 'high' : 'normal')}
+          />
+        )}
+      />
+      <Button title="Save on this device" onPress={() => submit()} />
+      <Text style={styles.note}>
+        This form creates a local draft and never posts personal data to the
+        demo API.
+      </Text>
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  page: { flex: 1, padding: 24 },
+  label: { color: '#f8fafc', fontSize: 18, marginBottom: 12 },
+  input: {
+    backgroundColor: '#1e293b',
+    color: '#f8fafc',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 16,
+  },
+  error: { color: '#fca5a5', marginBottom: 12 },
+  note: { color: '#94a3b8', marginTop: 28, lineHeight: 22 },
+});
+
+
+// FILE: src/screens/SettingsScreen.tsx
+import React from 'react';
+import { StyleSheet, Switch, Text, View } from 'react-native';
+import { usePreferences } from '../stores/preferences';
+import { useConnectivity } from '../hooks/useConnectivity';
+export function SettingsScreen() {
+  const { showCompleted, setShowCompleted, favoriteIds, localTasks } =
+    usePreferences();
+  const online = useConnectivity();
+  return (
+    <View style={styles.page}>
+      <View style={styles.row}>
+        <Text style={styles.label}>Show completed tasks</Text>
+        <Switch
+          value={showCompleted}
+          onValueChange={setShowCompleted}
+          accessibilityLabel="Show completed tasks"
+        />
+      </View>
+      <Text style={styles.detail}>{favoriteIds.length} favorite tasks</Text>
+      <Text style={styles.detail}>{localTasks.length} local drafts</Text>
+      <Text style={styles.detail}>
+        Network: {online === null ? 'Checking' : online ? 'Online' : 'Offline'}
+      </Text>
+      <Text style={styles.note}>
+        Preferences use Zustand persistence with AsyncStorage. Query results
+        stay in the TanStack Query memory cache.
+      </Text>
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  page: { flex: 1, padding: 24 },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 28,
+  },
+  label: { color: '#f8fafc', fontSize: 17 },
+  detail: { color: '#cbd5e1', fontSize: 16, marginBottom: 16 },
+  note: { color: '#94a3b8', marginTop: 20, lineHeight: 23 },
+});
+
+
+// FILE: src/screens/TaskDetailsScreen.tsx
+import React from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/RootNavigator';
+import { useTasks } from '../hooks/useTasks';
+import { usePreferences } from '../stores/preferences';
+type Props = NativeStackScreenProps<RootStackParamList, 'TaskDetails'>;
+export function TaskDetailsScreen({ route }: Props) {
+  const { data = [] } = useTasks();
+  const { localTasks, favoriteIds, toggleFavorite } = usePreferences();
+  const task = [...localTasks, ...data].find(
+    item => item.id === route.params.taskId,
+  );
+  if (!task) {
+    return (
+      <Text style={styles.missing}>Task not found in the current list</Text>
+    );
+  }
+  return (
+    <View style={styles.page}>
+      <Text style={styles.label}>Task #{task.id}</Text>
+      <Text style={styles.title}>{task.title}</Text>
+      <Text style={styles.label}>{task.completed ? 'Complete' : 'Open'}</Text>
+      <Button
+        title={
+          favoriteIds.includes(task.id) ? 'Remove favorite' : 'Add favorite'
+        }
+        onPress={() => toggleFavorite(task.id)}
+      />
+      <Text style={styles.note}>
+        Favorites stay on this device. Public API tasks are read only.
+      </Text>
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  page: { flex: 1, padding: 24 },
+  label: { color: '#a5b4fc', fontSize: 17, marginBottom: 20 },
+  title: { color: '#f8fafc', fontSize: 28, lineHeight: 38, marginBottom: 24 },
+  note: { color: '#94a3b8', marginTop: 28, lineHeight: 22 },
+  missing: { color: '#f8fafc', padding: 24 },
+});
+
+
+// FILE: src/screens/TaskListScreen.tsx
+import React, { useMemo, useState } from 'react';
+import {
+  ActivityIndicator,
+  Button,
+  FlatList,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/RootNavigator';
+import { filterTasks, getTaskStats } from '../domain/task';
+import { useTasks } from '../hooks/useTasks';
+import { useConnectivity } from '../hooks/useConnectivity';
+import { usePreferences } from '../stores/preferences';
+import { TaskCard } from '../components/TaskCard';
+import { ProgressRing } from '../components/ProgressRing';
+type Props = NativeStackScreenProps<RootStackParamList, 'Tasks'>;
+
+export function TaskListScreen({ navigation }: Props) {
+  const { data = [], isPending, isRefetching, error, refetch } = useTasks();
+  const isOnline = useConnectivity();
+  const [query, setQuery] = useState('');
+  const [favoritesOnly, setFavoritesOnly] = useState(false);
+  const { localTasks, favoriteIds, showCompleted } = usePreferences();
+  const allTasks = useMemo(() => [...localTasks, ...data], [localTasks, data]);
+  const visible = filterTasks(allTasks, {
+    query,
+    showCompleted,
+    favoriteIds,
+    favoritesOnly,
+  });
+  const stats = getTaskStats(allTasks);
+  return (
+    <View style={styles.page}>
+      <View style={styles.toolbar}>
+        <View style={styles.summary}>
+          <Text style={styles.title}>{stats.total} tasks</Text>
+          <Text style={styles.hint}>
+            {isOnline === false
+              ? 'Offline, showing cached tasks'
+              : 'Public demo API and local drafts'}
+          </Text>
+        </View>
+        <ProgressRing percent={stats.completionPercent} />
+      </View>
+      <View style={styles.actions}>
+        <Button title="Add" onPress={() => navigation.navigate('NewTask')} />
+        <Button
+          title="Settings"
+          onPress={() => navigation.navigate('Settings')}
+        />
+        <Button
+          title={favoritesOnly ? 'Show all' : 'Favorites'}
+          onPress={() => setFavoritesOnly(!favoritesOnly)}
+        />
+      </View>
+      <TextInput
+        value={query}
+        onChangeText={setQuery}
+        placeholder="Search task titles"
+        placeholderTextColor="#94a3b8"
+        style={styles.search}
+        accessibilityLabel="Search tasks"
+      />
+      {error ? (
+        <Text accessibilityRole="alert" style={styles.error}>
+          {error.message}
+        </Text>
+      ) : null}
+      {isPending ? (
+        <ActivityIndicator accessibilityLabel="Loading tasks" />
+      ) : null}
+      <FlatList
+        data={visible}
+        keyExtractor={task => String(task.id)}
+        refreshing={isRefetching}
+        onRefresh={() => refetch()}
+        renderItem={({ item }) => (
+          <TaskCard
+            task={item}
+            favorite={favoriteIds.includes(item.id)}
+            onPress={() =>
+              navigation.navigate('TaskDetails', { taskId: item.id })
+            }
+          />
+        )}
+        ListEmptyComponent={
+          !isPending ? (
+            <Text style={styles.hint}>No matching tasks</Text>
+          ) : undefined
+        }
+      />
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  page: { flex: 1, padding: 20 },
+  toolbar: { flexDirection: 'row', alignItems: 'center', marginBottom: 18 },
+  summary: { flex: 1 },
+  title: { color: '#f8fafc', fontSize: 29, fontWeight: '700' },
+  hint: { color: '#94a3b8', fontSize: 14, marginTop: 8 },
+  actions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 14,
+  },
+  search: {
+    backgroundColor: '#1e293b',
+    color: '#f8fafc',
+    borderRadius: 12,
+    padding: 14,
+    marginBottom: 16,
+  },
+  error: { color: '#fca5a5', marginBottom: 12 },
+});

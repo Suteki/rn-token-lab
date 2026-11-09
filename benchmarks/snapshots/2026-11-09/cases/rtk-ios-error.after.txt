@@ -1,0 +1,8 @@
+/workspace/rn-token-lab/ios/Pods/Pods.xcodeproj: error: The iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 13.0, but the range of supported deployment target versions is 15.0 to 27.2.x. (in target 'AsyncStorage-AsyncStorage_resources' from project 'Pods')
+warning: Run script build phase 'Bundle React Native code and images' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'TokenSavingsRN' from project 'TokenSavingsRN')
+** BUILD FAILED **
+
+The following build commands failed:
+	Building workspace TokenSavingsRN with scheme TokenSavingsRN and configuration Debug
+(1 failure)
+[full output: ~/Library/Application Support/rtk/tee/1794209682_err.log]

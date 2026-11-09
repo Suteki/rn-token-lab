@@ -1,0 +1,23 @@
+* main
+~ Modified: 12 files
+   App.tsx
+   README.md
+   __tests__/App.test.tsx
+   android/app/src/main/AndroidManifest.xml
+   android/app/src/main/java/com/tokensavingsrn/MainActivity.kt
+   babel.config.js
+   benchmarks/scripts/native-check.mjs
+   ios/Podfile
+   ios/TokenSavingsRN.xcodeproj/project.pbxproj
+   ios/TokenSavingsRN/PrivacyInfo.xcprivacy
+   package-lock.json
+   package.json
+? Untracked: 8 files
+   __tests__/task.test.ts
+   __tests__/taskApi.test.ts
+   benchmarks/captures/
+   benchmarks/scripts/benchmark.mjs
+   benchmarks/scripts/replay.mjs
+   ios/Podfile.lock
+   ios/TokenSavingsRN.xcworkspace/
+   src/

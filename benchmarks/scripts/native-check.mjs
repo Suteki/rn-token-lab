@@ -1,11 +1,15 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {spawn} from 'node:child_process';
-const bench=path.dirname(path.dirname(new URL(import.meta.url).pathname));
+import {fileURLToPath} from 'node:url';
+const bench=path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const app=path.dirname(bench);
 const mode=process.argv[2]??'pods';
-const args=mode==='pods'?['proxy','pod','install','--project-directory=ios']:['proxy','xcodebuild','-workspace','ios/TokenSavingsRN.xcworkspace','-scheme','TokenSavingsRN','-configuration','Debug','-sdk','iphonesimulator','-destination','generic/platform=iOS Simulator','-derivedDataPath','ios/build/TokenSavingsRN','CODE_SIGNING_ALLOWED=NO','build'];
-const start=Date.now();const child=spawn('rtk',args,{cwd:app,env:{...process.env,CI:'1',NO_COLOR:'1'},stdio:['ignore','pipe','pipe']});
+if(!['pods','ios','android','metro'].includes(mode))throw new Error('Choose pods, ios, android, or metro');
+const args=mode==='pods'?['proxy','pod','install','--project-directory=ios']:mode==='android'?['proxy','./gradlew',':app:assembleDebug','--console=plain','--no-daemon']:mode==='metro'?['proxy','npx','react-native','bundle','--platform','ios','--dev','false','--entry-file','index.js','--bundle-output','benchmarks/artifacts/main.jsbundle','--assets-dest','benchmarks/artifacts/assets','--reset-cache']:['proxy','xcodebuild','-workspace','ios/TokenSavingsRN.xcworkspace','-scheme','TokenSavingsRN','-configuration','Debug','-sdk','iphonesimulator','-destination','generic/platform=iOS Simulator','-derivedDataPath','ios/build/TokenSavingsRN','CODE_SIGNING_ALLOWED=NO','build'];
+await fs.mkdir(bench+'/artifacts/assets',{recursive:true});
+const start=Date.now();const child=spawn('rtk',args,{cwd:mode==='android'?app+'/android':app,env:{...process.env,CI:'1',NO_COLOR:'1'},stdio:['ignore','pipe','pipe']});
+child.on('error',error=>{console.error(error.message);process.exitCode=1;});
 const out=[],err=[];child.stdout.on('data',b=>out.push(b));child.stderr.on('data',b=>err.push(b));
 const code=await new Promise(r=>child.on('close',r));
 await fs.mkdir(bench+'/results/native',{recursive:true});

@@ -1,0 +1,10 @@
+src/domain/task.ts:3:export const taskSchema = z.object({
+src/domain/task.ts:4:  id: z.number().int().positive(),
+src/domain/task.ts:5:  userId: z.number().int().positive(),
+src/domain/task.ts:6:  title: z.string().trim().min(1).max(240),
+src/domain/task.ts:7:  completed: z.boolean(),
+src/domain/task.ts:8:});
+src/domain/task.ts:9:export const taskDraftSchema = z.object({
+src/domain/task.ts:10:  title: z.string().trim().min(3, 'Enter at least 3 characters').max(120),
+src/domain/task.ts:11:  priority: z.enum(['normal', 'high']),
+src/domain/task.ts:12:});

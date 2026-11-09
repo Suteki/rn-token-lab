@@ -5,9 +5,20 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "lint": "eslint .",
+    "lint": "eslint App.tsx src __tests__ --max-warnings 0",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc --noEmit",
+    "benchmark": "npm --prefix benchmarks run bench",
+    "bundle:ios": "react-native bundle --platform ios --dev false --entry-file index.js --bundle-output benchmarks/artifacts/main.jsbundle --assets-dest benchmarks/artifacts/assets",
+    "check": "node benchmarks/scripts/check-app.mjs",
+    "bench:doctor": "npm --prefix benchmarks run doctor",
+    "bench:verify": "npm --prefix benchmarks run verify:snapshot",
+    "bench:all": "npm --prefix benchmarks run bench:all",
+    "native:pods": "node benchmarks/scripts/native-check.mjs pods",
+    "native:ios": "node benchmarks/scripts/native-check.mjs ios",
+    "native:android": "node benchmarks/scripts/native-check.mjs android",
+    "native:metro": "node benchmarks/scripts/native-check.mjs metro"
   },
   "dependencies": {
     "@hookform/resolvers": "7.0.5",
@@ -31,6 +42,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@babel/plugin-transform-export-namespace-from": "7.27.1",
     "@babel/preset-env": "^7.25.3",
     "@babel/runtime": "^7.25.0",
     "@react-native-community/cli": "20.2.0",

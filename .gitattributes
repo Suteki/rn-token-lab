@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.png binary
+*.jar binary
+*.keystore binary
+
+# Preserve captured CLI whitespace; it is part of the measured text.
+benchmarks/captures/** -whitespace
+benchmarks/snapshots/** -whitespace

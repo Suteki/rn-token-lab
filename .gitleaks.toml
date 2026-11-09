@@ -1,0 +1,11 @@
+title = "RN Token Lab secret scan"
+[extend]
+useDefault = true
+
+# CocoaPods SHA-1 integrity checksum, not an API credential.
+[[allowlists]]
+description = "React-cxxstableapi pod checksum only"
+condition = "AND"
+paths = ['''(^|/)ios/Podfile\.lock$''']
+regexTarget = "line"
+regexes = ['''^  React-cxxstableapi: [a-f0-9]{40}$''']

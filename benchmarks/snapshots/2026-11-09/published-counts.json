@@ -1,0 +1,366 @@
+{
+  "note": "Counts for published text AFTER personal path redaction. Historical pre-redaction slide counts are in benchmarks.json. No provider usage or billing measured.",
+  "tokenizer": "js-tiktoken 1.0.21",
+  "cases": [
+    {
+      "id": "rtk-status",
+      "before": {
+        "o200k_base": 282,
+        "cl100k_base": 286,
+        "bytes": 1007,
+        "sha256": "ad63a133d1430f20bfa43c57994f28260141ef9b4a41874e3027471198fcd670"
+      },
+      "after": {
+        "o200k_base": 175,
+        "cl100k_base": 179,
+        "bytes": 620,
+        "sha256": "0d47bebf51edee082a7805d269b2d8500f11eb6262327ceec463626a5b8b511b"
+      }
+    },
+    {
+      "id": "rtk-status-intent",
+      "before": {
+        "o200k_base": 418,
+        "cl100k_base": 423,
+        "bytes": 1517,
+        "sha256": "42c41fff9b1b81a19372e5522ed511bd4d926f791141c1a0899f64310af27dc7"
+      },
+      "after": {
+        "o200k_base": 153,
+        "cl100k_base": 157,
+        "bytes": 538,
+        "sha256": "9012ae5e0beab7e8ede742839fb33116d409db844e3a8690a291fbfbf8dbc4b8"
+      }
+    },
+    {
+      "id": "rtk-diff",
+      "before": {
+        "o200k_base": 852,
+        "cl100k_base": 842,
+        "bytes": 3128,
+        "sha256": "9ab00a5556a7e34204005d8886cb3ba65211d7412cb45bacafe4822c2b1d7b38"
+      },
+      "after": {
+        "o200k_base": 797,
+        "cl100k_base": 787,
+        "bytes": 2898,
+        "sha256": "4fd3647a6d4f8dc14b42a268b0c02b09cb191dce184cd927f0ba94eba03a6479"
+      }
+    },
+    {
+      "id": "rtk-jest",
+      "before": {
+        "o200k_base": 483,
+        "cl100k_base": 483,
+        "bytes": 2008,
+        "sha256": "395c600024a42357e8d8e7f1936261692e995fc6072da108d87149b8c356f209"
+      },
+      "after": {
+        "o200k_base": 26,
+        "cl100k_base": 27,
+        "bytes": 78,
+        "sha256": "ebad79940f83640bb05c5f8dead025c6da024425f0be2ffad29d3079b1815322"
+      }
+    },
+    {
+      "id": "rtk-tsc-errors",
+      "before": {
+        "o200k_base": 84,
+        "cl100k_base": 82,
+        "bytes": 301,
+        "sha256": "135c4764d98c01f4a1103c01f13bd641f4512f957e3ae0210b5ce9066c0d85f2"
+      },
+      "after": {
+        "o200k_base": 122,
+        "cl100k_base": 133,
+        "bytes": 498,
+        "sha256": "57c1970e35687c715b1fc8fe0b1e3383acc221af4a644644470926704d230e81"
+      }
+    },
+    {
+      "id": "rtk-ios-error",
+      "before": {
+        "o200k_base": 19723,
+        "cl100k_base": 20814,
+        "bytes": 86793,
+        "sha256": "41faf6b3822ba78c668f83c1f9c049259bdb34b790d453563108fe3f914b49e5"
+      },
+      "after": {
+        "o200k_base": 208,
+        "cl100k_base": 211,
+        "bytes": 887,
+        "sha256": "77acd686d3e4fc164d92d9fb9ea2f410e37dd4e2cc0cc272a1d902fb80683c2e"
+      }
+    },
+    {
+      "id": "rg-navigation",
+      "before": {
+        "o200k_base": 4830,
+        "cl100k_base": 4721,
+        "bytes": 19475,
+        "sha256": "79870db71c9085f1e86f9819b0ccc90411d7a42fab081c52f4c5af430a99f1fd"
+      },
+      "after": {
+        "o200k_base": 108,
+        "cl100k_base": 107,
+        "bytes": 430,
+        "sha256": "1c3628471f2fd90aed2331256eea1738288bdf0da1b874f7f65e87fa05433a4d"
+      }
+    },
+    {
+      "id": "rg-manifest",
+      "before": {
+        "o200k_base": 248,
+        "cl100k_base": 250,
+        "bytes": 1115,
+        "sha256": "1ebe0caa63acbb2f2a80fad35005c1d8e54998ef21b1f285aebac51fe24b7341"
+      },
+      "after": {
+        "o200k_base": 17,
+        "cl100k_base": 17,
+        "bytes": 69,
+        "sha256": "101cc02a9ae27d568385e40994f66cf7543bd6e30b45404a4d429d2b02a75a5d"
+      }
+    },
+    {
+      "id": "rg-worklets",
+      "before": {
+        "o200k_base": 42,
+        "cl100k_base": 42,
+        "bytes": 179,
+        "sha256": "6d5ca8dfc80229e9258bd847926f6d4b34287e8f22c52e98c76a28c56515201a"
+      },
+      "after": {
+        "o200k_base": 35,
+        "cl100k_base": 35,
+        "bytes": 120,
+        "sha256": "301943de32976af3a57ce2bd5a06356a440545326070b18ee5454f4bf03d1523"
+      }
+    },
+    {
+      "id": "rg-ios-platform",
+      "before": {
+        "o200k_base": 4060,
+        "cl100k_base": 4056,
+        "bytes": 16955,
+        "sha256": "7063cb8066fdb345d041b598dad8858293c53a8aeb318249aa52b2ef5e8b985e"
+      },
+      "after": {
+        "o200k_base": 134,
+        "cl100k_base": 134,
+        "bytes": 527,
+        "sha256": "92a2c7003c714e53923a418d6c739f40df0ac4c0344cf194d31a233e7974f561"
+      }
+    },
+    {
+      "id": "jq-autolinking",
+      "before": {
+        "o200k_base": 6764,
+        "cl100k_base": 6704,
+        "bytes": 30204,
+        "sha256": "ddf9230a059d433db2c139cef081907446fdad28bae2b19d5ca64a7e4747334b"
+      },
+      "after": {
+        "o200k_base": 130,
+        "cl100k_base": 130,
+        "bytes": 516,
+        "sha256": "e395782585073c26930d8b1a053f6a84fcbd67caffe5e0a493bd405a779b670f"
+      }
+    },
+    {
+      "id": "jq-lockfile",
+      "before": {
+        "o200k_base": 180468,
+        "cl100k_base": 182811,
+        "bytes": 474064,
+        "sha256": "c2b6b4d9d7e422e0f3e25323588038ec2103e39dbacbe6b15c8ae1ec3a1abec6"
+      },
+      "after": {
+        "o200k_base": 276,
+        "cl100k_base": 277,
+        "bytes": 929,
+        "sha256": "603537d4f07df7ec365d8109f899bbdf8593e5238b9c08191f42dbc02acb50ba"
+      }
+    },
+    {
+      "id": "jq-jest-report",
+      "before": {
+        "o200k_base": 2917,
+        "cl100k_base": 2900,
+        "bytes": 12481,
+        "sha256": "23dd7d1614946fc76d6912756809623ca8864b842ee6970b02fa4d8e3bbf0f7f"
+      },
+      "after": {
+        "o200k_base": 39,
+        "cl100k_base": 39,
+        "bytes": 123,
+        "sha256": "9dbb98f75807fa6e88835958cf8e5cfa9d9aa59c86bcd9ee0797932bc5df756f"
+      }
+    },
+    {
+      "id": "jq-api",
+      "before": {
+        "o200k_base": 767,
+        "cl100k_base": 784,
+        "bytes": 2271,
+        "sha256": "a073b26062595d79b9e97384dbccc0ec7d02e646794c637d6ac9e2488820c9fe"
+      },
+      "after": {
+        "o200k_base": 161,
+        "cl100k_base": 179,
+        "bytes": 614,
+        "sha256": "bc4dfabbcd50b19e9832f5d5d6e29c389f416635e5d73dc2803d6fd1fcac0eb5"
+      }
+    },
+    {
+      "id": "ast-navigation",
+      "before": {
+        "o200k_base": 2405,
+        "cl100k_base": 2326,
+        "bytes": 9616,
+        "sha256": "038b3977e0dfbe680e8c4203d40c427b27abd89e619a1baafa09cbaf0dfd5f4d"
+      },
+      "after": {
+        "o200k_base": 75,
+        "cl100k_base": 72,
+        "bytes": 308,
+        "sha256": "f4957a9114e4878470693abbd962577b0a119fd8134251e3a5a68b9818d0467e"
+      }
+    },
+    {
+      "id": "ast-query",
+      "before": {
+        "o200k_base": 78,
+        "cl100k_base": 78,
+        "bytes": 311,
+        "sha256": "47cd0b0b3cf03a27f71611da07002349f9900066359c702bc233610e586794dd"
+      },
+      "after": {
+        "o200k_base": 59,
+        "cl100k_base": 59,
+        "bytes": 200,
+        "sha256": "305d598004dda2df3e5225b97c65ee4696b1dcbe8ac441c795de4a5fc7a3d4b7"
+      }
+    },
+    {
+      "id": "ast-schema",
+      "before": {
+        "o200k_base": 507,
+        "cl100k_base": 501,
+        "bytes": 2031,
+        "sha256": "1c4ee0642bb739112e49f4a877ad6f5468de2635b5f5a15d5724acba1c2e72db"
+      },
+      "after": {
+        "o200k_base": 167,
+        "cl100k_base": 166,
+        "bytes": 559,
+        "sha256": "c39b0f9c54732b62951617200e002cd9808de5755edae40bd458163aa5a9831a"
+      }
+    },
+    {
+      "id": "ast-pressable",
+      "before": {
+        "o200k_base": 3588,
+        "cl100k_base": 3485,
+        "bytes": 14361,
+        "sha256": "c96a355a54b67de014ac8d85bbff702c05b826e5a96e793f717e48e96436c209"
+      },
+      "after": {
+        "o200k_base": 286,
+        "cl100k_base": 285,
+        "bytes": 1041,
+        "sha256": "402aa14e34f5d4c3f33f9883cf5312f0b00273cad0f617bd7769434c3b3af75c"
+      }
+    },
+    {
+      "id": "rep-app",
+      "before": {
+        "o200k_base": 4830,
+        "cl100k_base": 4721,
+        "bytes": 19475,
+        "sha256": "79870db71c9085f1e86f9819b0ccc90411d7a42fab081c52f4c5af430a99f1fd"
+      },
+      "after": {
+        "o200k_base": 2055,
+        "cl100k_base": 2059,
+        "bytes": 8873,
+        "sha256": "a4eef1f0bbb88a24131385d9a009bac4580c9d3544d37aff73918fcc5ddd5509"
+      }
+    },
+    {
+      "id": "rep-default-overhead",
+      "before": {
+        "o200k_base": 4830,
+        "cl100k_base": 4721,
+        "bytes": 19475,
+        "sha256": "79870db71c9085f1e86f9819b0ccc90411d7a42fab081c52f4c5af430a99f1fd"
+      },
+      "after": {
+        "o200k_base": 5464,
+        "cl100k_base": 5351,
+        "bytes": 22210,
+        "sha256": "19d03804c105cc961c1df2d5e1913457823b06c3718e91fa1d744de513303df9"
+      }
+    },
+    {
+      "id": "rep-native",
+      "before": {
+        "o200k_base": 4060,
+        "cl100k_base": 4056,
+        "bytes": 16955,
+        "sha256": "7063cb8066fdb345d041b598dad8858293c53a8aeb318249aa52b2ef5e8b985e"
+      },
+      "after": {
+        "o200k_base": 4275,
+        "cl100k_base": 4271,
+        "bytes": 18115,
+        "sha256": "0d0e29ba64f892d539c78d1ad48ca22fa01890e1ad114a5dce81a00e18202361"
+      }
+    },
+    {
+      "id": "rep-config",
+      "before": {
+        "o200k_base": 1916,
+        "cl100k_base": 1920,
+        "bytes": 6549,
+        "sha256": "d01b47775274287c0bfff6f9e7c06207c3f5308316613356a741feaaa9760577"
+      },
+      "after": {
+        "o200k_base": 2365,
+        "cl100k_base": 2365,
+        "bytes": 8619,
+        "sha256": "ce40edbd51d01d26773c7b2464a5223099cde2c42148def0bcb8d3879349895e"
+      }
+    },
+    {
+      "id": "rtk-ios-build",
+      "before": {
+        "o200k_base": 1759540,
+        "cl100k_base": 1761856,
+        "bytes": 6192072,
+        "sha256": "94dbb1eea692f9c815f9e75097bbe997e4b4e1cb8392c2d77e65d6c1dda94c58"
+      },
+      "after": {
+        "o200k_base": 90802,
+        "cl100k_base": 90125,
+        "bytes": 357577,
+        "sha256": "78f4edca07ed36f263fb715087e3f51120383425c0dfed9915318b4a15d7e271"
+      }
+    },
+    {
+      "id": "rtk-android-build",
+      "before": {
+        "o200k_base": 11344,
+        "cl100k_base": 11427,
+        "bytes": 46461,
+        "sha256": "4537029f25ab32551ef02e8a1dc08cc18d5ad2c0b472260a2e40d385a109be49"
+      },
+      "after": {
+        "o200k_base": 176,
+        "cl100k_base": 182,
+        "bytes": 856,
+        "sha256": "69f7497fa57ecbdcf8690cafa1934b856605db77f3be818070bbbfdf6a5d4b7f"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+On branch main
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   App.tsx
+	modified:   README.md
+	deleted:    __tests__/App.test.tsx
+	modified:   android/app/src/main/AndroidManifest.xml
+	modified:   android/app/src/main/java/com/tokensavingsrn/MainActivity.kt
+	modified:   babel.config.js
+	modified:   benchmarks/scripts/native-check.mjs
+	modified:   ios/Podfile
+	modified:   ios/TokenSavingsRN.xcodeproj/project.pbxproj
+	modified:   ios/TokenSavingsRN/PrivacyInfo.xcprivacy
+	modified:   package-lock.json
+	modified:   package.json
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	__tests__/task.test.ts
+	__tests__/taskApi.test.ts
+	benchmarks/captures/
+	benchmarks/scripts/benchmark.mjs
+	benchmarks/scripts/replay.mjs
+	ios/Podfile.lock
+	ios/TokenSavingsRN.xcworkspace/
+	src/
+
+no changes added to commit (use "git add" and/or "git commit -a")

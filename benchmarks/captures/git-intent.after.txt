@@ -1,0 +1,19 @@
+* main
++ Staged: 1 files
+   __tests__/App.test.tsx
+~ Modified: 10 files
+   App.tsx
+   android/app/src/main/AndroidManifest.xml
+   android/app/src/main/java/com/tokensavingsrn/MainActivity.kt
+   babel.config.js
+   benchmarks/scripts/native-check.mjs
+   ios/Podfile
+   ios/TokenSavingsRN.xcodeproj/project.pbxproj
+   ios/TokenSavingsRN/PrivacyInfo.xcprivacy
+   package-lock.json
+   package.json
+? Untracked: 4 files
+   benchmarks/scripts/benchmark.mjs
+   benchmarks/scripts/replay.mjs
+   ios/Podfile.lock
+   ios/TokenSavingsRN.xcworkspace/

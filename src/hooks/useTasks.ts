@@ -1,0 +1,9 @@
+import { useQuery } from '@tanstack/react-query';
+import { fetchTasks } from '../data/taskApi';
+import { taskKeys } from '../data/queryClient';
+export function useTasks() {
+  return useQuery({
+    queryKey: taskKeys.list,
+    queryFn: ({ signal }) => fetchTasks(signal),
+  });
+}

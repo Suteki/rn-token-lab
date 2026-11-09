@@ -1,0 +1,257 @@
+This file is a merged representation of a subset of the codebase, containing specifically included files, combined into a single document by Repomix.
+The content has been processed where content has been compressed (code blocks are separated by ⋮---- delimiter).
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Only files matching these patterns are included: App.tsx, src/components/ProgressRing.tsx, src/components/TaskCard.tsx, src/data/queryClient.ts, src/data/taskApi.ts, src/domain/task.ts, src/hooks/useConnectivity.ts, src/hooks/useTasks.ts, src/navigation/RootNavigator.tsx, src/screens/NewTaskScreen.tsx, src/screens/SettingsScreen.tsx, src/screens/TaskDetailsScreen.tsx, src/screens/TaskListScreen.tsx, src/stores/preferences.ts
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Content has been compressed - code blocks are separated by ⋮---- delimiter
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+src/
+  components/
+    ProgressRing.tsx
+    TaskCard.tsx
+  data/
+    queryClient.ts
+    taskApi.ts
+  domain/
+    task.ts
+  hooks/
+    useConnectivity.ts
+    useTasks.ts
+  navigation/
+    RootNavigator.tsx
+  screens/
+    NewTaskScreen.tsx
+    SettingsScreen.tsx
+    TaskDetailsScreen.tsx
+    TaskListScreen.tsx
+  stores/
+    preferences.ts
+App.tsx
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="src/components/ProgressRing.tsx">
+import React from 'react';
+import Svg, { Circle, Text as SvgText } from 'react-native-svg';
+export function ProgressRing({
+  percent,
+  size = 88,
+}: {
+  percent: number;
+  size?: number;
+})
+</file>
+
+<file path="src/components/TaskCard.tsx">
+import React from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import Animated, { FadeInDown } from 'react-native-reanimated';
+import { Task } from '../domain/task';
+type Props = { task: Task; favorite: boolean; onPress: () => void };
+export function TaskCard({ task, favorite, onPress }: Props)
+</file>
+
+<file path="src/data/queryClient.ts">
+import { QueryClient } from '@tanstack/react-query';
+</file>
+
+<file path="src/data/taskApi.ts">
+import { parseTasks, Task } from '../domain/task';
+⋮----
+export async function fetchTasks(signal?: AbortSignal): Promise<Task[]>
+</file>
+
+<file path="src/domain/task.ts">
+import { z } from 'zod';
+⋮----
+export type Task = z.infer<typeof taskSchema>;
+export type TaskDraft = z.infer<typeof taskDraftSchema>;
+export type LocalTask = Task & { priority: TaskDraft['priority'] };
+export type TaskFilter = {
+  query: string;
+  showCompleted: boolean;
+  favoritesOnly: boolean;
+  favoriteIds: number[];
+};
+⋮----
+export function parseTasks(value: unknown): Task[]
+⋮----
+export function filterTasks(
+  tasks: readonly Task[],
+  filter: TaskFilter,
+): Task[]
+⋮----
+export function getTaskStats(tasks: readonly Task[])
+⋮----
+export function toggleFavorite(ids: readonly number[], id: number): number[]
+⋮----
+export function createLocalTask(draft: TaskDraft, nextId: number): LocalTask
+</file>
+
+<file path="src/hooks/useConnectivity.ts">
+import { useEffect, useState } from 'react';
+import NetInfo from '@react-native-community/netinfo';
+import { onlineManager } from '@tanstack/react-query';
+export function useConnectivity()
+</file>
+
+<file path="src/hooks/useTasks.ts">
+import { useQuery } from '@tanstack/react-query';
+import { fetchTasks } from '../data/taskApi';
+import { taskKeys } from '../data/queryClient';
+export function useTasks()
+</file>
+
+<file path="src/navigation/RootNavigator.tsx">
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { TaskListScreen } from '../screens/TaskListScreen';
+import { TaskDetailsScreen } from '../screens/TaskDetailsScreen';
+import { NewTaskScreen } from '../screens/NewTaskScreen';
+import { SettingsScreen } from '../screens/SettingsScreen';
+export type RootStackParamList = {
+  Tasks: undefined;
+  TaskDetails: { taskId: number };
+  NewTask: undefined;
+  Settings: undefined;
+};
+⋮----
+export function RootNavigator()
+</file>
+
+<file path="src/screens/NewTaskScreen.tsx">
+import React from 'react';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Controller, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/RootNavigator';
+import { TaskDraft, taskDraftSchema } from '../domain/task';
+import { usePreferences } from '../stores/preferences';
+type Props = NativeStackScreenProps<RootStackParamList, 'NewTask'>;
+</file>
+
+<file path="src/screens/SettingsScreen.tsx">
+import React from 'react';
+import { StyleSheet, Switch, Text, View } from 'react-native';
+import { usePreferences } from '../stores/preferences';
+import { useConnectivity } from '../hooks/useConnectivity';
+export function SettingsScreen()
+</file>
+
+<file path="src/screens/TaskDetailsScreen.tsx">
+import React from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/RootNavigator';
+import { useTasks } from '../hooks/useTasks';
+import { usePreferences } from '../stores/preferences';
+type Props = NativeStackScreenProps<RootStackParamList, 'TaskDetails'>;
+export function TaskDetailsScreen({ route }: Props)
+⋮----
+onPress={() =>
+</file>
+
+<file path="src/screens/TaskListScreen.tsx">
+import React, { useMemo, useState } from 'react';
+import {
+  ActivityIndicator,
+  Button,
+  FlatList,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/RootNavigator';
+import { filterTasks, getTaskStats } from '../domain/task';
+import { useTasks } from '../hooks/useTasks';
+import { useConnectivity } from '../hooks/useConnectivity';
+import { usePreferences } from '../stores/preferences';
+import { TaskCard } from '../components/TaskCard';
+import { ProgressRing } from '../components/ProgressRing';
+type Props = NativeStackScreenProps<RootStackParamList, 'Tasks'>;
+⋮----
+{error ? (
+        <Text accessibilityRole="alert" style={styles.error}>
+          {error.message}
+        </Text>
+      ) : null}
+⋮----
+navigation.navigate('TaskDetails',
+</file>
+
+<file path="src/stores/preferences.ts">
+import { createAsyncStorage } from '@react-native-async-storage/async-storage';
+import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
+import {
+  createLocalTask,
+  LocalTask,
+  TaskDraft,
+  toggleFavorite,
+} from '../domain/task';
+⋮----
+type Preferences = {
+  showCompleted: boolean;
+  favoriteIds: number[];
+  localTasks: LocalTask[];
+  setShowCompleted: (value: boolean) => void;
+  toggleFavorite: (id: number) => void;
+  addTask: (draft: TaskDraft) => void;
+};
+</file>
+
+<file path="App.tsx">
+import React from 'react';
+import { StatusBar, StyleSheet } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { DarkTheme, NavigationContainer } from '@react-navigation/native';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from './src/data/queryClient';
+import { RootNavigator } from './src/navigation/RootNavigator';
+</file>
+
+</files>

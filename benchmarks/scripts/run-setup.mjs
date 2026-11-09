@@ -1,7 +1,8 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {spawn} from 'node:child_process';
-const bench=path.dirname(path.dirname(new URL(import.meta.url).pathname));
+import {fileURLToPath} from 'node:url';
+const bench=path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const app=path.dirname(bench);
 await fs.mkdir(bench+'/results/setup',{recursive:true});
 const core=[

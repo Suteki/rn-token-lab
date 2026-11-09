@@ -1,0 +1,41 @@
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	deleted:    __tests__/App.test.tsx
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   App.tsx
+	new file:   __tests__/task.test.ts
+	new file:   __tests__/taskApi.test.ts
+	modified:   android/app/src/main/AndroidManifest.xml
+	modified:   android/app/src/main/java/com/tokensavingsrn/MainActivity.kt
+	modified:   babel.config.js
+	modified:   benchmarks/scripts/native-check.mjs
+	modified:   ios/Podfile
+	modified:   ios/TokenSavingsRN.xcodeproj/project.pbxproj
+	modified:   ios/TokenSavingsRN/PrivacyInfo.xcprivacy
+	modified:   package-lock.json
+	modified:   package.json
+	new file:   src/components/ProgressRing.tsx
+	new file:   src/components/TaskCard.tsx
+	new file:   src/data/queryClient.ts
+	new file:   src/data/taskApi.ts
+	new file:   src/domain/task.ts
+	new file:   src/hooks/useConnectivity.ts
+	new file:   src/hooks/useTasks.ts
+	new file:   src/navigation/RootNavigator.tsx
+	new file:   src/screens/NewTaskScreen.tsx
+	new file:   src/screens/SettingsScreen.tsx
+	new file:   src/screens/TaskDetailsScreen.tsx
+	new file:   src/screens/TaskListScreen.tsx
+	new file:   src/stores/preferences.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	benchmarks/scripts/benchmark.mjs
+	benchmarks/scripts/replay.mjs
+	ios/Podfile.lock
+	ios/TokenSavingsRN.xcworkspace/
+

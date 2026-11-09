@@ -1,0 +1,16 @@
+{
+  "output": {
+    "filePath": ".agent-context/app.xml",
+    "style": "xml",
+    "compress": true
+  },
+  "include": ["App.tsx", "src/**/*"],
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [".env", ".env.*", "**/*.pem", "**/*.key", ".agent-context/**"]
+  },
+  "security": {
+    "enableSecurityCheck": true
+  }
+}

@@ -1,0 +1,6 @@
+id: rn-navigation-call
+language: Tsx
+severity: hint
+message: RN navigation call
+rule:
+  pattern: navigation.navigate($$$ARGS)

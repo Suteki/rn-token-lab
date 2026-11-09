@@ -1,0 +1,790 @@
+{
+  "createdAt": "2026-11-09T07:34:46.583Z",
+  "project": "TokenSavingsRN",
+  "projectPath": "/workspace/rn-token-lab",
+  "initialization": "npx @react-native-community/cli@20.2.0 init TokenSavingsRN --version 0.88.1 --directory rn-token-lab --skip-install --skip-git-init --install-pods false",
+  "method": "Real RN CLI project. Complete text inputs/outputs counted locally; no model calls, LLM usage or subscription billing measured. Replay cases filter one real captured output, avoiding cold/warm-run variation. Every case has a task-specific semantic check. Different questions and lossy structure compression must not be averaged into session or billing savings.",
+  "versions": {
+    "reactNative": "0.88.1",
+    "react": "19.3.0",
+    "node": "v26.0.0",
+    "rtk": "rtk 0.40.0",
+    "ripgrep": "ripgrep 15.1.0",
+    "jq": "jq-1.8.1",
+    "astgrep": "ast-grep 0.51.1",
+    "repomix": "1.19.0",
+    "tokenizer": "js-tiktoken 1.0.21",
+    "primaryEncoding": "o200k_base",
+    "crossCheckEncoding": "cl100k_base"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "7.0.5",
+    "@react-native-async-storage/async-storage": "3.1.1",
+    "@react-native-community/netinfo": "12.0.1",
+    "@react-native/new-app-screen": "0.88.1",
+    "@react-navigation/native": "7.5.1",
+    "@react-navigation/native-stack": "7.21.0",
+    "@tanstack/react-query": "5.107.1",
+    "react": "19.3.0",
+    "react-hook-form": "7.91.0",
+    "react-native": "0.88.1",
+    "react-native-gesture-handler": "3.5.0",
+    "react-native-reanimated": "4.7.1",
+    "react-native-safe-area-context": "5.11.1",
+    "react-native-screens": "4.30.1",
+    "react-native-svg": "15.16.1",
+    "react-native-worklets": "0.13.1",
+    "zod": "4.6.7",
+    "zustand": "5.1.0"
+  },
+  "sourceManifest": [
+    {
+      "file": "App.tsx",
+      "sha256": "0a3b3b3be3346cbc4066f662c840ddbeb63bf202d50d387707d9f3c510da102c"
+    },
+    {
+      "file": "src/components/ProgressRing.tsx",
+      "sha256": "6939e55a6032a587343b03fa8229af54b0855e976348fe31dcc51b7ef48f6d26"
+    },
+    {
+      "file": "src/components/TaskCard.tsx",
+      "sha256": "1e6bd1b032041492d7fce8f5cf7c6cf5f8572036dbf2251f6fe0595982615e42"
+    },
+    {
+      "file": "src/data/queryClient.ts",
+      "sha256": "5b67fef730ee51e39de2b9454ff99057deeda7fce4133343ab4846665ca0dd88"
+    },
+    {
+      "file": "src/data/taskApi.ts",
+      "sha256": "09b3276f6d5c5d58cec621d8f7912f4f25cc3adfe2b5beb94547319ec75ae485"
+    },
+    {
+      "file": "src/domain/task.ts",
+      "sha256": "77972fbd2186e46fa4770480b4729d703f0e2d06a743f7801a6217676f16091d"
+    },
+    {
+      "file": "src/hooks/useConnectivity.ts",
+      "sha256": "8fa9d93991833c3316792cc2083c8840260b9145995326706687c76c092be256"
+    },
+    {
+      "file": "src/hooks/useTasks.ts",
+      "sha256": "11b9cd7e9283d3709f197f75ce0356bcdf8b0318eeefa2575d92504d059cd0ce"
+    },
+    {
+      "file": "src/navigation/RootNavigator.tsx",
+      "sha256": "1ea35c1e308d4deea3c9410cbf51e38a227cbd35af723daad61760b6bf539966"
+    },
+    {
+      "file": "src/screens/NewTaskScreen.tsx",
+      "sha256": "605167aa94473de9d79591219f0edbdacb4fe2f87b892d5d80839cd079a6f233"
+    },
+    {
+      "file": "src/screens/SettingsScreen.tsx",
+      "sha256": "b4e8483d368b1681eb73baff8d1abd36710b00a9a73f5ab8355bc6035ec13886"
+    },
+    {
+      "file": "src/screens/TaskDetailsScreen.tsx",
+      "sha256": "bc9963595ded863e8b22c6e3a80e127b1ef7e5c0945817395ebab18e737fad85"
+    },
+    {
+      "file": "src/screens/TaskListScreen.tsx",
+      "sha256": "6290a2fb6f0497ad1e320c15e65ec3dedf9a0152314df9d6411b21b8c7f53899"
+    },
+    {
+      "file": "src/stores/preferences.ts",
+      "sha256": "019f5b53ab26dce4a847b3fd421ed351ff73f7f65df9a73b050b98fdfd75bb9c"
+    },
+    {
+      "file": "android/settings.gradle",
+      "sha256": "ebdb9cd0c9ea98102b30ea1a65d79705378fa9907a7b2a0fadb984a8543444e8"
+    },
+    {
+      "file": "android/build.gradle",
+      "sha256": "0e23d433bd6be8444f78dee6b1e789d3c45fa6377307de94b4dba85a08eea801"
+    },
+    {
+      "file": "android/gradle.properties",
+      "sha256": "ad5676f42702d1a9f811655c5d041ce13b0936011ef294e69ec6d230b660a985"
+    },
+    {
+      "file": "android/app/build.gradle",
+      "sha256": "9dd0860964e2134c51a40c52c2ac35f9b56b85fd092e27f7aa68f0bcd138c38f"
+    },
+    {
+      "file": "android/app/src/main/AndroidManifest.xml",
+      "sha256": "1ebe0caa63acbb2f2a80fad35005c1d8e54998ef21b1f285aebac51fe24b7341"
+    },
+    {
+      "file": "android/app/src/main/java/com/tokensavingsrn/MainActivity.kt",
+      "sha256": "d63c9503442cafa8338750dddd3bbb4b274327e19d146e0131d44cd4288799cd"
+    },
+    {
+      "file": "android/app/src/main/java/com/tokensavingsrn/MainApplication.kt",
+      "sha256": "f955cbac9d77cded463b0d48cbc74dfe18003765d44f0a7ab5b212303dc2345e"
+    },
+    {
+      "file": "ios/Podfile",
+      "sha256": "c5906b83772bf8721045df7a4e111f18aacc03a2060977bd5c692ed8cabc8739"
+    },
+    {
+      "file": "ios/TokenSavingsRN/AppDelegate.swift",
+      "sha256": "b9569eb82b73976c8f12453a3885f40000878daf824cf6020dd37d49e540d337"
+    },
+    {
+      "file": "ios/TokenSavingsRN/SceneDelegate.swift",
+      "sha256": "ba8a6d0bc1e9b032d8c2a5770eb1c7edbd16b74ef79b6d826d9e11e28de1b152"
+    },
+    {
+      "file": "ios/TokenSavingsRN/Info.plist",
+      "sha256": "73d11d66e9a6dcbb4f1001aa039816e543b5a9e07bfed42327f8988a9e43ad9b"
+    }
+  ],
+  "tests": {
+    "passed": 40,
+    "total": 40
+  },
+  "cases": [
+    {
+      "id": "rtk-status",
+      "tool": "RTK",
+      "dataType": "Git working tree",
+      "task": "Оцінити обсяг змін у RN-проєкті",
+      "primary": true,
+      "beforeCommand": "git status",
+      "afterCommand": "rtk git status",
+      "beforeTokens": 282,
+      "afterTokens": 175,
+      "savingPct": 37.9,
+      "cl100k": {
+        "before": 286,
+        "after": 179
+      },
+      "beforeBytes": 1007,
+      "afterBytes": 620,
+      "verified": true,
+      "expectedSemanticFailure": false,
+      "porcelainEntries": 20,
+      "checkedPaths": [
+        "App.tsx",
+        "README.md",
+        "__tests__/App.test.tsx",
+        "android/app/src/main/AndroidManifest.xml",
+        "android/app/src/main/java/com/tokensavingsrn/MainActivity.kt",
+        "babel.config.js",
+        "benchmarks/scripts/native-check.mjs",
+        "ios/Podfile",
+        "ios/TokenSavingsRN.xcodeproj/project.pbxproj",
+        "ios/TokenSavingsRN/PrivacyInfo.xcprivacy",
+        "package-lock.json",
+        "package.json",
+        "__tests__/task.test.ts",
+        "__tests__/taskApi.test.ts",
+        "benchmarks/captures/",
+        "benchmarks/scripts/benchmark.mjs",
+        "benchmarks/scripts/replay.mjs",
+        "ios/Podfile.lock",
+        "ios/TokenSavingsRN.xcworkspace/",
+        "src/"
+      ],
+      "baselineCommit": "1bac4f56391e2afc07cf9e1ee0555e3b5963393e"
+    },
+    {
+      "id": "rtk-status-intent",
+      "tool": "RTK",
+      "dataType": "Git intent-to-add counterexample",
+      "task": "Перевірити видимість нових файлів після git add -N",
+      "primary": false,
+      "beforeCommand": "git status (captured real intent-to-add state)",
+      "afterCommand": "rtk git status (same state)",
+      "beforeTokens": 418,
+      "afterTokens": 153,
+      "savingPct": 63.4,
+      "cl100k": {
+        "before": 423,
+        "after": 157
+      },
+      "beforeBytes": 1517,
+      "afterBytes": 538,
+      "verified": false,
+      "expectedSemanticFailure": true,
+      "missingPaths": [
+        "__tests__/task.test.ts",
+        "__tests__/taskApi.test.ts",
+        "src/components/ProgressRing.tsx",
+        "src/components/TaskCard.tsx",
+        "src/data/queryClient.ts",
+        "src/data/taskApi.ts",
+        "src/domain/task.ts",
+        "src/hooks/useConnectivity.ts",
+        "src/hooks/useTasks.ts",
+        "src/navigation/RootNavigator.tsx",
+        "src/screens/NewTaskScreen.tsx",
+        "src/screens/SettingsScreen.tsx",
+        "src/screens/TaskDetailsScreen.tsx",
+        "src/screens/TaskListScreen.tsx",
+        "src/stores/preferences.ts"
+      ],
+      "excludedFromRecommendations": true,
+      "caveat": "Compact status omitted intent-to-add files in this installed RTK build. Inspect raw status/porcelain."
+    },
+    {
+      "id": "rtk-diff",
+      "tool": "RTK",
+      "dataType": "Unified diff",
+      "task": "Огляд змін у root providers, Babel і Podfile",
+      "primary": false,
+      "beforeCommand": "git diff -- App.tsx babel.config.js ios/Podfile",
+      "afterCommand": "git diff ... | rtk pipe --filter git-diff",
+      "beforeTokens": 852,
+      "afterTokens": 797,
+      "savingPct": 6.5,
+      "cl100k": {
+        "before": 842,
+        "after": 787
+      },
+      "beforeBytes": 3128,
+      "afterBytes": 2898,
+      "verified": true,
+      "expectedSemanticFailure": false
+    },
+    {
+      "id": "rtk-jest",
+      "tool": "RTK",
+      "dataType": "Jest pass log",
+      "task": "Перевірити підсумок реального запуску 40 тестів",
+      "primary": false,
+      "beforeCommand": "npx jest --runInBand --verbose --json --outputFile results/jest.json",
+      "afterCommand": "rtk test node benchmarks/scripts/replay.mjs results/jest.log",
+      "beforeTokens": 483,
+      "afterTokens": 26,
+      "savingPct": 94.6,
+      "cl100k": {
+        "before": 483,
+        "after": 27
+      },
+      "beforeBytes": 2008,
+      "afterBytes": 78,
+      "verified": true,
+      "expectedSemanticFailure": false,
+      "replay": true,
+      "sourceExitCode": 0,
+      "tests": 40
+    },
+    {
+      "id": "rtk-tsc-errors",
+      "tool": "RTK",
+      "dataType": "TypeScript diagnostics",
+      "task": "Зберегти обидві помилки з реальної початкової перевірки",
+      "primary": false,
+      "beforeCommand": "npx tsc --noEmit (initial failure capture)",
+      "afterCommand": "rtk pipe --filter tsc < initial-failure.log",
+      "beforeTokens": 84,
+      "afterTokens": 122,
+      "savingPct": -45.2,
+      "cl100k": {
+        "before": 82,
+        "after": 133
+      },
+      "beforeBytes": 301,
+      "afterBytes": 498,
+      "verified": true,
+      "expectedSemanticFailure": false,
+      "replay": true,
+      "sourceExitCode": 2,
+      "filterExitCode": 0,
+      "caveat": "Standalone stdin filter has exit 0. Preserve producer status with pipefail or use rtk tsc."
+    },
+    {
+      "id": "rtk-ios-error",
+      "tool": "RTK",
+      "dataType": "Xcode build failure",
+      "task": "Знайти помилку deployment target та статус невдалого build",
+      "primary": false,
+      "beforeCommand": "xcodebuild ... build (actual captured initial failure)",
+      "afterCommand": "rtk err node benchmarks/scripts/replay.mjs results/native/ios-initial-failure.log 65",
+      "beforeTokens": 19762,
+      "afterTokens": 221,
+      "savingPct": 98.9,
+      "cl100k": {
+        "before": 20853,
+        "after": 224
+      },
+      "beforeBytes": 86913,
+      "afterBytes": 927,
+      "verified": true,
+      "expectedSemanticFailure": false,
+      "replay": true,
+      "sourceExitCode": 65
+    },
+    {
+      "id": "rg-navigation",
+      "tool": "ripgrep",
+      "dataType": "TypeScript / TSX",
+      "task": "Знайти декларацію native stack",
+      "primary": true,
+      "beforeCommand": "cat App.tsx src/**/*.{ts,tsx} (sorted explicit manifest)",
+      "afterCommand": "rg -n -C 3 'createNativeStackNavigator<' src",
+      "beforeTokens": 4830,
+      "afterTokens": 108,
+      "savingPct": 97.8,
+      "cl100k": {
+        "before": 4721,
+        "after": 107
+      },
+      "beforeBytes": 19475,
+      "afterBytes": 430,
+      "verified": true,
+      "expectedSemanticFailure": false
+    },
+    {
+      "id": "rg-manifest",
+      "tool": "ripgrep",
+      "dataType": "Android XML",
+      "task": "Перевірити INTERNET permission",
+      "primary": false,
+      "beforeCommand": "cat android/app/src/main/AndroidManifest.xml",
+      "afterCommand": "rg -n -F 'android.permission.INTERNET' android/app/src/main/AndroidManifest.xml",
+      "beforeTokens": 248,
+      "afterTokens": 17,
+      "savingPct": 93.1,
+      "cl100k": {
+        "before": 250,
+        "after": 17
+      },
+      "beforeBytes": 1115,
+      "afterBytes": 69,
+      "verified": true,
+      "expectedSemanticFailure": false
+    },
+    {
+      "id": "rg-worklets",
+      "tool": "ripgrep",
+      "dataType": "Babel JavaScript config",
+      "task": "Перевірити наявність Worklets plugin і його позицію",
+      "primary": false,
+      "beforeCommand": "cat babel.config.js",
+      "afterCommand": "rg -n -C 2 'react-native-worklets/plugin' babel.config.js",
+      "beforeTokens": 42,
+      "afterTokens": 35,
+      "savingPct": 16.7,
+      "cl100k": {
+        "before": 42,
+        "after": 35
+      },
+      "beforeBytes": 179,
+      "afterBytes": 120,
+      "verified": true,
+      "expectedSemanticFailure": false
+    },
+    {
+      "id": "rg-ios-platform",
+      "tool": "ripgrep",
+      "dataType": "Podfile / Swift / Gradle",
+      "task": "Знайти iOS minimum і місце виправлення Pod targets",
+      "primary": false,
+      "beforeCommand": "cat (11 explicit native configuration files)",
+      "afterCommand": "rg -n -C 2 'platform :ios|IPHONEOS_DEPLOYMENT_TARGET|Gem::Version' ios/Podfile",
+      "beforeTokens": 4060,
+      "afterTokens": 134,
+      "savingPct": 96.7,
+      "cl100k": {
+        "before": 4056,
+        "after": 134
+      },
+      "beforeBytes": 16955,
+      "afterBytes": 527,
+      "verified": true,
+      "expectedSemanticFailure": false
+    },
+    {
+      "id": "jq-autolinking",
+      "tool": "jq",
+      "dataType": "React Native config JSON",
+      "task": "Оглянути autolinked native modules і платформи",
+      "primary": true,
+      "beforeCommand": "npx react-native config",
+      "afterCommand": "npx react-native config | jq -c '.dependencies | to_entries | map({name:.key,ios:(.value.platforms.ios!=null),android:(.value.platforms.android!=null)}) | sort_by(.name)'",
+      "beforeTokens": 7245,
+      "afterTokens": 130,
+      "savingPct": 98.2,
+      "cl100k": {
+        "before": 7185,
+        "after": 130
+      },
+      "beforeBytes": 31684,
+      "afterBytes": 516,
+      "verified": true,
+      "expectedSemanticFailure": false,
+      "nativeModules": 8
+    },
+    {
+      "id": "jq-lockfile",
+      "tool": "jq",
+      "dataType": "npm package-lock JSON",
+      "task": "Витягти лише прямі runtime dependencies",
+      "primary": false,
+      "beforeCommand": "cat package-lock.json",
+      "afterCommand": "jq -c '.packages[\"\"].dependencies | to_entries | map({name:.key,version:.value}) | sort_by(.name)' package-lock.json",
+      "beforeTokens": 180468,
+      "afterTokens": 276,
+      "savingPct": 99.8,
+      "cl100k": {
+        "before": 182811,
+        "after": 277
+      },
+      "beforeBytes": 474064,
+      "afterBytes": 929,
+      "verified": true,
+      "expectedSemanticFailure": false,
+      "lockPackages": 907
+    },
+    {
+      "id": "jq-jest-report",
+      "tool": "jq",
+      "dataType": "Jest report JSON",
+      "task": "Прочитати підсумок тестів, не їхні timings і stack metadata",
+      "primary": false,
+      "beforeCommand": "cat benchmarks/results/jest.json",
+      "afterCommand": "jq -c '{numTotalTests,numPassedTests,numFailedTests,numPassedTestSuites,numFailedTestSuites,success}' results/jest.json",
+      "beforeTokens": 2943,
+      "afterTokens": 39,
+      "savingPct": 98.7,
+      "cl100k": {
+        "before": 2926,
+        "after": 39
+      },
+      "beforeBytes": 12561,
+      "afterBytes": 123,
+      "verified": true,
+      "expectedSemanticFailure": false
+    },
+    {
+      "id": "jq-api",
+      "tool": "jq",
+      "dataType": "Public demo API JSON",
+      "task": "Витягти id та title завершених задач з реальної HTTP-відповіді",
+      "primary": false,
+      "beforeCommand": "curl https://jsonplaceholder.typicode.com/todos?_limit=20 (captured response)",
+      "afterCommand": "jq -c '[.[] | select(.completed) | {id,title}]' results/tasks-api.json",
+      "beforeTokens": 767,
+      "afterTokens": 161,
+      "savingPct": 79,
+      "cl100k": {
+        "before": 784,
+        "after": 179
+      },
+      "beforeBytes": 2271,
+      "afterBytes": 614,
+      "verified": true,
+      "expectedSemanticFailure": false,
+      "apiRecords": 20,
+      "selectedRecords": 11,
+      "apiIsPublicDemo": true
+    },
+    {
+      "id": "ast-navigation",
+      "tool": "ast-grep",
+      "dataType": "React TSX AST",
+      "task": "Знайти всі виклики navigation.navigate на екранах",
+      "primary": true,
+      "beforeCommand": "cat src/screens/NewTaskScreen.tsx src/screens/SettingsScreen.tsx src/screens/TaskDetailsScreen.tsx src/screens/TaskListScreen.tsx",
+      "afterCommand": "ast-grep run -p 'navigation.navigate($$$ARGS)' -l tsx src/screens/NewTaskScreen.tsx src/screens/SettingsScreen.tsx src/screens/TaskDetailsScreen.tsx src/screens/TaskListScreen.tsx --color never",
+      "beforeTokens": 2405,
+      "afterTokens": 75,
+      "savingPct": 96.9,
+      "cl100k": {
+        "before": 2326,
+        "after": 72
+      },
+      "beforeBytes": 9616,
+      "afterBytes": 308,
+      "verified": true,
+      "expectedSemanticFailure": false,
+      "matches": 3
+    },
+    {
+      "id": "ast-query",
+      "tool": "ast-grep",
+      "dataType": "TypeScript AST",
+      "task": "Прочитати фактичну конфігурацію useQuery",
+      "primary": false,
+      "beforeCommand": "cat src/hooks/useTasks.ts",
+      "afterCommand": "ast-grep run -p 'useQuery($$$ARGS)' -l ts src/hooks/useTasks.ts --color never",
+      "beforeTokens": 78,
+      "afterTokens": 59,
+      "savingPct": 24.4,
+      "cl100k": {
+        "before": 78,
+        "after": 59
+      },
+      "beforeBytes": 311,
+      "afterBytes": 200,
+      "verified": true,
+      "expectedSemanticFailure": false,
+      "matches": 1
+    },
+    {
+      "id": "ast-schema",
+      "tool": "ast-grep",
+      "dataType": "TypeScript AST",
+      "task": "Знайти обидві Zod object-схеми",
+      "primary": false,
+      "beforeCommand": "cat src/domain/task.ts",
+      "afterCommand": "ast-grep run -p 'z.object($$$ARGS)' -l ts src/domain/task.ts --color never",
+      "beforeTokens": 507,
+      "afterTokens": 167,
+      "savingPct": 67.1,
+      "cl100k": {
+        "before": 501,
+        "after": 166
+      },
+      "beforeBytes": 2031,
+      "afterBytes": 559,
+      "verified": true,
+      "expectedSemanticFailure": false,
+      "matches": 2
+    },
+    {
+      "id": "ast-pressable",
+      "tool": "ast-grep",
+      "dataType": "React TSX AST",
+      "task": "Знайти Pressable з onPress та accessibility props",
+      "primary": false,
+      "beforeCommand": "cat App.tsx src/components/ProgressRing.tsx src/components/TaskCard.tsx src/navigation/RootNavigator.tsx src/screens/NewTaskScreen.tsx src/screens/SettingsScreen.tsx src/screens/TaskDetailsScreen.tsx src/screens/TaskListScreen.tsx",
+      "afterCommand": "ast-grep run -p '<Pressable $$$ATTRS>$$$CHILDREN</Pressable>' -l tsx App.tsx src/components/ProgressRing.tsx src/components/TaskCard.tsx src/navigation/RootNavigator.tsx src/screens/NewTaskScreen.tsx src/screens/SettingsScreen.tsx src/screens/TaskDetailsScreen.tsx src/screens/TaskListScreen.tsx --color never",
+      "beforeTokens": 3588,
+      "afterTokens": 286,
+      "savingPct": 92,
+      "cl100k": {
+        "before": 3485,
+        "after": 285
+      },
+      "beforeBytes": 14361,
+      "afterBytes": 1041,
+      "verified": true,
+      "expectedSemanticFailure": false,
+      "matches": 1
+    },
+    {
+      "id": "rep-app",
+      "tool": "Repomix",
+      "dataType": "RN app TypeScript / TSX",
+      "task": "Огляд структури та exported API застосунку",
+      "primary": true,
+      "beforeCommand": "cat (same 14 app source files, explicit manifest)",
+      "afterCommand": "repomix --include \"App.tsx,src/**/*\" --style xml --compress",
+      "beforeTokens": 4830,
+      "afterTokens": 2055,
+      "savingPct": 57.5,
+      "cl100k": {
+        "before": 4721,
+        "after": 2059
+      },
+      "beforeBytes": 19475,
+      "afterBytes": 8873,
+      "verified": true,
+      "expectedSemanticFailure": false,
+      "files": 14,
+      "exportedFunctions": 15,
+      "caveat": "Function implementations are intentionally removed; this cannot replace source for debugging."
+    },
+    {
+      "id": "rep-default-overhead",
+      "tool": "Repomix",
+      "dataType": "RN app TypeScript / TSX",
+      "task": "Порівняти звичайний bundle із читанням тих самих файлів",
+      "primary": false,
+      "beforeCommand": "cat (same app source manifest)",
+      "afterCommand": "repomix --include \"App.tsx,src/**/*\" --style xml (without --compress)",
+      "beforeTokens": 4830,
+      "afterTokens": 5464,
+      "savingPct": -13.1,
+      "cl100k": {
+        "before": 4721,
+        "after": 5351
+      },
+      "beforeBytes": 19475,
+      "afterBytes": 22210,
+      "verified": true,
+      "expectedSemanticFailure": false,
+      "files": 14,
+      "negativeControl": true
+    },
+    {
+      "id": "rep-native",
+      "tool": "Repomix",
+      "dataType": "Swift / Kotlin / Ruby / Gradle / XML",
+      "task": "Огляд однакового набору native files",
+      "primary": false,
+      "beforeCommand": "cat (11 native source/config files)",
+      "afterCommand": "repomix --include (same 11 native files) --style xml --compress",
+      "beforeTokens": 4060,
+      "afterTokens": 4275,
+      "savingPct": -5.3,
+      "cl100k": {
+        "before": 4056,
+        "after": 4271
+      },
+      "beforeBytes": 16955,
+      "afterBytes": 18115,
+      "verified": true,
+      "expectedSemanticFailure": false,
+      "files": 11,
+      "caveat": "Mixed/unsupported formats may yield little reduction or a larger bundle."
+    },
+    {
+      "id": "rep-config",
+      "tool": "Repomix",
+      "dataType": "JSON / JS config / XML / plist",
+      "task": "Огляд конфігурації запуску та платформи",
+      "primary": false,
+      "beforeCommand": "cat (8 configuration files)",
+      "afterCommand": "repomix --include (same 8 config files) --style xml --compress",
+      "beforeTokens": 1916,
+      "afterTokens": 2365,
+      "savingPct": -23.4,
+      "cl100k": {
+        "before": 1920,
+        "after": 2365
+      },
+      "beforeBytes": 6549,
+      "afterBytes": 8619,
+      "verified": true,
+      "expectedSemanticFailure": false,
+      "files": 8,
+      "caveat": "Added packaging metadata can outweigh code compression."
+    },
+    {
+      "id": "rtk-ios-build",
+      "tool": "RTK",
+      "dataType": "Successful Xcode build log",
+      "task": "Підсумок успішного ios build із збереженням warning lines",
+      "primary": false,
+      "beforeCommand": "xcodebuild -workspace ios/TokenSavingsRN.xcworkspace -scheme TokenSavingsRN -configuration Debug -sdk iphonesimulator -destination generic/platform=iOS Simulator -derivedDataPath ios/build/TokenSavingsRN CODE_SIGNING_ALLOWED=NO build",
+      "afterCommand": "rtk err node benchmarks/scripts/replay.mjs benchmarks/results/native/ios-combined.log 0",
+      "beforeTokens": 2104948,
+      "afterTokens": 103723,
+      "savingPct": 95.1,
+      "cl100k": {
+        "before": 2107264,
+        "after": 103046
+      },
+      "beforeBytes": 7254056,
+      "afterBytes": 397139,
+      "verified": true,
+      "replay": true,
+      "sourceExitCode": 0,
+      "filterExitCode": 0,
+      "warningLines": 226,
+      "buildDurationMs": 220647
+    },
+    {
+      "id": "rtk-android-build",
+      "tool": "RTK",
+      "dataType": "Successful Gradle build log",
+      "task": "Підсумок успішного android build із збереженням warning lines",
+      "primary": false,
+      "beforeCommand": "./gradlew :app:assembleDebug --console=plain --no-daemon",
+      "afterCommand": "rtk err node benchmarks/scripts/replay.mjs benchmarks/results/native/android-combined.log 0",
+      "beforeTokens": 12384,
+      "afterTokens": 189,
+      "savingPct": 98.5,
+      "cl100k": {
+        "before": 12467,
+        "after": 195
+      },
+      "beforeBytes": 49661,
+      "afterBytes": 896,
+      "verified": true,
+      "replay": true,
+      "sourceExitCode": 0,
+      "filterExitCode": 0,
+      "warningLines": 1,
+      "buildDurationMs": 336039
+    }
+  ],
+  "nativeChecks": {
+    "pods": {
+      "command": [
+        "rtk",
+        "proxy",
+        "pod",
+        "install",
+        "--project-directory=ios"
+      ],
+      "exitCode": 0,
+      "durationMs": 11981,
+      "createdAt": "2026-11-09T07:18:58.971Z"
+    },
+    "ios": {
+      "command": [
+        "rtk",
+        "proxy",
+        "xcodebuild",
+        "-workspace",
+        "ios/TokenSavingsRN.xcworkspace",
+        "-scheme",
+        "TokenSavingsRN",
+        "-configuration",
+        "Debug",
+        "-sdk",
+        "iphonesimulator",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "ios/build/TokenSavingsRN",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build"
+      ],
+      "exitCode": 0,
+      "durationMs": 220647,
+      "createdAt": "2026-11-09T07:23:26.442Z"
+    },
+    "android": {
+      "command": [
+        "rtk",
+        "proxy",
+        "./gradlew",
+        ":app:assembleDebug",
+        "--console=plain",
+        "--no-daemon"
+      ],
+      "exitCode": 0,
+      "durationMs": 336039,
+      "createdAt": "2026-11-09T07:33:31.065Z"
+    },
+    "metro": {
+      "command": [
+        "rtk",
+        "proxy",
+        "npx",
+        "react-native",
+        "bundle",
+        "--platform",
+        "ios",
+        "--dev",
+        "false",
+        "--entry-file",
+        "index.js",
+        "--bundle-output",
+        "benchmarks/artifacts/main.jsbundle",
+        "--assets-dest",
+        "benchmarks/artifacts/assets",
+        "--reset-cache"
+      ],
+      "exitCode": 0,
+      "durationMs": 19938,
+      "createdAt": "2026-11-09T07:22:49.783Z"
+    },
+    "static": [
+      {
+        "name": "typecheck",
+        "exitCode": 0
+      },
+      {
+        "name": "lint",
+        "exitCode": 0
+      }
+    ]
+  }
+}

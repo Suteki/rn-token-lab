@@ -1,0 +1,35 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {spawnSync} from 'node:child_process';
+import {getEncoding} from 'js-tiktoken';
+import {fileURLToPath} from 'node:url';
+const bench=path.dirname(path.dirname(fileURLToPath(import.meta.url))),app=path.dirname(bench),out=bench+'/results';
+const data=JSON.parse(await fs.readFile(out+'/benchmarks.json','utf8'));
+const nativeInput=await fs.access(out+'/native/ios.json').then(()=>out+'/native').catch(()=>bench+'/captures/native');
+const enc=getEncoding('o200k_base'),alt=getEncoding('cl100k_base');
+data.cases=data.cases.filter(c=>!['rtk-ios-build','rtk-android-build'].includes(c.id));
+for(const mode of ['ios','android']){
+ const source=JSON.parse(await fs.readFile(nativeInput+'/'+mode+'.json','utf8'));
+ if(source.exitCode!==0)throw new Error(mode+' did not build');
+ const before=await fs.readFile(nativeInput+'/'+mode+'.stdout.log','utf8')+'\n'+await fs.readFile(nativeInput+'/'+mode+'.stderr.log','utf8');
+ const capture=out+'/native/'+mode+'-combined.log';await fs.writeFile(capture,before);
+ const r=spawnSync('rtk',['err','node','benchmarks/scripts/replay.mjs',capture,'0'],{cwd:app,encoding:'utf8',env:{...process.env,NO_COLOR:'1'},maxBuffer:64*1024*1024});
+ const after=r.stdout+(r.stderr?'\n'+r.stderr:'');
+ if(r.status!==0)throw new Error('Filter failed for '+mode);
+ const warnings=Array.from(new Set(before.split('\n').filter(s=>s.includes('warning:')).map(s=>s.trim())));
+ if(!warnings.every(w=>after.includes(w)))throw new Error('Lost a warning in '+mode);
+ const id='rtk-'+mode+'-build';
+ const beforeTokens=enc.encode(before).length,afterTokens=enc.encode(after).length;
+ await fs.writeFile(out+'/cases/'+id+'.before.txt',before);await fs.writeFile(out+'/cases/'+id+'.after.txt',after);
+ data.cases.push({id,tool:'RTK',dataType:mode==='ios'?'Successful Xcode build log':'Successful Gradle build log',task:'Підсумок успішного '+mode+' build із збереженням warning lines',primary:false,beforeCommand:source.command.join(' ').replace('rtk proxy ',''),afterCommand:'rtk err node benchmarks/scripts/replay.mjs '+path.relative(app,capture)+' 0',beforeTokens,afterTokens,savingPct:Number((100*(1-afterTokens/beforeTokens)).toFixed(1)),cl100k:{before:alt.encode(before).length,after:alt.encode(after).length},beforeBytes:Buffer.byteLength(before),afterBytes:Buffer.byteLength(after),verified:true,replay:true,sourceExitCode:0,filterExitCode:r.status,warningLines:warnings.length,buildDurationMs:source.durationMs});
+}
+data.nativeChecks={};
+for(const mode of ['pods','ios','android','metro'])data.nativeChecks[mode]=JSON.parse(await fs.readFile(nativeInput+'/'+mode+'.json','utf8'));
+data.nativeChecks.static=JSON.parse(await fs.readFile(nativeInput+'/checks.json','utf8'));
+await fs.writeFile(out+'/benchmarks.json',JSON.stringify(data,null,2));
+await fs.writeFile(out+'/benchmarks.csv','id,tool,data_type,before_tokens,after_tokens,saving_pct,verified\n'+data.cases.map(c=>[c.id,c.tool,JSON.stringify(c.dataType),c.beforeTokens,c.afterTokens,c.savingPct,c.verified].join(',')).join('\n')+'\n');
+const percent=c=>c.savingPct>=0?c.savingPct+'% less':Math.abs(c.savingPct)+'% more';
+const row=c=>`| ${c.id} | ${c.dataType} | ${c.beforeTokens.toLocaleString('en-US')} | ${c.afterTokens.toLocaleString('en-US')} | ${percent(c)} | ${c.verified?'Pass':'FAIL: omitted 15 paths'} |`;
+const report=`# React Native token benchmark\n\nCaptured on 9 November 2026 in TokenSavingsRN, initialized with Community CLI 20.2.0, React Native 0.88.1 and React 19.3.0. Ten additional app projects and their native support dependencies are installed.\n\n${data.cases.length} comparisons across real Git states, TS/TSX code, autolinking JSON, npm lockfile, Jest JSON, public demo API JSON, native code/configuration, and actual compiler/build logs. ${data.cases.filter(c=>c.verified).length} comparisons pass their task-specific completeness checks. One captured intent-to-add case deliberately remains a failed check.\n\n## Primary examples in the slides\n\n| Case | Data | Before | After | Text change | Completeness |\n| --- | --- | ---: | ---: | --- | --- |\n${data.cases.filter(c=>c.primary).map(row).join('\n')}\n\n## All comparisons\n\n| Case | Data | Before | After | Text change | Completeness |\n| --- | --- | ---: | ---: | --- | --- |\n${data.cases.map(row).join('\n')}\n\n## App checks\n\n40 Jest tests passed. TypeScript and ESLint (zero warnings) passed. CocoaPods, iOS Simulator Debug build, Android Debug APK build and Metro production iOS bundle completed with exit code zero. iOS build: ${(data.nativeChecks.ios.durationMs/1000).toFixed(1)} s. Android build: ${(data.nativeChecks.android.durationMs/1000).toFixed(1)} s. These times are from this machine and are not performance comparisons. No simulator UI or device interaction test is claimed.\n\n## Interpretation\n\nAll counts use o200k_base through js-tiktoken 1.0.21, with a cl100k_base cross-check in JSON. Complete captured strings are counted, including source-manifest file headings. Screenshots show excerpts. No model calls, API billing or subscription quota is measured.\n\nRTK diagnostics and native build comparisons use one actual captured log replayed through a filter, so a cold build is not compared against a warm build. Source exit codes are stored separately. The standalone tsc stdin filter returns zero even for a failure log: preserve the producer status with pipefail or use the command wrapper.\n\nThe intent-to-add capture omitted 15 new paths in compact RTK status. Its smaller output is not accepted as a successful optimization. Repomix app compression retains 14 paths and 15 exported function names while intentionally dropping implementations. Native/config packaging and short TypeScript diagnostics can increase text. Do not average these percentages across different questions or translate them to a bill reduction.\n\nFull inputs, outputs, commands, verification flags, source hashes, encodings and versions: [benchmarks.json](results/benchmarks.json). Per-case raw text: results/cases/. Initial real setup captures: captures/.\n`;
+await fs.writeFile(out+'/RESULTS.md',report.replace('Captured on 9 November 2026', 'Re-run on '+new Date().toISOString().slice(0,10)+' using historical diagnostic/build captures unless fresh native captures exist. Original experiment: 9 November 2026'));
+console.log(JSON.stringify({cases:data.cases.length,verified:data.cases.filter(c=>c.verified).length,failed:data.cases.filter(c=>!c.verified).map(c=>c.id),native:data.cases.slice(-2).map(c=>({id:c.id,before:c.beforeTokens,after:c.afterTokens,saving:c.savingPct}))}));

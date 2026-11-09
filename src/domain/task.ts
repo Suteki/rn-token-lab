@@ -1,0 +1,65 @@
+import { z } from 'zod';
+
+export const taskSchema = z.object({
+  id: z.number().int().positive(),
+  userId: z.number().int().positive(),
+  title: z.string().trim().min(1).max(240),
+  completed: z.boolean(),
+});
+export const taskDraftSchema = z.object({
+  title: z.string().trim().min(3, 'Enter at least 3 characters').max(120),
+  priority: z.enum(['normal', 'high']),
+});
+export type Task = z.infer<typeof taskSchema>;
+export type TaskDraft = z.infer<typeof taskDraftSchema>;
+export type LocalTask = Task & { priority: TaskDraft['priority'] };
+export type TaskFilter = {
+  query: string;
+  showCompleted: boolean;
+  favoritesOnly: boolean;
+  favoriteIds: number[];
+};
+
+export function parseTasks(value: unknown): Task[] {
+  return z.array(taskSchema).parse(value);
+}
+
+export function filterTasks(
+  tasks: readonly Task[],
+  filter: TaskFilter,
+): Task[] {
+  const query = filter.query.trim().toLocaleLowerCase();
+  const favorites = new Set(filter.favoriteIds);
+  return tasks.filter(task => {
+    if (!filter.showCompleted && task.completed) {
+      return false;
+    }
+    if (filter.favoritesOnly && !favorites.has(task.id)) {
+      return false;
+    }
+    return task.title.toLocaleLowerCase().includes(query);
+  });
+}
+
+export function getTaskStats(tasks: readonly Task[]) {
+  const total = tasks.length;
+  const completed = tasks.filter(task => task.completed).length;
+  return {
+    total,
+    completed,
+    pending: total - completed,
+    completionPercent: total === 0 ? 0 : Math.round((completed / total) * 100),
+  };
+}
+
+export function toggleFavorite(ids: readonly number[], id: number): number[] {
+  return ids.includes(id) ? ids.filter(value => value !== id) : [...ids, id];
+}
+
+export function createLocalTask(draft: TaskDraft, nextId: number): LocalTask {
+  if (!Number.isInteger(nextId) || nextId <= 0) {
+    throw new Error('A local task needs a positive integer id');
+  }
+  const valid = taskDraftSchema.parse(draft);
+  return { id: nextId, userId: 1, completed: false, ...valid };
+}

@@ -1,0 +1,7 @@
+src/navigation/RootNavigator.tsx-10-  NewTask: undefined;
+src/navigation/RootNavigator.tsx-11-  Settings: undefined;
+src/navigation/RootNavigator.tsx-12-};
+src/navigation/RootNavigator.tsx:13:const Stack = createNativeStackNavigator<RootStackParamList>();
+src/navigation/RootNavigator.tsx-14-export function RootNavigator() {
+src/navigation/RootNavigator.tsx-15-  return (
+src/navigation/RootNavigator.tsx-16-    <Stack.Navigator

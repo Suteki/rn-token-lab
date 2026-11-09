@@ -1,0 +1,12 @@
+{
+  "command": [
+    "rtk",
+    "proxy",
+    "pod",
+    "install",
+    "--project-directory=ios"
+  ],
+  "exitCode": 0,
+  "durationMs": 11981,
+  "createdAt": "2026-11-09T07:18:58.971Z"
+}

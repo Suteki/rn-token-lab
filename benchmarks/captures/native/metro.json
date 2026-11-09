@@ -1,0 +1,23 @@
+{
+  "command": [
+    "rtk",
+    "proxy",
+    "npx",
+    "react-native",
+    "bundle",
+    "--platform",
+    "ios",
+    "--dev",
+    "false",
+    "--entry-file",
+    "index.js",
+    "--bundle-output",
+    "benchmarks/artifacts/main.jsbundle",
+    "--assets-dest",
+    "benchmarks/artifacts/assets",
+    "--reset-cache"
+  ],
+  "exitCode": 0,
+  "durationMs": 19938,
+  "createdAt": "2026-11-09T07:22:49.783Z"
+}

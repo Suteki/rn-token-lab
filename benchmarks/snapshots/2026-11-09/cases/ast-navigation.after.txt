@@ -1,0 +1,3 @@
+src/screens/TaskListScreen.tsx:49:        <Button title="Add" onPress={() => navigation.navigate('NewTask')} />
+src/screens/TaskListScreen.tsx:52:          onPress={() => navigation.navigate('Settings')}
+src/screens/TaskListScreen.tsx:85:              navigation.navigate('TaskDetails', { taskId: item.id })

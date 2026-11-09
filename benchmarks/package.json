@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "scripts": {"bench": "node scripts/benchmark.mjs"},
+  "scripts": {
+    "bench": "node scripts/benchmark.mjs",
+    "bench:native-captures": "node scripts/add-native-results.mjs",
+    "verify:snapshot": "node scripts/verify-snapshot.mjs",
+    "doctor": "node scripts/doctor.mjs",
+    "bench:all": "node scripts/benchmark.mjs && node scripts/add-native-results.mjs"
+  },
   "dependencies": {
     "@ast-grep/cli": "0.51.1",
     "js-tiktoken": "1.0.21",

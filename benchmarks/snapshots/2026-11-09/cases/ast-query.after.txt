@@ -1,0 +1,4 @@
+src/hooks/useTasks.ts:5:  return useQuery({
+src/hooks/useTasks.ts:6:    queryKey: taskKeys.list,
+src/hooks/useTasks.ts:7:    queryFn: ({ signal }) => fetchTasks(signal),
+src/hooks/useTasks.ts:8:  });

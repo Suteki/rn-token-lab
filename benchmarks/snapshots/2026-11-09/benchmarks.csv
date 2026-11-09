@@ -1,0 +1,25 @@
+id,tool,data_type,before_tokens,after_tokens,saving_pct,verified
+rtk-status,RTK,"Git working tree",282,175,37.9,true
+rtk-status-intent,RTK,"Git intent-to-add counterexample",418,153,63.4,false
+rtk-diff,RTK,"Unified diff",852,797,6.5,true
+rtk-jest,RTK,"Jest pass log",483,26,94.6,true
+rtk-tsc-errors,RTK,"TypeScript diagnostics",84,122,-45.2,true
+rtk-ios-error,RTK,"Xcode build failure",19762,221,98.9,true
+rg-navigation,ripgrep,"TypeScript / TSX",4830,108,97.8,true
+rg-manifest,ripgrep,"Android XML",248,17,93.1,true
+rg-worklets,ripgrep,"Babel JavaScript config",42,35,16.7,true
+rg-ios-platform,ripgrep,"Podfile / Swift / Gradle",4060,134,96.7,true
+jq-autolinking,jq,"React Native config JSON",7245,130,98.2,true
+jq-lockfile,jq,"npm package-lock JSON",180468,276,99.8,true
+jq-jest-report,jq,"Jest report JSON",2943,39,98.7,true
+jq-api,jq,"Public demo API JSON",767,161,79,true
+ast-navigation,ast-grep,"React TSX AST",2405,75,96.9,true
+ast-query,ast-grep,"TypeScript AST",78,59,24.4,true
+ast-schema,ast-grep,"TypeScript AST",507,167,67.1,true
+ast-pressable,ast-grep,"React TSX AST",3588,286,92,true
+rep-app,Repomix,"RN app TypeScript / TSX",4830,2055,57.5,true
+rep-default-overhead,Repomix,"RN app TypeScript / TSX",4830,5464,-13.1,true
+rep-native,Repomix,"Swift / Kotlin / Ruby / Gradle / XML",4060,4275,-5.3,true
+rep-config,Repomix,"JSON / JS config / XML / plist",1916,2365,-23.4,true
+rtk-ios-build,RTK,"Successful Xcode build log",2104948,103723,95.1,true
+rtk-android-build,RTK,"Successful Gradle build log",12384,189,98.5,true

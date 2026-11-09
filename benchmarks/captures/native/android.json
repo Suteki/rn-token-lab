@@ -1,0 +1,13 @@
+{
+  "command": [
+    "rtk",
+    "proxy",
+    "./gradlew",
+    ":app:assembleDebug",
+    "--console=plain",
+    "--no-daemon"
+  ],
+  "exitCode": 0,
+  "durationMs": 336039,
+  "createdAt": "2026-11-09T07:33:31.065Z"
+}
