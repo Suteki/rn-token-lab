@@ -8,7 +8,8 @@
     "bench:native-captures": "node scripts/add-native-results.mjs",
     "verify:snapshot": "node scripts/verify-snapshot.mjs",
     "doctor": "node scripts/doctor.mjs",
-    "bench:all": "node scripts/benchmark.mjs && node scripts/add-native-results.mjs"
+    "bench:all": "node scripts/benchmark.mjs && node scripts/add-native-results.mjs",
+    "language:sample": "node scripts/language-sample.mjs"
   },
   "dependencies": {
     "@ast-grep/cli": "0.51.1",
