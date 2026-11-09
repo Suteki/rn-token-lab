@@ -1,0 +1,10 @@
+TypeScript: 2 errors in 2 files
+═══════════════════════════════════════
+Top codes: TS2304 (1x), TS2322 (1x)
+
+__tests__/taskApi.test.ts (1 errors)
+  L7: TS2304 Cannot find name 'global'.
+
+src/screens/TaskListScreen.tsx (1 errors)
+  L91: TS2322 Type 'Element | null' is not assignable to type 'Element | ComponentType<any> | undefined'.
+    Type 'null' is not assignable to type 'Element | ComponentType<any> | undefined'.

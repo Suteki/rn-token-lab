@@ -1,0 +1,274 @@
+{
+  "model": "qwen3-coder:30b",
+  "hardware": {
+    "cpu": "Apple M5 Pro",
+    "logicalCores": 15,
+    "physicalMemoryBytes": 51539607552,
+    "platform": "darwin",
+    "arch": "arm64",
+    "release": "25.6.0"
+  },
+  "preloadMs": 14723.805709,
+  "residentBytes": 20117203188,
+  "options": {
+    "num_ctx": 16384,
+    "num_predict": 384,
+    "temperature": 0,
+    "seed": 42,
+    "top_k": 1,
+    "top_p": 1,
+    "repeat_penalty": 1
+  },
+  "mainRequests": 48,
+  "mainCorrect": 45,
+  "controlRequests": 12,
+  "controlCorrect": 12,
+  "groups": [
+    {
+      "caseId": "rtk-status",
+      "phase": "fresh",
+      "raw": {
+        "n": 3,
+        "correct": 2,
+        "input": 375,
+        "cached": 7,
+        "output": 26,
+        "toolMs": 19.64591599999767,
+        "ttftMs": 300.2281670000011,
+        "endToEndMs": 634.0556660000002,
+        "prefillMs": 282.554,
+        "decodeMs": 296.365
+      },
+      "filtered": {
+        "n": 3,
+        "correct": 3,
+        "input": 269,
+        "cached": 9,
+        "output": 26,
+        "toolMs": 25.34295800000109,
+        "ttftMs": 241.966124999999,
+        "endToEndMs": 571.6361670000042,
+        "prefillMs": 227.013,
+        "decodeMs": 307.546
+      },
+      "timeReductionPct": 9.844482487440775
+    },
+    {
+      "caseId": "rtk-status",
+      "phase": "repeat",
+      "raw": {
+        "n": 3,
+        "correct": 2,
+        "input": 375,
+        "cached": 374,
+        "output": 26,
+        "toolMs": 16.680083999999624,
+        "ttftMs": 21.51416700000118,
+        "endToEndMs": 340.4468340000003,
+        "prefillMs": 13.802,
+        "decodeMs": 301.522
+      },
+      "filtered": {
+        "n": 3,
+        "correct": 3,
+        "input": 269,
+        "cached": 268,
+        "output": 26,
+        "toolMs": 35.69233299999905,
+        "ttftMs": 21.580582999999024,
+        "endToEndMs": 367.5897909999985,
+        "prefillMs": 14.374,
+        "decodeMs": 310.696
+      },
+      "timeReductionPct": -7.9727447252448735
+    },
+    {
+      "caseId": "rg-navigation",
+      "phase": "fresh",
+      "raw": {
+        "n": 3,
+        "correct": 3,
+        "input": 4882,
+        "cached": 6,
+        "output": 25,
+        "toolMs": 0.7781670000003942,
+        "ttftMs": 4395.280875,
+        "endToEndMs": 4802.251500000002,
+        "prefillMs": 4368.945,
+        "decodeMs": 371.39
+      },
+      "filtered": {
+        "n": 3,
+        "correct": 3,
+        "input": 188,
+        "cached": 8,
+        "output": 25,
+        "toolMs": 31.701084000000264,
+        "ttftMs": 260.9012909999983,
+        "endToEndMs": 616.0226259999981,
+        "prefillMs": 174.847,
+        "decodeMs": 269.773
+      },
+      "timeReductionPct": 87.17221232582263
+    },
+    {
+      "caseId": "rg-navigation",
+      "phase": "repeat",
+      "raw": {
+        "n": 3,
+        "correct": 2,
+        "input": 4882,
+        "cached": 4881,
+        "output": 25,
+        "toolMs": 0.23879199999646517,
+        "ttftMs": 32.01087499999994,
+        "endToEndMs": 386.1118319999987,
+        "prefillMs": 14.889,
+        "decodeMs": 348.507
+      },
+      "filtered": {
+        "n": 3,
+        "correct": 3,
+        "input": 188,
+        "cached": 187,
+        "output": 25,
+        "toolMs": 15.89479200000278,
+        "ttftMs": 23.197791999999026,
+        "endToEndMs": 331.02529199999844,
+        "prefillMs": 13.677,
+        "decodeMs": 281.141
+      },
+      "timeReductionPct": 14.26699091676642
+    },
+    {
+      "caseId": "jq-autolinking",
+      "phase": "fresh",
+      "raw": {
+        "n": 3,
+        "correct": 3,
+        "input": 6804,
+        "cached": 8,
+        "output": 224,
+        "toolMs": 0.3447500000038417,
+        "ttftMs": 7675.804082999995,
+        "endToEndMs": 11498.78237499998,
+        "prefillMs": 7525.895,
+        "decodeMs": 3894.832
+      },
+      "filtered": {
+        "n": 3,
+        "correct": 3,
+        "input": 212,
+        "cached": 10,
+        "output": 224,
+        "toolMs": 18.797125000011874,
+        "ttftMs": 439.9117089999927,
+        "endToEndMs": 3202.276042000005,
+        "prefillMs": 207.162,
+        "decodeMs": 2748.78
+      },
+      "timeReductionPct": 72.1511727279732
+    },
+    {
+      "caseId": "jq-autolinking",
+      "phase": "repeat",
+      "raw": {
+        "n": 3,
+        "correct": 3,
+        "input": 6804,
+        "cached": 6803,
+        "output": 224,
+        "toolMs": 0.689249999995809,
+        "ttftMs": 54.669625000009546,
+        "endToEndMs": 3993.966625000001,
+        "prefillMs": 20.951,
+        "decodeMs": 3918.354
+      },
+      "filtered": {
+        "n": 3,
+        "correct": 3,
+        "input": 212,
+        "cached": 211,
+        "output": 224,
+        "toolMs": 13.353917000000365,
+        "ttftMs": 38.93570799999725,
+        "endToEndMs": 2852.2304159999985,
+        "prefillMs": 24.667,
+        "decodeMs": 2755.346
+      },
+      "timeReductionPct": 28.586523529099395
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "phase": "fresh",
+      "raw": {
+        "n": 3,
+        "correct": 3,
+        "input": 160,
+        "cached": 9,
+        "output": 26,
+        "toolMs": 0.3145000000076834,
+        "ttftMs": 187.76275000000896,
+        "endToEndMs": 491.6567500000092,
+        "prefillMs": 181.726,
+        "decodeMs": 304.436
+      },
+      "filtered": {
+        "n": 3,
+        "correct": 3,
+        "input": 215,
+        "cached": 11,
+        "output": 26,
+        "toolMs": 7.253208000009181,
+        "ttftMs": 207.90924999999697,
+        "endToEndMs": 520.911666999993,
+        "prefillMs": 200.463,
+        "decodeMs": 305.783
+      },
+      "timeReductionPct": -5.950272624139363
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "phase": "repeat",
+      "raw": {
+        "n": 3,
+        "correct": 3,
+        "input": 160,
+        "cached": 159,
+        "output": 26,
+        "toolMs": 0.17545900000550319,
+        "ttftMs": 26.858874999990803,
+        "endToEndMs": 351.4150010000012,
+        "prefillMs": 21.595,
+        "decodeMs": 323.467
+      },
+      "filtered": {
+        "n": 3,
+        "correct": 3,
+        "input": 215,
+        "cached": 121,
+        "output": 26,
+        "toolMs": 6.6011659999931,
+        "ttftMs": 145.7359170000127,
+        "endToEndMs": 460.4290409999958,
+        "prefillMs": 138.712,
+        "decodeMs": 306.371
+      },
+      "timeReductionPct": -31.021453179226732
+    }
+  ],
+  "controlRepeat": {
+    "raw": {
+      "requestWallMs": 316.6934170000004,
+      "ttftMs": 22.668542000000343,
+      "input": 160,
+      "cached": 159
+    },
+    "filtered": {
+      "requestWallMs": 322.6562079999999,
+      "ttftMs": 20.00958300000002,
+      "input": 215,
+      "cached": 214
+    }
+  }
+}

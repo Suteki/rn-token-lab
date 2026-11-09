@@ -9,7 +9,8 @@
     "verify:snapshot": "node scripts/verify-snapshot.mjs",
     "doctor": "node scripts/doctor.mjs",
     "bench:all": "node scripts/benchmark.mjs && node scripts/add-native-results.mjs",
-    "language:sample": "node scripts/language-sample.mjs"
+    "language:sample": "node scripts/language-sample.mjs",
+    "bench:local": "node scripts/local-model.mjs"
   },
   "dependencies": {
     "@ast-grep/cli": "0.51.1",

@@ -1,0 +1,34 @@
+[
+  {
+    "sha256": "57c1970e35687c715b1fc8fe0b1e3383acc221af4a644644470926704d230e81",
+    "topCodes": "Top codes: TS2322 (1x), TS2304 (1x)",
+    "fileOrder": [
+      "__tests__/taskApi.test.ts (1 errors)",
+      "src/screens/TaskListScreen.tsx (1 errors)"
+    ]
+  },
+  {
+    "sha256": "4abd05a7183cbce5e703229d6cfc9261d5a38c3f7a91ea713309e36e75ab9931",
+    "topCodes": "Top codes: TS2304 (1x), TS2322 (1x)",
+    "fileOrder": [
+      "__tests__/taskApi.test.ts (1 errors)",
+      "src/screens/TaskListScreen.tsx (1 errors)"
+    ]
+  },
+  {
+    "sha256": "f88ada461a23505c503296e9b7fc2cf287fa3b2f90a6f5c82fc78ab46e94b942",
+    "topCodes": "Top codes: TS2304 (1x), TS2322 (1x)",
+    "fileOrder": [
+      "src/screens/TaskListScreen.tsx (1 errors)",
+      "__tests__/taskApi.test.ts (1 errors)"
+    ]
+  },
+  {
+    "sha256": "a51e76c09c40de97e8194719b5feed8fcbf583fcb68b14877ea2abe69d42a77c",
+    "topCodes": "Top codes: TS2322 (1x), TS2304 (1x)",
+    "fileOrder": [
+      "src/screens/TaskListScreen.tsx (1 errors)",
+      "__tests__/taskApi.test.ts (1 errors)"
+    ]
+  }
+]

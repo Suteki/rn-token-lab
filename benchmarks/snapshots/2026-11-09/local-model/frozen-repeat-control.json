@@ -1,0 +1,631 @@
+{
+  "metadata": {
+    "createdAt": "2026-11-09T11:18:04.480Z",
+    "model": "qwen3-coder:30b",
+    "modelDigest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+    "modelDetails": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen3moe",
+      "families": [
+        "qwen3moe"
+      ],
+      "parameter_size": "30.5B",
+      "quantization_level": "Q4_K_M"
+    },
+    "modelParameters": "repeat_penalty                 1.05\nstop                           \"<|im_start|>\"\nstop                           \"<|im_end|>\"\nstop                           \"<|endoftext|>\"\ntemperature                    0.7\ntop_k                          20\ntop_p                          0.8",
+    "serverVersion": "0.40.15",
+    "freezeRepeat": true,
+    "options": {
+      "num_ctx": 16384,
+      "num_predict": 384,
+      "temperature": 0,
+      "seed": 42,
+      "top_k": 1,
+      "top_p": 1,
+      "repeat_penalty": 1
+    },
+    "hardware": {
+      "cpu": "Apple M5 Pro",
+      "logicalCores": 15,
+      "physicalMemoryBytes": 51539607552,
+      "platform": "darwin",
+      "arch": "arm64",
+      "release": "25.6.0"
+    },
+    "initiallyResident": true,
+    "preload": {
+      "wallMs": 6.093250000000012,
+      "done_reason": "load"
+    },
+    "resident": {
+      "models": [
+        {
+          "name": "qwen3-coder:30b",
+          "model": "qwen3-coder:30b",
+          "size": 20117203188,
+          "digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3moe",
+            "families": [
+              "qwen3moe"
+            ],
+            "parameter_size": "30.5B",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-11-09T13:28:04.480265+02:00",
+          "size_vram": 20117203188,
+          "context_length": 16384,
+          "runner": "llamacpp"
+        }
+      ]
+    },
+    "sourceCommit": "1826cc191d033a52f5d741ca53861ca6655800c2",
+    "scriptSha256": "0fcee9ec7a1976ebc9701b6c4d1d9b8b4499dded5c38ba13b088c4e50af2696e",
+    "limitations": [
+      "Local single-request extraction tasks, not an end-to-end coding agent.",
+      "Prompt count is the model runtime count, including instructions/template; not o200k_base.",
+      "Fresh trials change the early trial marker. Default repeats run the CLI again and may change data ordering. --freeze-repeat reuses exact fresh text without another tool call. Cache reuse is verified from cached counts and payload hashes.",
+      "Weights stay resident for the A/B; preload is separate and filesystem cache is uncontrolled.",
+      "Three sequential paired repeats by default; background OS load and thermals are not isolated.",
+      "Tool time includes raw file read or CLI filter; common historical capture/fixture setup is excluded.",
+      "Provider API fee is zero; electricity, hardware, and time are not priced."
+    ]
+  },
+  "rows": [
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 1,
+      "phase": "fresh",
+      "marker": "rtk-tsc-errors:1:raw",
+      "command": "read captured initial TypeScript failure",
+      "dataSha256": "135c4764d98c01f4a1103c01f13bd641f4512f957e3ae0210b5ce9066c0d85f2",
+      "dataBytes": 301,
+      "toolMs": 0.17095799999998462,
+      "requestWallMs": 388.48470799999996,
+      "firstVisibleMs": 68.44879200000003,
+      "firstAnyMs": 68.44799999999998,
+      "usage": {
+        "total_duration": 386516250,
+        "load_duration": 1919959,
+        "prompt_eval_count": 160,
+        "prompt_eval_cached_count": 159,
+        "prompt_eval_duration": 47540000,
+        "eval_count": 26,
+        "eval_duration": 319713000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.4267578125,
+        9.42041015625,
+        7.7509765625
+      ],
+      "endToEndMs": 388.65566599999994,
+      "inputSameAsFresh": null
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 1,
+      "phase": "repeat",
+      "marker": "rtk-tsc-errors:1:raw",
+      "command": "read captured initial TypeScript failure",
+      "dataSha256": "135c4764d98c01f4a1103c01f13bd641f4512f957e3ae0210b5ce9066c0d85f2",
+      "dataBytes": 301,
+      "toolMs": 0,
+      "requestWallMs": 335.0787919999999,
+      "firstVisibleMs": 20.79079200000001,
+      "firstAnyMs": 20.79054199999996,
+      "usage": {
+        "total_duration": 333425667,
+        "load_duration": 1388792,
+        "prompt_eval_count": 160,
+        "prompt_eval_cached_count": 159,
+        "prompt_eval_duration": 16943000,
+        "eval_count": 26,
+        "eval_duration": 313581000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.4267578125,
+        9.42041015625,
+        7.7509765625
+      ],
+      "endToEndMs": 335.0787919999999,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 1,
+      "phase": "fresh",
+      "marker": "rtk-tsc-errors:1:filtered",
+      "command": "rtk pipe --filter tsc < captured initial TypeScript failure",
+      "dataSha256": "4abd05a7183cbce5e703229d6cfc9261d5a38c3f7a91ea713309e36e75ab9931",
+      "dataBytes": 498,
+      "toolMs": 5.920333999999912,
+      "requestWallMs": 360.81608400000005,
+      "firstVisibleMs": 36.08924999999999,
+      "firstAnyMs": 36.08895900000016,
+      "usage": {
+        "total_duration": 359196292,
+        "load_duration": 2616292,
+        "prompt_eval_count": 215,
+        "prompt_eval_cached_count": 214,
+        "prompt_eval_duration": 18909000,
+        "eval_count": 26,
+        "eval_duration": 324125000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.4267578125,
+        9.42041015625,
+        7.7509765625
+      ],
+      "endToEndMs": 366.73641799999996,
+      "inputSameAsFresh": null
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 1,
+      "phase": "repeat",
+      "marker": "rtk-tsc-errors:1:filtered",
+      "command": "rtk pipe --filter tsc < captured initial TypeScript failure",
+      "dataSha256": "4abd05a7183cbce5e703229d6cfc9261d5a38c3f7a91ea713309e36e75ab9931",
+      "dataBytes": 498,
+      "toolMs": 0,
+      "requestWallMs": 340.3900409999999,
+      "firstVisibleMs": 22.42016599999988,
+      "firstAnyMs": 22.420000000000073,
+      "usage": {
+        "total_duration": 338272875,
+        "load_duration": 1518125,
+        "prompt_eval_count": 215,
+        "prompt_eval_cached_count": 214,
+        "prompt_eval_duration": 18114000,
+        "eval_count": 26,
+        "eval_duration": 316974000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.4267578125,
+        9.42041015625,
+        7.7509765625
+      ],
+      "endToEndMs": 340.3900409999999,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 2,
+      "phase": "fresh",
+      "marker": "rtk-tsc-errors:2:filtered",
+      "command": "rtk pipe --filter tsc < captured initial TypeScript failure",
+      "dataSha256": "f88ada461a23505c503296e9b7fc2cf287fa3b2f90a6f5c82fc78ab46e94b942",
+      "dataBytes": 498,
+      "toolMs": 5.04708299999993,
+      "requestWallMs": 441.18437500000005,
+      "firstVisibleMs": 145.616041,
+      "firstAnyMs": 145.61570800000004,
+      "usage": {
+        "total_duration": 439744125,
+        "load_duration": 2489375,
+        "prompt_eval_count": 215,
+        "prompt_eval_cached_count": 121,
+        "prompt_eval_duration": 132423000,
+        "eval_count": 26,
+        "eval_duration": 294836000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.4267578125,
+        9.42041015625,
+        7.7509765625
+      ],
+      "endToEndMs": 446.231458,
+      "inputSameAsFresh": null
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 2,
+      "phase": "repeat",
+      "marker": "rtk-tsc-errors:2:filtered",
+      "command": "rtk pipe --filter tsc < captured initial TypeScript failure",
+      "dataSha256": "f88ada461a23505c503296e9b7fc2cf287fa3b2f90a6f5c82fc78ab46e94b942",
+      "dataBytes": 498,
+      "toolMs": 0,
+      "requestWallMs": 322.6562079999999,
+      "firstVisibleMs": 20.00958300000002,
+      "firstAnyMs": 20.00937500000009,
+      "usage": {
+        "total_duration": 321314542,
+        "load_duration": 1020709,
+        "prompt_eval_count": 215,
+        "prompt_eval_cached_count": 214,
+        "prompt_eval_duration": 17106000,
+        "eval_count": 26,
+        "eval_duration": 301871000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.4267578125,
+        9.42041015625,
+        7.7509765625
+      ],
+      "endToEndMs": 322.6562079999999,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 2,
+      "phase": "fresh",
+      "marker": "rtk-tsc-errors:2:raw",
+      "command": "read captured initial TypeScript failure",
+      "dataSha256": "135c4764d98c01f4a1103c01f13bd641f4512f957e3ae0210b5ce9066c0d85f2",
+      "dataBytes": 301,
+      "toolMs": 0.13183299999991505,
+      "requestWallMs": 318.37987499999963,
+      "firstVisibleMs": 26.111625000000004,
+      "firstAnyMs": 26.11120899999969,
+      "usage": {
+        "total_duration": 316731083,
+        "load_duration": 1360958,
+        "prompt_eval_count": 160,
+        "prompt_eval_cached_count": 159,
+        "prompt_eval_duration": 16680000,
+        "eval_count": 26,
+        "eval_duration": 291194000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.4267578125,
+        9.42041015625,
+        7.7509765625
+      ],
+      "endToEndMs": 318.51170799999954,
+      "inputSameAsFresh": null
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 2,
+      "phase": "repeat",
+      "marker": "rtk-tsc-errors:2:raw",
+      "command": "read captured initial TypeScript failure",
+      "dataSha256": "135c4764d98c01f4a1103c01f13bd641f4512f957e3ae0210b5ce9066c0d85f2",
+      "dataBytes": 301,
+      "toolMs": 0,
+      "requestWallMs": 313.5443329999998,
+      "firstVisibleMs": 22.75383299999976,
+      "firstAnyMs": 22.753374999999778,
+      "usage": {
+        "total_duration": 311438084,
+        "load_duration": 2357500,
+        "prompt_eval_count": 160,
+        "prompt_eval_cached_count": 159,
+        "prompt_eval_duration": 17046000,
+        "eval_count": 26,
+        "eval_duration": 289441000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.4267578125,
+        9.42041015625,
+        7.7509765625
+      ],
+      "endToEndMs": 313.5443329999998,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 3,
+      "phase": "fresh",
+      "marker": "rtk-tsc-errors:3:raw",
+      "command": "read captured initial TypeScript failure",
+      "dataSha256": "135c4764d98c01f4a1103c01f13bd641f4512f957e3ae0210b5ce9066c0d85f2",
+      "dataBytes": 301,
+      "toolMs": 0.27070800000001327,
+      "requestWallMs": 328.5677089999999,
+      "firstVisibleMs": 27.166541999999936,
+      "firstAnyMs": 27.166249999999764,
+      "usage": {
+        "total_duration": 326749458,
+        "load_duration": 2247375,
+        "prompt_eval_count": 160,
+        "prompt_eval_cached_count": 159,
+        "prompt_eval_duration": 17483000,
+        "eval_count": 26,
+        "eval_duration": 300441000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.4267578125,
+        9.42041015625,
+        7.7509765625
+      ],
+      "endToEndMs": 328.83841699999994,
+      "inputSameAsFresh": null
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 3,
+      "phase": "repeat",
+      "marker": "rtk-tsc-errors:3:raw",
+      "command": "read captured initial TypeScript failure",
+      "dataSha256": "135c4764d98c01f4a1103c01f13bd641f4512f957e3ae0210b5ce9066c0d85f2",
+      "dataBytes": 301,
+      "toolMs": 0,
+      "requestWallMs": 316.6934170000004,
+      "firstVisibleMs": 22.668542000000343,
+      "firstAnyMs": 22.668167000000267,
+      "usage": {
+        "total_duration": 315371291,
+        "load_duration": 2801500,
+        "prompt_eval_count": 160,
+        "prompt_eval_cached_count": 159,
+        "prompt_eval_duration": 17257000,
+        "eval_count": 26,
+        "eval_duration": 293569000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.4267578125,
+        9.42041015625,
+        7.7509765625
+      ],
+      "endToEndMs": 316.6934170000004,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 3,
+      "phase": "fresh",
+      "marker": "rtk-tsc-errors:3:filtered",
+      "command": "rtk pipe --filter tsc < captured initial TypeScript failure",
+      "dataSha256": "4abd05a7183cbce5e703229d6cfc9261d5a38c3f7a91ea713309e36e75ab9931",
+      "dataBytes": 498,
+      "toolMs": 5.03854100000035,
+      "requestWallMs": 329.602167,
+      "firstVisibleMs": 28.06970799999999,
+      "firstAnyMs": 28.069542000000183,
+      "usage": {
+        "total_duration": 328152292,
+        "load_duration": 1820375,
+        "prompt_eval_count": 215,
+        "prompt_eval_cached_count": 214,
+        "prompt_eval_duration": 17249000,
+        "eval_count": 26,
+        "eval_duration": 300927000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.4267578125,
+        9.42041015625,
+        7.7509765625
+      ],
+      "endToEndMs": 334.64070800000036,
+      "inputSameAsFresh": null
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 3,
+      "phase": "repeat",
+      "marker": "rtk-tsc-errors:3:filtered",
+      "command": "rtk pipe --filter tsc < captured initial TypeScript failure",
+      "dataSha256": "4abd05a7183cbce5e703229d6cfc9261d5a38c3f7a91ea713309e36e75ab9931",
+      "dataBytes": 498,
+      "toolMs": 0,
+      "requestWallMs": 314.0765419999998,
+      "firstVisibleMs": 19.902250000000095,
+      "firstAnyMs": 19.901708999999755,
+      "usage": {
+        "total_duration": 312754375,
+        "load_duration": 1245125,
+        "prompt_eval_count": 215,
+        "prompt_eval_cached_count": 214,
+        "prompt_eval_duration": 16299000,
+        "eval_count": 26,
+        "eval_duration": 293935000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.4267578125,
+        9.42041015625,
+        7.7509765625
+      ],
+      "endToEndMs": 314.0765419999998,
+      "inputSameAsFresh": true
+    }
+  ]
+}

@@ -1,0 +1,3104 @@
+{
+  "metadata": {
+    "createdAt": "2026-11-09T11:13:37.544Z",
+    "model": "qwen3-coder:30b",
+    "modelDigest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+    "modelDetails": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen3moe",
+      "families": [
+        "qwen3moe"
+      ],
+      "parameter_size": "30.5B",
+      "quantization_level": "Q4_K_M"
+    },
+    "modelParameters": "repeat_penalty                 1.05\nstop                           \"<|im_start|>\"\nstop                           \"<|im_end|>\"\nstop                           \"<|endoftext|>\"\ntemperature                    0.7\ntop_k                          20\ntop_p                          0.8",
+    "serverVersion": "0.40.15",
+    "options": {
+      "num_ctx": 16384,
+      "num_predict": 384,
+      "temperature": 0,
+      "seed": 42,
+      "top_k": 1,
+      "top_p": 1,
+      "repeat_penalty": 1
+    },
+    "hardware": {
+      "cpu": "Apple M5 Pro",
+      "logicalCores": 15,
+      "physicalMemoryBytes": 51539607552,
+      "platform": "darwin",
+      "arch": "arm64",
+      "release": "25.6.0"
+    },
+    "initiallyResident": false,
+    "preload": {
+      "wallMs": 14723.805709,
+      "done_reason": "load"
+    },
+    "resident": {
+      "models": [
+        {
+          "name": "qwen3-coder:30b",
+          "model": "qwen3-coder:30b",
+          "size": 20117203188,
+          "digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3moe",
+            "families": [
+              "qwen3moe"
+            ],
+            "parameter_size": "30.5B",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-11-09T13:23:37.526562+02:00",
+          "size_vram": 20117203188,
+          "context_length": 16384,
+          "runner": "llamacpp"
+        }
+      ]
+    },
+    "sourceCommit": "1826cc191d033a52f5d741ca53861ca6655800c2",
+    "scriptSha256": "6f1979afeae385d67e19f224cfea6393c034da54de8754ce0cf540d9aa42d477",
+    "limitations": [
+      "Local single-request extraction tasks, not an end-to-end coding agent.",
+      "Prompt count is the model runtime count, including instructions/template; not o200k_base.",
+      "Fresh trials change the early marker. Repeat re-executes the CLI and may change input ordering. Cache reuse is determined by measured cached count and data hashes.",
+      "Weights stay resident for the A/B; preload is separate and filesystem cache is uncontrolled.",
+      "Three sequential paired repeats by default; background OS load and thermals are not isolated.",
+      "Tool time includes raw file read or CLI filter; common historical capture/fixture setup is excluded.",
+      "Provider API fee is zero; electricity, hardware, and time are not priced."
+    ],
+    "freezeRepeat": false,
+    "methodAudit": "Repeat re-executes the CLI. RTK tsc changed ordering in all three filtered repeats; inspect input hashes and measured cache counts. The early runner description assumed identical content; this method description was corrected after inspecting captures, without changing any measured counters, times, or answers."
+  },
+  "rows": [
+    {
+      "caseId": "rtk-status",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 1,
+      "phase": "fresh",
+      "marker": "rtk-status:1:raw",
+      "command": "git status (controlled RN fixture)",
+      "dataSha256": "ad63a133d1430f20bfa43c57994f28260141ef9b4a41874e3027471198fcd670",
+      "dataBytes": 1007,
+      "toolMs": 26.45337499999914,
+      "requestWallMs": 1033.2807920000014,
+      "firstVisibleMs": 735.6100839999999,
+      "firstAnyMs": 735.6094170000015,
+      "usage": {
+        "total_duration": 1030152959,
+        "load_duration": 6380459,
+        "prompt_eval_count": 375,
+        "prompt_eval_cached_count": 0,
+        "prompt_eval_duration": 718879000,
+        "eval_count": 26,
+        "eval_duration": 296365000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 7
+      },
+      "expected": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "correct": false,
+      "thinkingBytes": 0,
+      "osLoad": [
+        11.49462890625,
+        6.216796875,
+        6.31005859375
+      ],
+      "endToEndMs": 1059.7341670000005
+    },
+    {
+      "caseId": "rtk-status",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 1,
+      "phase": "repeat",
+      "marker": "rtk-status:1:raw",
+      "command": "git status (controlled RN fixture)",
+      "dataSha256": "ad63a133d1430f20bfa43c57994f28260141ef9b4a41874e3027471198fcd670",
+      "dataBytes": 1007,
+      "toolMs": 17.263166999999157,
+      "requestWallMs": 323.18366700000115,
+      "firstVisibleMs": 24.20275000000038,
+      "firstAnyMs": 24.202291999999943,
+      "usage": {
+        "total_duration": 320371333,
+        "load_duration": 2025750,
+        "prompt_eval_count": 375,
+        "prompt_eval_cached_count": 374,
+        "prompt_eval_duration": 14999000,
+        "eval_count": 26,
+        "eval_duration": 300209000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 7
+      },
+      "expected": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "correct": false,
+      "thinkingBytes": 0,
+      "osLoad": [
+        11.49462890625,
+        6.216796875,
+        6.31005859375
+      ],
+      "endToEndMs": 340.4468340000003,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rtk-status",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 1,
+      "phase": "fresh",
+      "marker": "rtk-status:1:filtered",
+      "command": "rtk git status (same fixture)",
+      "dataSha256": "0d47bebf51edee082a7805d269b2d8500f11eb6262327ceec463626a5b8b511b",
+      "dataBytes": 620,
+      "toolMs": 25.905375000002095,
+      "requestWallMs": 545.7307920000021,
+      "firstVisibleMs": 249.2657500000023,
+      "firstAnyMs": 249.26545800000167,
+      "usage": {
+        "total_duration": 543015500,
+        "load_duration": 8237375,
+        "prompt_eval_count": 269,
+        "prompt_eval_cached_count": 9,
+        "prompt_eval_duration": 228486000,
+        "eval_count": 26,
+        "eval_duration": 295296000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "expected": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        11.49462890625,
+        6.216796875,
+        6.31005859375
+      ],
+      "endToEndMs": 571.6361670000042
+    },
+    {
+      "caseId": "rtk-status",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 1,
+      "phase": "repeat",
+      "marker": "rtk-status:1:filtered",
+      "command": "rtk git status (same fixture)",
+      "dataSha256": "0d47bebf51edee082a7805d269b2d8500f11eb6262327ceec463626a5b8b511b",
+      "dataBytes": 620,
+      "toolMs": 21.961624999999913,
+      "requestWallMs": 327.1477080000004,
+      "firstVisibleMs": 21.994792000001326,
+      "firstAnyMs": 21.994667000002664,
+      "usage": {
+        "total_duration": 325446792,
+        "load_duration": 3891834,
+        "prompt_eval_count": 269,
+        "prompt_eval_cached_count": 268,
+        "prompt_eval_duration": 14374000,
+        "eval_count": 26,
+        "eval_duration": 304265000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "expected": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        11.49462890625,
+        6.216796875,
+        6.31005859375
+      ],
+      "endToEndMs": 349.10933300000033,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rtk-status",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 2,
+      "phase": "fresh",
+      "marker": "rtk-status:2:filtered",
+      "command": "rtk git status (same fixture)",
+      "dataSha256": "0d47bebf51edee082a7805d269b2d8500f11eb6262327ceec463626a5b8b511b",
+      "dataBytes": 620,
+      "toolMs": 20.921417000001384,
+      "requestWallMs": 541.1207079999986,
+      "firstVisibleMs": 232.4587500000016,
+      "firstAnyMs": 232.4584160000013,
+      "usage": {
+        "total_duration": 539224792,
+        "load_duration": 2264459,
+        "prompt_eval_count": 269,
+        "prompt_eval_cached_count": 7,
+        "prompt_eval_duration": 220222000,
+        "eval_count": 26,
+        "eval_duration": 307546000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "expected": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        11.49462890625,
+        6.216796875,
+        6.31005859375
+      ],
+      "endToEndMs": 562.0421249999999
+    },
+    {
+      "caseId": "rtk-status",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 2,
+      "phase": "repeat",
+      "marker": "rtk-status:2:filtered",
+      "command": "rtk git status (same fixture)",
+      "dataSha256": "0d47bebf51edee082a7805d269b2d8500f11eb6262327ceec463626a5b8b511b",
+      "dataBytes": 620,
+      "toolMs": 35.69233299999905,
+      "requestWallMs": 333.4465830000008,
+      "firstVisibleMs": 21.580582999999024,
+      "firstAnyMs": 21.580375000001368,
+      "usage": {
+        "total_duration": 331397209,
+        "load_duration": 2474792,
+        "prompt_eval_count": 269,
+        "prompt_eval_cached_count": 268,
+        "prompt_eval_duration": 15327000,
+        "eval_count": 26,
+        "eval_duration": 310696000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "expected": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        11.49462890625,
+        6.216796875,
+        6.31005859375
+      ],
+      "endToEndMs": 369.1389159999999,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rtk-status",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 2,
+      "phase": "fresh",
+      "marker": "rtk-status:2:raw",
+      "command": "git status (controlled RN fixture)",
+      "dataSha256": "ad63a133d1430f20bfa43c57994f28260141ef9b4a41874e3027471198fcd670",
+      "dataBytes": 1007,
+      "toolMs": 19.64591599999767,
+      "requestWallMs": 614.4097500000025,
+      "firstVisibleMs": 300.2281670000011,
+      "firstAnyMs": 300.22791700000016,
+      "usage": {
+        "total_duration": 605134416,
+        "load_duration": 9396833,
+        "prompt_eval_count": 375,
+        "prompt_eval_cached_count": 9,
+        "prompt_eval_duration": 282554000,
+        "eval_count": 26,
+        "eval_duration": 306396000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "expected": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        11.49462890625,
+        6.216796875,
+        6.31005859375
+      ],
+      "endToEndMs": 634.0556660000002
+    },
+    {
+      "caseId": "rtk-status",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 2,
+      "phase": "repeat",
+      "marker": "rtk-status:2:raw",
+      "command": "git status (controlled RN fixture)",
+      "dataSha256": "ad63a133d1430f20bfa43c57994f28260141ef9b4a41874e3027471198fcd670",
+      "dataBytes": 1007,
+      "toolMs": 16.680083999999624,
+      "requestWallMs": 326.24412499999744,
+      "firstVisibleMs": 20.88891599999988,
+      "firstAnyMs": 20.888457999997627,
+      "usage": {
+        "total_duration": 323998166,
+        "load_duration": 3419583,
+        "prompt_eval_count": 375,
+        "prompt_eval_cached_count": 374,
+        "prompt_eval_duration": 13802000,
+        "eval_count": 26,
+        "eval_duration": 303826000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "expected": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        11.49462890625,
+        6.216796875,
+        6.31005859375
+      ],
+      "endToEndMs": 342.92420899999706,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rtk-status",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 3,
+      "phase": "fresh",
+      "marker": "rtk-status:3:raw",
+      "command": "git status (controlled RN fixture)",
+      "dataSha256": "ad63a133d1430f20bfa43c57994f28260141ef9b4a41874e3027471198fcd670",
+      "dataBytes": 1007,
+      "toolMs": 13.672708999998576,
+      "requestWallMs": 573.2871249999989,
+      "firstVisibleMs": 283.9562909999986,
+      "firstAnyMs": 283.9560829999973,
+      "usage": {
+        "total_duration": 571039708,
+        "load_duration": 2847958,
+        "prompt_eval_count": 375,
+        "prompt_eval_cached_count": 7,
+        "prompt_eval_duration": 269423000,
+        "eval_count": 26,
+        "eval_duration": 287227000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "expected": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        11.49462890625,
+        6.216796875,
+        6.31005859375
+      ],
+      "endToEndMs": 586.9598339999975
+    },
+    {
+      "caseId": "rtk-status",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 3,
+      "phase": "repeat",
+      "marker": "rtk-status:3:raw",
+      "command": "git status (controlled RN fixture)",
+      "dataSha256": "ad63a133d1430f20bfa43c57994f28260141ef9b4a41874e3027471198fcd670",
+      "dataBytes": 1007,
+      "toolMs": 14.204583999999159,
+      "requestWallMs": 321.67762500000026,
+      "firstVisibleMs": 21.51416700000118,
+      "firstAnyMs": 21.513875000000553,
+      "usage": {
+        "total_duration": 319527625,
+        "load_duration": 3012666,
+        "prompt_eval_count": 375,
+        "prompt_eval_cached_count": 374,
+        "prompt_eval_duration": 11813000,
+        "eval_count": 26,
+        "eval_duration": 301522000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "expected": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        11.49462890625,
+        6.216796875,
+        6.31005859375
+      ],
+      "endToEndMs": 335.8822089999994,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rtk-status",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 3,
+      "phase": "fresh",
+      "marker": "rtk-status:3:filtered",
+      "command": "rtk git status (same fixture)",
+      "dataSha256": "0d47bebf51edee082a7805d269b2d8500f11eb6262327ceec463626a5b8b511b",
+      "dataBytes": 620,
+      "toolMs": 25.34295800000109,
+      "requestWallMs": 553.5155830000003,
+      "firstVisibleMs": 241.966124999999,
+      "firstAnyMs": 241.96587499999805,
+      "usage": {
+        "total_duration": 551346167,
+        "load_duration": 3045000,
+        "prompt_eval_count": 269,
+        "prompt_eval_cached_count": 9,
+        "prompt_eval_duration": 227013000,
+        "eval_count": 26,
+        "eval_duration": 309807000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "expected": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        11.49462890625,
+        6.216796875,
+        6.31005859375
+      ],
+      "endToEndMs": 578.8585410000014
+    },
+    {
+      "caseId": "rtk-status",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 3,
+      "phase": "repeat",
+      "marker": "rtk-status:3:filtered",
+      "command": "rtk git status (same fixture)",
+      "dataSha256": "0d47bebf51edee082a7805d269b2d8500f11eb6262327ceec463626a5b8b511b",
+      "dataBytes": 620,
+      "toolMs": 38.48162500000035,
+      "requestWallMs": 329.10816599999816,
+      "firstVisibleMs": 20.23216599999796,
+      "firstAnyMs": 20.23187499999767,
+      "usage": {
+        "total_duration": 327103041,
+        "load_duration": 1571500,
+        "prompt_eval_count": 269,
+        "prompt_eval_cached_count": 268,
+        "prompt_eval_duration": 12665000,
+        "eval_count": 26,
+        "eval_duration": 310818000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "expected": {
+        "branch": "main",
+        "modified": 12,
+        "untracked": 8
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.89404296875,
+        6.1796875,
+        6.29638671875
+      ],
+      "endToEndMs": 367.5897909999985,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rg-navigation",
+      "tool": "ripgrep",
+      "arm": "raw",
+      "rep": 1,
+      "phase": "fresh",
+      "marker": "rg-navigation:1:raw",
+      "command": "read all 14 explicit app source files",
+      "dataSha256": "79870db71c9085f1e86f9819b0ccc90411d7a42fab081c52f4c5af430a99f1fd",
+      "dataBytes": 19475,
+      "toolMs": 1.2489580000001297,
+      "requestWallMs": 4801.002542000002,
+      "firstVisibleMs": 4395.280875,
+      "firstAnyMs": 4395.280708000002,
+      "usage": {
+        "total_duration": 4795110000,
+        "load_duration": 2507208,
+        "prompt_eval_count": 4882,
+        "prompt_eval_cached_count": 3,
+        "prompt_eval_duration": 4368945000,
+        "eval_count": 25,
+        "eval_duration": 400052000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "expected": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.89404296875,
+        6.1796875,
+        6.29638671875
+      ],
+      "endToEndMs": 4802.251500000002
+    },
+    {
+      "caseId": "rg-navigation",
+      "tool": "ripgrep",
+      "arm": "raw",
+      "rep": 1,
+      "phase": "repeat",
+      "marker": "rg-navigation:1:raw",
+      "command": "read all 14 explicit app source files",
+      "dataSha256": "79870db71c9085f1e86f9819b0ccc90411d7a42fab081c52f4c5af430a99f1fd",
+      "dataBytes": 19475,
+      "toolMs": 0.3174159999980475,
+      "requestWallMs": 385.79441600000064,
+      "firstVisibleMs": 32.01087499999994,
+      "firstAnyMs": 32.01054099999965,
+      "usage": {
+        "total_duration": 379622958,
+        "load_duration": 1599667,
+        "prompt_eval_count": 4882,
+        "prompt_eval_cached_count": 4881,
+        "prompt_eval_duration": 14889000,
+        "eval_count": 25,
+        "eval_duration": 348507000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "expected": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.341796875,
+        6.14306640625,
+        6.28271484375
+      ],
+      "endToEndMs": 386.1118319999987,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rg-navigation",
+      "tool": "ripgrep",
+      "arm": "filtered",
+      "rep": 1,
+      "phase": "fresh",
+      "marker": "rg-navigation:1:filtered",
+      "command": "rg -n -C 3 'createNativeStackNavigator<' src",
+      "dataSha256": "1c3628471f2fd90aed2331256eea1738288bdf0da1b874f7f65e87fa05433a4d",
+      "dataBytes": 430,
+      "toolMs": 171.50591599999825,
+      "requestWallMs": 532.552499999998,
+      "firstVisibleMs": 260.9012909999983,
+      "firstAnyMs": 260.90095799999835,
+      "usage": {
+        "total_duration": 529999416,
+        "load_duration": 1948666,
+        "prompt_eval_count": 188,
+        "prompt_eval_cached_count": 8,
+        "prompt_eval_duration": 174847000,
+        "eval_count": 25,
+        "eval_duration": 269773000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "expected": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.341796875,
+        6.14306640625,
+        6.28271484375
+      ],
+      "endToEndMs": 704.0584159999962
+    },
+    {
+      "caseId": "rg-navigation",
+      "tool": "ripgrep",
+      "arm": "filtered",
+      "rep": 1,
+      "phase": "repeat",
+      "marker": "rg-navigation:1:filtered",
+      "command": "rg -n -C 3 'createNativeStackNavigator<' src",
+      "dataSha256": "1c3628471f2fd90aed2331256eea1738288bdf0da1b874f7f65e87fa05433a4d",
+      "dataBytes": 430,
+      "toolMs": 15.89479200000278,
+      "requestWallMs": 300.47929099999965,
+      "firstVisibleMs": 18.59795800000211,
+      "firstAnyMs": 18.59766600000148,
+      "usage": {
+        "total_duration": 299107958,
+        "load_duration": 2646250,
+        "prompt_eval_count": 188,
+        "prompt_eval_cached_count": 187,
+        "prompt_eval_duration": 12785000,
+        "eval_count": 25,
+        "eval_duration": 281141000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "expected": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.341796875,
+        6.14306640625,
+        6.28271484375
+      ],
+      "endToEndMs": 316.37408300000243,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rg-navigation",
+      "tool": "ripgrep",
+      "arm": "filtered",
+      "rep": 2,
+      "phase": "fresh",
+      "marker": "rg-navigation:2:filtered",
+      "command": "rg -n -C 3 'createNativeStackNavigator<' src",
+      "dataSha256": "1c3628471f2fd90aed2331256eea1738288bdf0da1b874f7f65e87fa05433a4d",
+      "dataBytes": 430,
+      "toolMs": 13.17699999999968,
+      "requestWallMs": 458.4628330000014,
+      "firstVisibleMs": 188.29025000000183,
+      "firstAnyMs": 188.28991700000188,
+      "usage": {
+        "total_duration": 454360458,
+        "load_duration": 5274333,
+        "prompt_eval_count": 188,
+        "prompt_eval_cached_count": 6,
+        "prompt_eval_duration": 175270000,
+        "eval_count": 25,
+        "eval_duration": 266805000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "expected": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.341796875,
+        6.14306640625,
+        6.28271484375
+      ],
+      "endToEndMs": 471.6398330000011
+    },
+    {
+      "caseId": "rg-navigation",
+      "tool": "ripgrep",
+      "arm": "filtered",
+      "rep": 2,
+      "phase": "repeat",
+      "marker": "rg-navigation:2:filtered",
+      "command": "rg -n -C 3 'createNativeStackNavigator<' src",
+      "dataSha256": "1c3628471f2fd90aed2331256eea1738288bdf0da1b874f7f65e87fa05433a4d",
+      "dataBytes": 430,
+      "toolMs": 22.478500000001077,
+      "requestWallMs": 311.08100000000195,
+      "firstVisibleMs": 35.7032500000023,
+      "firstAnyMs": 35.702916000002006,
+      "usage": {
+        "total_duration": 309138500,
+        "load_duration": 3026917,
+        "prompt_eval_count": 188,
+        "prompt_eval_cached_count": 187,
+        "prompt_eval_duration": 28904000,
+        "eval_count": 25,
+        "eval_duration": 274436000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "expected": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.341796875,
+        6.14306640625,
+        6.28271484375
+      ],
+      "endToEndMs": 333.559500000003,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rg-navigation",
+      "tool": "ripgrep",
+      "arm": "raw",
+      "rep": 2,
+      "phase": "fresh",
+      "marker": "rg-navigation:2:raw",
+      "command": "read all 14 explicit app source files",
+      "dataSha256": "79870db71c9085f1e86f9819b0ccc90411d7a42fab081c52f4c5af430a99f1fd",
+      "dataBytes": 19475,
+      "toolMs": 0.7781670000003942,
+      "requestWallMs": 4752.473416999997,
+      "firstVisibleMs": 4388.307708,
+      "firstAnyMs": 4388.307083,
+      "usage": {
+        "total_duration": 4745548542,
+        "load_duration": 1607750,
+        "prompt_eval_count": 4882,
+        "prompt_eval_cached_count": 8,
+        "prompt_eval_duration": 4364787000,
+        "eval_count": 25,
+        "eval_duration": 358396000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "expected": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.15380859375,
+        6.173828125,
+        6.29248046875
+      ],
+      "endToEndMs": 4753.251583999998
+    },
+    {
+      "caseId": "rg-navigation",
+      "tool": "ripgrep",
+      "arm": "raw",
+      "rep": 2,
+      "phase": "repeat",
+      "marker": "rg-navigation:2:raw",
+      "command": "read all 14 explicit app source files",
+      "dataSha256": "79870db71c9085f1e86f9819b0ccc90411d7a42fab081c52f4c5af430a99f1fd",
+      "dataBytes": 19475,
+      "toolMs": 0.17837499999586726,
+      "requestWallMs": 344.44441599999845,
+      "firstVisibleMs": 31.994832999997016,
+      "firstAnyMs": 31.994541000000027,
+      "usage": {
+        "total_duration": 339056583,
+        "load_duration": 1501833,
+        "prompt_eval_count": 4882,
+        "prompt_eval_cached_count": 4881,
+        "prompt_eval_duration": 15206000,
+        "eval_count": 22,
+        "eval_duration": 307795000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "path": "src/stores/preferences.ts",
+        "factory": "usePreferences"
+      },
+      "expected": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "correct": false,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.15380859375,
+        6.173828125,
+        6.29248046875
+      ],
+      "endToEndMs": 344.6227909999943,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rg-navigation",
+      "tool": "ripgrep",
+      "arm": "raw",
+      "rep": 3,
+      "phase": "fresh",
+      "marker": "rg-navigation:3:raw",
+      "command": "read all 14 explicit app source files",
+      "dataSha256": "79870db71c9085f1e86f9819b0ccc90411d7a42fab081c52f4c5af430a99f1fd",
+      "dataBytes": 19475,
+      "toolMs": 0.1730829999942216,
+      "requestWallMs": 4944.927958,
+      "firstVisibleMs": 4560.435874999996,
+      "firstAnyMs": 4560.435332999994,
+      "usage": {
+        "total_duration": 4931146084,
+        "load_duration": 1098750,
+        "prompt_eval_count": 4882,
+        "prompt_eval_cached_count": 6,
+        "prompt_eval_duration": 4385868000,
+        "eval_count": 25,
+        "eval_duration": 371390000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "expected": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        13.66455078125,
+        6.9677734375,
+        6.57177734375
+      ],
+      "endToEndMs": 4945.101040999994
+    },
+    {
+      "caseId": "rg-navigation",
+      "tool": "ripgrep",
+      "arm": "raw",
+      "rep": 3,
+      "phase": "repeat",
+      "marker": "rg-navigation:3:raw",
+      "command": "read all 14 explicit app source files",
+      "dataSha256": "79870db71c9085f1e86f9819b0ccc90411d7a42fab081c52f4c5af430a99f1fd",
+      "dataBytes": 19475,
+      "toolMs": 0.23879199999646517,
+      "requestWallMs": 429.0894169999956,
+      "firstVisibleMs": 39.491707999994105,
+      "firstAnyMs": 39.491582999995444,
+      "usage": {
+        "total_duration": 421920458,
+        "load_duration": 2535041,
+        "prompt_eval_count": 4882,
+        "prompt_eval_cached_count": 4881,
+        "prompt_eval_duration": 14814000,
+        "eval_count": 25,
+        "eval_duration": 383285000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "expected": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        13.66455078125,
+        6.9677734375,
+        6.57177734375
+      ],
+      "endToEndMs": 429.32820899999206,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rg-navigation",
+      "tool": "ripgrep",
+      "arm": "filtered",
+      "rep": 3,
+      "phase": "fresh",
+      "marker": "rg-navigation:3:filtered",
+      "command": "rg -n -C 3 'createNativeStackNavigator<' src",
+      "dataSha256": "1c3628471f2fd90aed2331256eea1738288bdf0da1b874f7f65e87fa05433a4d",
+      "dataBytes": 430,
+      "toolMs": 31.701084000000264,
+      "requestWallMs": 584.3215419999979,
+      "firstVisibleMs": 306.3732919999966,
+      "firstAnyMs": 306.3729169999933,
+      "usage": {
+        "total_duration": 575536833,
+        "load_duration": 1602416,
+        "prompt_eval_count": 188,
+        "prompt_eval_cached_count": 8,
+        "prompt_eval_duration": 174523000,
+        "eval_count": 25,
+        "eval_duration": 275861000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "expected": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        13.66455078125,
+        6.9677734375,
+        6.57177734375
+      ],
+      "endToEndMs": 616.0226259999981
+    },
+    {
+      "caseId": "rg-navigation",
+      "tool": "ripgrep",
+      "arm": "filtered",
+      "rep": 3,
+      "phase": "repeat",
+      "marker": "rg-navigation:3:filtered",
+      "command": "rg -n -C 3 'createNativeStackNavigator<' src",
+      "dataSha256": "1c3628471f2fd90aed2331256eea1738288bdf0da1b874f7f65e87fa05433a4d",
+      "dataBytes": 430,
+      "toolMs": 15.349957999998878,
+      "requestWallMs": 315.67533399999957,
+      "firstVisibleMs": 23.197791999999026,
+      "firstAnyMs": 23.19758400000137,
+      "usage": {
+        "total_duration": 314235125,
+        "load_duration": 4412083,
+        "prompt_eval_count": 188,
+        "prompt_eval_cached_count": 187,
+        "prompt_eval_duration": 13677000,
+        "eval_count": 25,
+        "eval_duration": 293988000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "expected": {
+        "path": "src/navigation/RootNavigator.tsx",
+        "factory": "createNativeStackNavigator"
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        13.66455078125,
+        6.9677734375,
+        6.57177734375
+      ],
+      "endToEndMs": 331.02529199999844,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "jq-autolinking",
+      "tool": "jq",
+      "arm": "raw",
+      "rep": 1,
+      "phase": "fresh",
+      "marker": "jq-autolinking:1:raw",
+      "command": "read full captured RN config JSON",
+      "dataSha256": "ddf9230a059d433db2c139cef081907446fdad28bae2b19d5ca64a7e4747334b",
+      "dataBytes": 30204,
+      "toolMs": 0.43720899999607354,
+      "requestWallMs": 11060.871209000004,
+      "firstVisibleMs": 6998.589124999999,
+      "firstAnyMs": 6998.588750000003,
+      "usage": {
+        "total_duration": 11048448125,
+        "load_duration": 1557959,
+        "prompt_eval_count": 6804,
+        "prompt_eval_cached_count": 3,
+        "prompt_eval_duration": 6972557000,
+        "eval_count": 224,
+        "eval_duration": 4050356000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "expected": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        12.02490234375,
+        6.8369140625,
+        6.52978515625
+      ],
+      "endToEndMs": 11061.308418
+    },
+    {
+      "caseId": "jq-autolinking",
+      "tool": "jq",
+      "arm": "raw",
+      "rep": 1,
+      "phase": "repeat",
+      "marker": "jq-autolinking:1:raw",
+      "command": "read full captured RN config JSON",
+      "dataSha256": "ddf9230a059d433db2c139cef081907446fdad28bae2b19d5ca64a7e4747334b",
+      "dataBytes": 30204,
+      "toolMs": 0.689249999995809,
+      "requestWallMs": 3927.805833000006,
+      "firstVisibleMs": 45.98245800000586,
+      "firstAnyMs": 45.9820830000026,
+      "usage": {
+        "total_duration": 3914077750,
+        "load_duration": 2554708,
+        "prompt_eval_count": 6804,
+        "prompt_eval_cached_count": 6803,
+        "prompt_eval_duration": 19988000,
+        "eval_count": 224,
+        "eval_duration": 3868445000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "expected": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        11.7822265625,
+        6.87255859375,
+        6.5439453125
+      ],
+      "endToEndMs": 3928.4950830000016,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "jq-autolinking",
+      "tool": "jq",
+      "arm": "filtered",
+      "rep": 1,
+      "phase": "fresh",
+      "marker": "jq-autolinking:1:filtered",
+      "command": "jq -c -f tools/jq/autolink.jq <captured RN config>",
+      "dataSha256": "e395782585073c26930d8b1a053f6a84fcbd67caffe5e0a493bd405a779b670f",
+      "dataBytes": 516,
+      "toolMs": 45.371375000002445,
+      "requestWallMs": 3156.9046670000025,
+      "firstVisibleMs": 444.4793750000026,
+      "firstAnyMs": 444.47920900000463,
+      "usage": {
+        "total_duration": 3154748042,
+        "load_duration": 2836042,
+        "prompt_eval_count": 212,
+        "prompt_eval_cached_count": 10,
+        "prompt_eval_duration": 207162000,
+        "eval_count": 224,
+        "eval_duration": 2710911000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "expected": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        11.71923828125,
+        6.94091796875,
+        6.56982421875
+      ],
+      "endToEndMs": 3202.276042000005
+    },
+    {
+      "caseId": "jq-autolinking",
+      "tool": "jq",
+      "arm": "filtered",
+      "rep": 1,
+      "phase": "repeat",
+      "marker": "jq-autolinking:1:filtered",
+      "command": "jq -c -f tools/jq/autolink.jq <captured RN config>",
+      "dataSha256": "e395782585073c26930d8b1a053f6a84fcbd67caffe5e0a493bd405a779b670f",
+      "dataBytes": 516,
+      "toolMs": 13.353917000000365,
+      "requestWallMs": 2793.875417000003,
+      "firstVisibleMs": 37.46620800000528,
+      "firstAnyMs": 37.46583300000202,
+      "usage": {
+        "total_duration": 2791938625,
+        "load_duration": 1719791,
+        "prompt_eval_count": 212,
+        "prompt_eval_cached_count": 211,
+        "prompt_eval_duration": 24667000,
+        "eval_count": 224,
+        "eval_duration": 2755346000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "expected": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        11.71923828125,
+        6.94091796875,
+        6.56982421875
+      ],
+      "endToEndMs": 2807.2293340000033,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "jq-autolinking",
+      "tool": "jq",
+      "arm": "filtered",
+      "rep": 2,
+      "phase": "fresh",
+      "marker": "jq-autolinking:2:filtered",
+      "command": "jq -c -f tools/jq/autolink.jq <captured RN config>",
+      "dataSha256": "e395782585073c26930d8b1a053f6a84fcbd67caffe5e0a493bd405a779b670f",
+      "dataBytes": 516,
+      "toolMs": 16.705207999999402,
+      "requestWallMs": 2971.093958999998,
+      "firstVisibleMs": 221.3173339999994,
+      "firstAnyMs": 221.31704199999513,
+      "usage": {
+        "total_duration": 2969328333,
+        "load_duration": 3396458,
+        "prompt_eval_count": 212,
+        "prompt_eval_cached_count": 8,
+        "prompt_eval_duration": 214373000,
+        "eval_count": 224,
+        "eval_duration": 2748780000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "expected": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.94091796875,
+        6.85888671875,
+        6.54296875
+      ],
+      "endToEndMs": 2987.7991669999974
+    },
+    {
+      "caseId": "jq-autolinking",
+      "tool": "jq",
+      "arm": "filtered",
+      "rep": 2,
+      "phase": "repeat",
+      "marker": "jq-autolinking:2:filtered",
+      "command": "jq -c -f tools/jq/autolink.jq <captured RN config>",
+      "dataSha256": "e395782585073c26930d8b1a053f6a84fcbd67caffe5e0a493bd405a779b670f",
+      "dataBytes": 516,
+      "toolMs": 14.031457999997656,
+      "requestWallMs": 2838.198958000001,
+      "firstVisibleMs": 38.93570799999725,
+      "firstAnyMs": 38.93541600000026,
+      "usage": {
+        "total_duration": 2835549000,
+        "load_duration": 2733417,
+        "prompt_eval_count": 212,
+        "prompt_eval_cached_count": 211,
+        "prompt_eval_duration": 23547000,
+        "eval_count": 224,
+        "eval_duration": 2798051000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "expected": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.9453125,
+        6.92724609375,
+        6.56884765625
+      ],
+      "endToEndMs": 2852.2304159999985,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "jq-autolinking",
+      "tool": "jq",
+      "arm": "raw",
+      "rep": 2,
+      "phase": "fresh",
+      "marker": "jq-autolinking:2:raw",
+      "command": "read full captured RN config JSON",
+      "dataSha256": "ddf9230a059d433db2c139cef081907446fdad28bae2b19d5ca64a7e4747334b",
+      "dataBytes": 30204,
+      "toolMs": 0.2302499999932479,
+      "requestWallMs": 11498.552124999987,
+      "firstVisibleMs": 7675.804082999995,
+      "firstAnyMs": 7675.8036659999925,
+      "usage": {
+        "total_duration": 11485980708,
+        "load_duration": 1812583,
+        "prompt_eval_count": 6804,
+        "prompt_eval_cached_count": 10,
+        "prompt_eval_duration": 7646740000,
+        "eval_count": 224,
+        "eval_duration": 3810223000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "expected": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.87939453125,
+        7.04443359375,
+        6.6142578125
+      ],
+      "endToEndMs": 11498.78237499998
+    },
+    {
+      "caseId": "jq-autolinking",
+      "tool": "jq",
+      "arm": "raw",
+      "rep": 2,
+      "phase": "repeat",
+      "marker": "jq-autolinking:2:raw",
+      "command": "read full captured RN config JSON",
+      "dataSha256": "ddf9230a059d433db2c139cef081907446fdad28bae2b19d5ca64a7e4747334b",
+      "dataBytes": 30204,
+      "toolMs": 1.4228330000041751,
+      "requestWallMs": 3992.5437919999968,
+      "firstVisibleMs": 62.52933299999859,
+      "firstAnyMs": 62.528999999994994,
+      "usage": {
+        "total_duration": 3979912500,
+        "load_duration": 2926041,
+        "prompt_eval_count": 6804,
+        "prompt_eval_cached_count": 6803,
+        "prompt_eval_duration": 27147000,
+        "eval_count": 224,
+        "eval_duration": 3918354000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "expected": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.6484375,
+        7.06005859375,
+        6.6220703125
+      ],
+      "endToEndMs": 3993.966625000001,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "jq-autolinking",
+      "tool": "jq",
+      "arm": "raw",
+      "rep": 3,
+      "phase": "fresh",
+      "marker": "jq-autolinking:3:raw",
+      "command": "read full captured RN config JSON",
+      "dataSha256": "ddf9230a059d433db2c139cef081907446fdad28bae2b19d5ca64a7e4747334b",
+      "dataBytes": 30204,
+      "toolMs": 0.3447500000038417,
+      "requestWallMs": 11727.637707999995,
+      "firstVisibleMs": 7813.801749999999,
+      "firstAnyMs": 7813.799082999991,
+      "usage": {
+        "total_duration": 11709008125,
+        "load_duration": 3274875,
+        "prompt_eval_count": 6804,
+        "prompt_eval_cached_count": 8,
+        "prompt_eval_duration": 7525895000,
+        "eval_count": 224,
+        "eval_duration": 3894832000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "expected": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.1669921875,
+        7.07421875,
+        6.6318359375
+      ],
+      "endToEndMs": 11727.982457999999
+    },
+    {
+      "caseId": "jq-autolinking",
+      "tool": "jq",
+      "arm": "raw",
+      "rep": 3,
+      "phase": "repeat",
+      "marker": "jq-autolinking:3:raw",
+      "command": "read full captured RN config JSON",
+      "dataSha256": "ddf9230a059d433db2c139cef081907446fdad28bae2b19d5ca64a7e4747334b",
+      "dataBytes": 30204,
+      "toolMs": 0.45241700000769924,
+      "requestWallMs": 4007.925958000007,
+      "firstVisibleMs": 54.669625000009546,
+      "firstAnyMs": 54.669250000006286,
+      "usage": {
+        "total_duration": 3993876458,
+        "load_duration": 4635125,
+        "prompt_eval_count": 6804,
+        "prompt_eval_cached_count": 6803,
+        "prompt_eval_duration": 20951000,
+        "eval_count": 224,
+        "eval_duration": 3939669000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "expected": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        9.8330078125,
+        7.05615234375,
+        6.6279296875
+      ],
+      "endToEndMs": 4008.378375000015,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "jq-autolinking",
+      "tool": "jq",
+      "arm": "filtered",
+      "rep": 3,
+      "phase": "fresh",
+      "marker": "jq-autolinking:3:filtered",
+      "command": "jq -c -f tools/jq/autolink.jq <captured RN config>",
+      "dataSha256": "e395782585073c26930d8b1a053f6a84fcbd67caffe5e0a493bd405a779b670f",
+      "dataBytes": 516,
+      "toolMs": 18.797125000011874,
+      "requestWallMs": 3337.754958999998,
+      "firstVisibleMs": 439.9117089999927,
+      "firstAnyMs": 439.9114169999957,
+      "usage": {
+        "total_duration": 3335572375,
+        "load_duration": 2749958,
+        "prompt_eval_count": 212,
+        "prompt_eval_cached_count": 10,
+        "prompt_eval_duration": 203176000,
+        "eval_count": 224,
+        "eval_duration": 2896814000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "expected": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        9.8330078125,
+        7.05615234375,
+        6.6279296875
+      ],
+      "endToEndMs": 3356.55208400001
+    },
+    {
+      "caseId": "jq-autolinking",
+      "tool": "jq",
+      "arm": "filtered",
+      "rep": 3,
+      "phase": "repeat",
+      "marker": "jq-autolinking:3:filtered",
+      "command": "jq -c -f tools/jq/autolink.jq <captured RN config>",
+      "dataSha256": "e395782585073c26930d8b1a053f6a84fcbd67caffe5e0a493bd405a779b670f",
+      "dataBytes": 516,
+      "toolMs": 12.842875000002095,
+      "requestWallMs": 3132.005999999994,
+      "firstVisibleMs": 40.84958399999596,
+      "firstAnyMs": 40.849333999998635,
+      "usage": {
+        "total_duration": 2800168958,
+        "load_duration": 2509750,
+        "prompt_eval_count": 212,
+        "prompt_eval_cached_count": 211,
+        "prompt_eval_duration": 27419000,
+        "eval_count": 224,
+        "eval_duration": 2747500000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "expected": {
+        "modules": [
+          {
+            "name": "@react-native-async-storage/async-storage",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "@react-native-community/netinfo",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-gesture-handler",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-reanimated",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-safe-area-context",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-screens",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-svg",
+            "ios": true,
+            "android": true
+          },
+          {
+            "name": "react-native-worklets",
+            "ios": true,
+            "android": true
+          }
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.16650390625,
+        7.17138671875,
+        6.6708984375
+      ],
+      "endToEndMs": 3144.848874999996,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 1,
+      "phase": "fresh",
+      "marker": "rtk-tsc-errors:1:raw",
+      "command": "read captured initial TypeScript failure",
+      "dataSha256": "135c4764d98c01f4a1103c01f13bd641f4512f957e3ae0210b5ce9066c0d85f2",
+      "dataBytes": 301,
+      "toolMs": 0.4806669999961741,
+      "requestWallMs": 489.7293750000099,
+      "firstVisibleMs": 187.76275000000896,
+      "firstAnyMs": 187.76250000001164,
+      "usage": {
+        "total_duration": 488227416,
+        "load_duration": 2235250,
+        "prompt_eval_count": 160,
+        "prompt_eval_cached_count": 3,
+        "prompt_eval_duration": 181726000,
+        "eval_count": 26,
+        "eval_duration": 301401000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.16650390625,
+        7.17138671875,
+        6.6708984375
+      ],
+      "endToEndMs": 490.21004200000607
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 1,
+      "phase": "repeat",
+      "marker": "rtk-tsc-errors:1:raw",
+      "command": "read captured initial TypeScript failure",
+      "dataSha256": "135c4764d98c01f4a1103c01f13bd641f4512f957e3ae0210b5ce9066c0d85f2",
+      "dataBytes": 301,
+      "toolMs": 0.12912499999220017,
+      "requestWallMs": 338.2412500000064,
+      "firstVisibleMs": 24.981375000003027,
+      "firstAnyMs": 24.981125000005704,
+      "usage": {
+        "total_duration": 336794709,
+        "load_duration": 1613084,
+        "prompt_eval_count": 160,
+        "prompt_eval_cached_count": 159,
+        "prompt_eval_duration": 21025000,
+        "eval_count": 26,
+        "eval_duration": 312565000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.16650390625,
+        7.17138671875,
+        6.6708984375
+      ],
+      "endToEndMs": 338.3703749999986,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 1,
+      "phase": "fresh",
+      "marker": "rtk-tsc-errors:1:filtered",
+      "command": "rtk pipe --filter tsc < captured initial TypeScript failure",
+      "dataSha256": "f88ada461a23505c503296e9b7fc2cf287fa3b2f90a6f5c82fc78ab46e94b942",
+      "dataBytes": 498,
+      "toolMs": 11.917958999998518,
+      "requestWallMs": 508.9937079999945,
+      "firstVisibleMs": 202.32108300000255,
+      "firstAnyMs": 202.3208750000049,
+      "usage": {
+        "total_duration": 507490083,
+        "load_duration": 1795333,
+        "prompt_eval_count": 215,
+        "prompt_eval_cached_count": 11,
+        "prompt_eval_duration": 194670000,
+        "eval_count": 26,
+        "eval_duration": 305783000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.16650390625,
+        7.17138671875,
+        6.6708984375
+      ],
+      "endToEndMs": 520.911666999993
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 1,
+      "phase": "repeat",
+      "marker": "rtk-tsc-errors:1:filtered",
+      "command": "rtk pipe --filter tsc < captured initial TypeScript failure",
+      "dataSha256": "4abd05a7183cbce5e703229d6cfc9261d5a38c3f7a91ea713309e36e75ab9931",
+      "dataBytes": 498,
+      "toolMs": 6.6011659999931,
+      "requestWallMs": 450.2553750000079,
+      "firstVisibleMs": 144.744125000012,
+      "firstAnyMs": 144.74387500000012,
+      "usage": {
+        "total_duration": 448416000,
+        "load_duration": 2528708,
+        "prompt_eval_count": 215,
+        "prompt_eval_cached_count": 121,
+        "prompt_eval_duration": 138712000,
+        "eval_count": 26,
+        "eval_duration": 304217000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        10.16650390625,
+        7.17138671875,
+        6.6708984375
+      ],
+      "endToEndMs": 456.856541000001,
+      "inputSameAsFresh": false
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 2,
+      "phase": "fresh",
+      "marker": "rtk-tsc-errors:2:filtered",
+      "command": "rtk pipe --filter tsc < captured initial TypeScript failure",
+      "dataSha256": "f88ada461a23505c503296e9b7fc2cf287fa3b2f90a6f5c82fc78ab46e94b942",
+      "dataBytes": 498,
+      "toolMs": 7.253208000009181,
+      "requestWallMs": 512.2610829999903,
+      "firstVisibleMs": 207.90924999999697,
+      "firstAnyMs": 207.9091669999907,
+      "usage": {
+        "total_duration": 510611000,
+        "load_duration": 1469125,
+        "prompt_eval_count": 215,
+        "prompt_eval_cached_count": 9,
+        "prompt_eval_duration": 200463000,
+        "eval_count": 26,
+        "eval_duration": 303374000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        9.75244140625,
+        7.13525390625,
+        6.66064453125
+      ],
+      "endToEndMs": 519.5142909999995
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 2,
+      "phase": "repeat",
+      "marker": "rtk-tsc-errors:2:filtered",
+      "command": "rtk pipe --filter tsc < captured initial TypeScript failure",
+      "dataSha256": "4abd05a7183cbce5e703229d6cfc9261d5a38c3f7a91ea713309e36e75ab9931",
+      "dataBytes": 498,
+      "toolMs": 7.376665999996476,
+      "requestWallMs": 453.0523749999993,
+      "firstVisibleMs": 145.7359170000127,
+      "firstAnyMs": 145.73583300001337,
+      "usage": {
+        "total_duration": 451352708,
+        "load_duration": 3371083,
+        "prompt_eval_count": 215,
+        "prompt_eval_cached_count": 121,
+        "prompt_eval_duration": 138667000,
+        "eval_count": 26,
+        "eval_duration": 306371000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        9.75244140625,
+        7.13525390625,
+        6.66064453125
+      ],
+      "endToEndMs": 460.4290409999958,
+      "inputSameAsFresh": false
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 2,
+      "phase": "fresh",
+      "marker": "rtk-tsc-errors:2:raw",
+      "command": "read captured initial TypeScript failure",
+      "dataSha256": "135c4764d98c01f4a1103c01f13bd641f4512f957e3ae0210b5ce9066c0d85f2",
+      "dataBytes": 301,
+      "toolMs": 0.1890420000127051,
+      "requestWallMs": 491.4677079999965,
+      "firstVisibleMs": 185.3812920000055,
+      "firstAnyMs": 185.38112499999988,
+      "usage": {
+        "total_duration": 489726875,
+        "load_duration": 1494875,
+        "prompt_eval_count": 160,
+        "prompt_eval_cached_count": 11,
+        "prompt_eval_duration": 177763000,
+        "eval_count": 26,
+        "eval_duration": 304436000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        9.75244140625,
+        7.13525390625,
+        6.66064453125
+      ],
+      "endToEndMs": 491.6567500000092
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 2,
+      "phase": "repeat",
+      "marker": "rtk-tsc-errors:2:raw",
+      "command": "read captured initial TypeScript failure",
+      "dataSha256": "135c4764d98c01f4a1103c01f13bd641f4512f957e3ae0210b5ce9066c0d85f2",
+      "dataBytes": 301,
+      "toolMs": 0.17545900000550319,
+      "requestWallMs": 351.2395419999957,
+      "firstVisibleMs": 26.858874999990803,
+      "firstAnyMs": 26.858542000001762,
+      "usage": {
+        "total_duration": 349694792,
+        "load_duration": 2179459,
+        "prompt_eval_count": 160,
+        "prompt_eval_cached_count": 159,
+        "prompt_eval_duration": 22104000,
+        "eval_count": 26,
+        "eval_duration": 323467000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        9.75244140625,
+        7.13525390625,
+        6.66064453125
+      ],
+      "endToEndMs": 351.4150010000012,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 3,
+      "phase": "fresh",
+      "marker": "rtk-tsc-errors:3:raw",
+      "command": "read captured initial TypeScript failure",
+      "dataSha256": "135c4764d98c01f4a1103c01f13bd641f4512f957e3ae0210b5ce9066c0d85f2",
+      "dataBytes": 301,
+      "toolMs": 0.3145000000076834,
+      "requestWallMs": 581.4579169999924,
+      "firstVisibleMs": 200.75599999999395,
+      "firstAnyMs": 200.7557919999963,
+      "usage": {
+        "total_duration": 578210000,
+        "load_duration": 2134708,
+        "prompt_eval_count": 160,
+        "prompt_eval_cached_count": 9,
+        "prompt_eval_duration": 190309000,
+        "eval_count": 26,
+        "eval_duration": 369470000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        9.75244140625,
+        7.13525390625,
+        6.66064453125
+      ],
+      "endToEndMs": 581.7724170000001
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "raw",
+      "rep": 3,
+      "phase": "repeat",
+      "marker": "rtk-tsc-errors:3:raw",
+      "command": "read captured initial TypeScript failure",
+      "dataSha256": "135c4764d98c01f4a1103c01f13bd641f4512f957e3ae0210b5ce9066c0d85f2",
+      "dataBytes": 301,
+      "toolMs": 0.2707499999960419,
+      "requestWallMs": 364.7252080000035,
+      "firstVisibleMs": 28.106499999994412,
+      "firstAnyMs": 28.10624999999709,
+      "usage": {
+        "total_duration": 362782917,
+        "load_duration": 2162500,
+        "prompt_eval_count": 160,
+        "prompt_eval_cached_count": 159,
+        "prompt_eval_duration": 21595000,
+        "eval_count": 26,
+        "eval_duration": 336627000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        9.75244140625,
+        7.13525390625,
+        6.66064453125
+      ],
+      "endToEndMs": 364.9959579999995,
+      "inputSameAsFresh": true
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 3,
+      "phase": "fresh",
+      "marker": "rtk-tsc-errors:3:filtered",
+      "command": "rtk pipe --filter tsc < captured initial TypeScript failure",
+      "dataSha256": "4abd05a7183cbce5e703229d6cfc9261d5a38c3f7a91ea713309e36e75ab9931",
+      "dataBytes": 498,
+      "toolMs": 5.731874999997672,
+      "requestWallMs": 526.698000000004,
+      "firstVisibleMs": 210.31291700000293,
+      "firstAnyMs": 210.31274999999732,
+      "usage": {
+        "total_duration": 525227959,
+        "load_duration": 1730250,
+        "prompt_eval_count": 215,
+        "prompt_eval_cached_count": 11,
+        "prompt_eval_duration": 203738000,
+        "eval_count": 26,
+        "eval_duration": 315559000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        9.75244140625,
+        7.13525390625,
+        6.66064453125
+      ],
+      "endToEndMs": 532.4298750000016
+    },
+    {
+      "caseId": "rtk-tsc-errors",
+      "tool": "RTK",
+      "arm": "filtered",
+      "rep": 3,
+      "phase": "repeat",
+      "marker": "rtk-tsc-errors:3:filtered",
+      "command": "rtk pipe --filter tsc < captured initial TypeScript failure",
+      "dataSha256": "57c1970e35687c715b1fc8fe0b1e3383acc221af4a644644470926704d230e81",
+      "dataBytes": 498,
+      "toolMs": 5.236875000002328,
+      "requestWallMs": 471.50891600000614,
+      "firstVisibleMs": 162.02925000000687,
+      "firstAnyMs": 162.02908300000126,
+      "usage": {
+        "total_duration": 469776083,
+        "load_duration": 2168666,
+        "prompt_eval_count": 215,
+        "prompt_eval_cached_count": 106,
+        "prompt_eval_duration": 152299000,
+        "eval_count": 26,
+        "eval_duration": 308223000,
+        "done_reason": "stop"
+      },
+      "answer": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "expected": {
+        "codes": [
+          "TS2304",
+          "TS2322"
+        ]
+      },
+      "correct": true,
+      "thinkingBytes": 0,
+      "osLoad": [
+        9.75244140625,
+        7.13525390625,
+        6.66064453125
+      ],
+      "endToEndMs": 476.74579100000847,
+      "inputSameAsFresh": false
+    }
+  ]
+}

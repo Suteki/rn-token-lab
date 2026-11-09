@@ -15,6 +15,10 @@ npm run bench:verify
 
 The quick start verifies all 24 published before/after pairs without Xcode, Android SDK, RTK or paid LLM calls. Install app dependencies and the external CLIs for a fresh benchmark run; see the reproduction guide. One historical intent-to-add case intentionally fails its task-completeness check.
 
+## Local model: measured latency
+
+[60 real local inference requests on Qwen3-Coder 30B / M5 Pro](benchmarks/snapshots/2026-11-09/local-model/RESULTS.md), including cache counters, TTFT, full time, token usage and incorrect answers. [Reproduce the local test](docs/LOCAL-MODEL.md). These results are separate from the original 24 CLI-text comparisons.
+
 ## App
 
 A real React Native Community CLI app for comparing the text that coding agents read before and after local filtering. Created with React Native 0.88.1 and React 19.3.0. This repository contains the app, native projects, reproducible benchmark scripts, published before/after text and the measured results.
