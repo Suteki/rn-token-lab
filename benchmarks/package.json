@@ -9,7 +9,7 @@
     "verify:snapshot": "node scripts/verify-snapshot.mjs",
     "doctor": "node scripts/doctor.mjs",
     "bench:all": "node scripts/benchmark.mjs && node scripts/add-native-results.mjs",
-    "language:sample": "node scripts/language-sample.mjs",
+    "prompt:sample": "node scripts/prompt-sample.mjs",
     "bench:local": "node scripts/local-model.mjs"
   },
   "dependencies": {

@@ -1,11 +1,12 @@
 {
-  "policy": "Only personal absolute path prefixes replaced; historical token counts remain the original pre-redaction measurements. Published counts and hashes are stored separately.",
+  "policy": "Personal absolute path prefixes in captures were replaced. Report wording, task descriptions and a documentation anchor were subsequently translated into English; captured inputs and outputs were not translated. Historical token counts remain the original pre-redaction measurements. Published counts and hashes are stored separately.",
   "files": [
     {
       "path": "snapshots/2026-11-09/RESULTS.md",
       "originalSha256": "89918ab409e795ca65129912035e77739ba72b8f7a5bc856cc502087699090b0",
-      "publishedSha256": "198a82c7a076fb435298d0e69000525c75e70a4e0bcea369b538f425c7a31dd5",
-      "redacted": false
+      "publishedSha256": "371866e01dcf3c2288e54627fa2fa599449e2b51f55995cd580bceb4baff3cfa",
+      "redacted": false,
+      "englishTranslation": "Documentation anchor only; measured data unchanged."
     },
     {
       "path": "snapshots/2026-11-09/autolinking.json",
@@ -22,8 +23,9 @@
     {
       "path": "snapshots/2026-11-09/benchmarks.json",
       "originalSha256": "818c1e7b1d77c6825ce8f25a2cb42a4c29fdeeb95c1965d002ededbc017d6aff",
-      "publishedSha256": "e7ec6739c67c97730762f41ff309f0994d40264056c2e0e555bd52065b8d2550",
-      "redacted": true
+      "publishedSha256": "791aada760bebf6053015694083154c8b8ad6867067b9793f3eff8ebc5308e76",
+      "redacted": true,
+      "englishTranslation": "Task descriptions only; measured data unchanged."
     },
     {
       "path": "snapshots/2026-11-09/cases/ast-navigation.after.txt",

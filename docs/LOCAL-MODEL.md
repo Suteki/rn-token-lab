@@ -1,10 +1,10 @@
-# Локальна модель: час обробки контексту
+# Local model: context processing time
 
-У цьому експерименті виконується справжній локальний inference через Ollama на RN-даних. Це окремий вимір від локального підрахунку o200k_base у початкових 24 кейсах.
+This experiment runs real local inference through Ollama on RN data. It is separate from the local o200k_base text counts in the original 24 cases.
 
-## Повторення
+## Reproduction
 
-Потрібні встановлений [Ollama](https://ollama.com/download), уже завантажена локальна модель, RTK, ripgrep, jq та залежності benchmark. Якщо ваг ще немає, окремо виконайте `ollama pull qwen3-coder:30b` (приблизно 19 GB) і звірте digest через `ollama list`; це окрема дія завантаження, а не частина вимірювань. Скрипт не завантажує моделі й не викликає cloud endpoints. Дозволений лише loopback HTTP; теги `:cloud` відхиляються.
+You need [Ollama](https://ollama.com/download), an already downloaded local model, RTK, ripgrep, jq and the benchmark dependencies. If the weights are not available, separately run `ollama pull qwen3-coder:30b` (approximately 19 GB) and check the digest with `ollama list`; downloading is not part of the measurements. The script does not download models or call cloud endpoints. Only loopback HTTP is allowed; `:cloud` tags are rejected.
 
 ```sh
 npm ci
@@ -13,36 +13,36 @@ npm --prefix benchmarks run bench:local -- \
   --model qwen3-coder:30b --repeats 3 --num-ctx 16384
 ```
 
-Для інших установлених локальних моделей можна вказати їхнє точне ім’я через `--model`. Не переносьте числа на іншу квантизацію, RAM, runtime або context size. Якщо інша модель вже завантажена, runner зупиняється, щоб не витісняти її.
+For other installed local models, pass the exact name through `--model`. Do not extrapolate these figures to another quantization, RAM capacity, runtime or context size. If another model is already loaded, the runner stops to avoid displacing it.
 
-## Що вимірюється
+## What is measured
 
-Чотири задачі: Git status з реального відтвореного RN change set, пошук native stack, список native modules із RN config і два коди TypeScript-діагностик. Для кожної задачі є повний та відфільтрований текст. Однакові запитання і JSON-схеми, temperature 0, seed 42, послідовне виконання, чергування порядку raw/filtered, три пари повторів.
+Four tasks: Git status from a recreated real RN change set, finding the native stack, listing native modules from RN config, and extracting two TypeScript diagnostic codes. Each task has raw and filtered text. Questions and JSON schemas are identical, temperature is 0, seed is 42, execution is sequential, raw/filtered order alternates, and there are three paired repetitions.
 
-Кожен варіант має перший запит із новим раннім trial marker і негайне повторення тієї самої CLI-операції та задачі. Вивід CLI може змінити порядок рядків, тому payload не завжди ідентичний. `--freeze-repeat` залишає текст першого запиту незмінним і не запускає CLI вдруге. Точний збіг input перевіряється через SHA-256. Статус кешу визначається за `prompt_eval_cached_count`, а не за припущенням, що повторний запит обов’язково кешований. Поточний runner додає унікальний namespace запуску, щоб не успадкувати cache hit від попереднього прогону. Для відтворення історичних marker можна передати `--namespace ""`; фактичний кеш тоді обов’язково перевіряйте за лічильниками. Model weights залишаються в RAM. Окремо записано початковий preload; стан файлового кешу ОС не контролюється.
+Each variant has a first request with a new early trial marker, immediately followed by a repeat of the same CLI operation and task. CLI output can change line order, so the payload is not always identical. `--freeze-repeat` keeps the first request's text unchanged and skips the second CLI invocation. SHA-256 checks establish exact input equality. Cache status comes from `prompt_eval_cached_count`, rather than an assumption that a repeated request must be cached. The current runner adds a unique run namespace to avoid inheriting cache hits from an earlier run. To reproduce the historical markers, pass `--namespace ""`; always check the actual cache counters. Model weights stay in RAM. Initial preload is recorded separately; the OS filesystem cache is not controlled.
 
-- `prompt_eval_count`: повний input за токенізатором runtime, включно з інструкцією та template;
-- `prompt_eval_cached_count`: частина input, яку runtime взяв із кешу;
-- `eval_count`: output моделі;
-- `firstVisibleMs`: час до першого непорожнього фрагмента видимої відповіді;
-- `requestWallMs`: час повного HTTP inference-запиту;
-- `toolMs`: читання baseline або виконання CLI-фільтра;
+- `prompt_eval_count`: full input according to the runtime tokenizer, including instructions and template;
+- `prompt_eval_cached_count`: the subset of input reused from cache;
+- `eval_count`: model output;
+- `firstVisibleMs`: time until the first nonempty visible response fragment;
+- `requestWallMs`: duration of the complete HTTP inference request;
+- `toolMs`: baseline reading or CLI filtering time;
 - `endToEndMs`: `toolMs + requestWallMs`;
-- `correct`: відповідь точно відповідає ground truth; помилки й невигідні результати зберігаються.
+- `correct`: the answer exactly matches ground truth; errors and unfavorable results are retained.
 
-`prompt_eval_duration` та `eval_duration` показують окремо prefill і decode, якщо runtime їх повертає. Часи API — у наносекундах. Медіани не приховують невдалі відповіді: показники правильності подаються поруч. Три повтори не дають статистичної гарантії.
+`prompt_eval_duration` and `eval_duration` separately report prefill and decode when returned by the runtime. API durations are in nanoseconds. Medians include failed answers; correctness is reported alongside them. Three repetitions do not provide a statistical guarantee.
 
-Підготовку спільного capture/тимчасового Git fixture виключено з парного часу. Обидва варіанти працюють з уже доступними даними. Це одиничні extraction-запити, а не повний автономний coding agent: немає редагування файлів, циклів виправлення чи tool-calling протоколу Claude/Codex.
+Preparing the shared capture / temporary Git fixture is excluded from the paired timing. Both variants use already available data. These are individual extraction requests, not a complete autonomous coding agent: there are no file edits, correction loops or Claude/Codex tool-calling protocols.
 
-## Інтерпретація
+## Interpretation
 
-Менше некешованого input може скоротити prefill і час до першого токена. Повна відповідь також залежить від довжини output, decode, KV reuse та накладних витрат CLI. На короткому виводі або майже повному cache hit додатковий фільтр може сповільнити результат. Втрата потрібної інформації може спричинити повторні виклики і перекрити економію.
+Less uncached input can reduce prefill and time to first token. Full response time also depends on output length, decode, KV reuse and CLI overhead. With short output or a nearly complete cache hit, an extra filter can slow the result down. Losing required information can trigger additional calls and outweigh the savings.
 
-Локально немає тарифу провайдера за кожний API-токен, але є межа context window, RAM/VRAM, час, електрика й ресурс обладнання. У цьому досліді ціна електрики та обладнання не вимірюється.
+There is no provider charge per local API token, but context-window capacity, RAM/VRAM, time, electricity and hardware resources remain limited. Electricity and hardware costs are not measured in this experiment.
 
-Модель залишається завантаженою до завершення `keep_alive: 10m`. Скрипт не перезаписує глобальні налаштування і не вивантажує чужі моделі. Дані benchmark публічні; не замінюйте їх приватним кодом перед публікацією результатів. Локальний endpoint слід залишати на loopback, без відкриття порту в LAN.
+The model stays loaded until `keep_alive: 10m` expires. The script does not overwrite global settings or unload other models. Benchmark data is public; do not replace it with private code before publishing results. Keep the local endpoint on loopback without exposing its port to the LAN.
 
-## Джерела
+## Sources
 
 - https://docs.ollama.com/api/usage
 - https://docs.ollama.com/api/generate
@@ -50,8 +50,8 @@ npm --prefix benchmarks run bench:local -- \
 - https://ollama.com/library/qwen3-coder:30b
 - https://huggingface.co/Qwen/Qwen3-Coder-30B-A3B-Instruct
 
-## Опублікований вимір 09.11.2026
+## Published measurement: 9 November 2026
 
-[Медіани, правильність і повні 60 записів](../benchmarks/snapshots/2026-11-09/local-model/RESULTS.md). 48 основних запитів повторюють реальні CLI; ще 12 перевіряють незмінний TypeScript payload. Після аудиту семантику repeat уточнено: у RTK tsc змінювався порядок груп. Оригінальні лічильники, час, відповіді й SHA-256 збережені.
+[Medians, correctness and all 60 records](../benchmarks/snapshots/2026-11-09/local-model/RESULTS.md). The 48 primary requests repeat real CLI operations; 12 additional requests check an unchanged TypeScript payload. The meaning of repeat was clarified after an audit found changing group order in RTK tsc. Original counters, timings, answers and SHA-256 hashes are preserved.
 
-Локальність моделі не обмежує дії shell-інструментів агента. Залишайте sandbox і перевірки дозволів увімкненими, завантажуйте ваги з перевіреного джерела та звіряйте digest.
+Running a model locally does not restrict an agent's shell actions. Keep sandboxing and permission checks enabled, download weights from a trusted source and verify the digest.

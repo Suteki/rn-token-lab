@@ -1,39 +1,39 @@
-# Налаштування інструментів для Codex і Claude Code
+# Tool setup for Codex and Claude Code
 
-Усі шляхи нижче відносні до `rn-token-lab/`, якщо не починаються з `~/`. Приклади конфігурації вже збережені в цьому проєкті. Глобальні налаштування користувача ця зміна не встановлює і не перезаписує.
+All paths below are relative to `rn-token-lab/` unless they start with `~/`. Configuration examples are already saved in this project. This project does not install or overwrite global user settings.
 
-## Де зберігати
+## Where to save configuration
 
-| Що | Файл | Хто читає |
+| Purpose | File | Reader |
 | --- | --- | --- |
-| Спільні короткі правила | `AGENTS.md` у корені RN-проєкту | Codex; Claude через імпорт нижче |
-| Інструкції Claude | `CLAUDE.md` з рядком `@AGENTS.md` | Claude Code |
-| Особисті правила Codex | `~/.codex/AGENTS.md` | Codex у різних проєктах |
-| Особисті правила Claude | `~/.claude/CLAUDE.md` | Claude Code у різних проєктах |
-| Claude hooks / settings для команди | `.claude/settings.json` | Claude Code; файл можна комітити після рев’ю |
-| Особисті Claude settings | `~/.claude/settings.json` або `.claude/settings.local.json` | Власний користувач; local-файл виключити з Git |
-| Codex runtime settings | `~/.codex/config.toml`; довірений проєкт також може мати `.codex/config.toml` | Codex; це окремо від текстових правил |
-| Пошукові виключення | `.rgignore` | ripgrep |
-| JSON-проєкція | `tools/jq/autolink.jq` | jq з `-f`, автоматичного підхоплення немає |
-| AST-правила | `sgconfig.yml` і `tools/ast-rules/navigation.yml` | ast-grep scan |
-| Структурний пакет | `repomix.config.json` | Repomix; результат `.agent-context/app.xml` |
+| Short shared rules | `AGENTS.md` in the RN project root | Codex; Claude through the import below |
+| Claude instructions | `CLAUDE.md` containing `@AGENTS.md` | Claude Code |
+| Personal Codex rules | `~/.codex/AGENTS.md` | Codex across projects |
+| Personal Claude rules | `~/.claude/CLAUDE.md` | Claude Code across projects |
+| Team Claude hooks / settings | `.claude/settings.json` | Claude Code; commit after review |
+| Personal Claude settings | `~/.claude/settings.json` or `.claude/settings.local.json` | Your user account; exclude the local file from Git |
+| Codex runtime settings | `~/.codex/config.toml`; trusted projects may also use `.codex/config.toml` | Codex; separate from text instructions |
+| Search exclusions | `.rgignore` | ripgrep |
+| JSON projection | `tools/jq/autolink.jq` | jq with `-f`; not loaded automatically |
+| AST rules | `sgconfig.yml` and `tools/ast-rules/navigation.yml` | ast-grep scan |
+| Structural bundle | `repomix.config.json` | Repomix; output `.agent-context/app.xml` |
 
-Codex збирає глобальні та проєктні інструкції на початку запуску. У каталозі `AGENTS.override.md` має перевагу над `AGENTS.md`. Після зміни перевірте правила в новій сесії з робочою папкою `rn-token-lab/`.
+Codex collects global and project instructions at startup. Within a directory, `AGENTS.override.md` takes precedence over `AGENTS.md`. After changes, check the rules in a new session with `rn-token-lab/` as the working directory.
 
-Поточний Claude Code також може читати `AGENTS.md` напряму, але поведінка залежить від версії й наявності `CLAUDE.md` вище по дереву. У цьому прикладі використано явний імпорт, щоб обидва агенти отримували один файл правил. Це не окремий механізм економії: імпортований текст теж займає контекст. Детальний посібник не імпортуємо автоматично.
+Current Claude Code can also read `AGENTS.md` directly, but behavior depends on its version and the presence of `CLAUDE.md` higher in the directory tree. This example uses an explicit import so both agents receive the same rules. The import itself does not save tokens: imported text also occupies context. The detailed guide is not imported automatically.
 
-## RTK: спочатку перевірка версії
+## RTK: check the version first
 
-Встановіть RTK з офіційного репозиторію / пакета, перевірте `rtk --version`. У вимірах використано **0.40.0**.
+Install RTK from its official repository / package and check `rtk --version`. The measurements used **0.40.0**.
 
 ```sh
 rtk proxy rtk init --codex --dry-run -v
 rtk proxy rtk init -g --dry-run -v
 ```
 
-Ці команди лише показують зміни. RTK 0.40.0 для Codex пропонує `AGENTS.md` + `RTK.md`, без Claude hook. Команду без `--dry-run` запускайте після перегляду запропонованих змін. У наявному `AGENTS.md` цього проєкту правило використання RTK вже записане явно; додатковий init не потрібен для ручних wrapper-викликів.
+These commands only preview changes. For Codex, RTK 0.40.0 proposes `AGENTS.md` + `RTK.md`, without a Claude hook. Run without `--dry-run` after reviewing the proposed changes. This project's existing `AGENTS.md` already states the RTK rule explicitly; manual wrapper calls do not require another init.
 
-Для Claude глобальний `rtk init -g` цієї версії пропонує `~/.claude/RTK.md`, імпорт у `~/.claude/CLAUDE.md` та `PreToolUse` hook у `~/.claude/settings.json`. Встановлювач має **об’єднати** hook з наявними settings, а не замінити весь JSON. Фрагмент hook для ручного рев’ю:
+For Claude, this version's global `rtk init -g` proposes `~/.claude/RTK.md`, an import in `~/.claude/CLAUDE.md` and a `PreToolUse` hook in `~/.claude/settings.json`. The installer must **merge** the hook into existing settings, rather than replace the entire JSON. Hook fragment for manual review:
 
 ```json
 {
@@ -46,68 +46,68 @@ rtk proxy rtk init -g --dry-run -v
 }
 ```
 
-Наявність `rtk gain` не доводить, що hook увімкнено. Перезапустіть агент, виконайте одну просту команду й перевірте фактичний tool call та `rtk gain --history`. У новіших RTK інтеграція Codex може відрізнятися; звіряйте власні `rtk init --help` і `--dry-run`. Для точного виводу 0.40.0 використовуйте `rtk proxy`; у новій документації ця команда має назву `rtk bypass`.
+The existence of `rtk gain` does not prove the hook is enabled. Restart the agent, run one simple command and inspect the actual tool call and `rtk gain --history`. Newer RTK versions may integrate with Codex differently; check your own `rtk init --help` and `--dry-run`. For exact output in 0.40.0, use `rtk proxy`; newer documentation calls this command `rtk bypass`.
 
-Не додавайте широке `allow Bash(*)` заради економії. Переглядайте hook як виконуваний код. RTK може зберігати raw-логи локально: враховуйте їхній вміст і строки зберігання.
+Do not add a broad `allow Bash(*)` rule to save tokens. Review the hook as executable code. RTK may store raw logs locally: consider their contents and retention.
 
 ## ripgrep
 
-Встановіть `ripgrep` з довіреного пакетного менеджера, перевірте `rtk proxy rg --version`. `.rgignore` містить deps, build-папки та згенерований контекст. `AGENTS.md` задає порядок: спочатку імена файлів, потім рядки з контекстом.
+Install `ripgrep` through a trusted package manager and check `rtk proxy rg --version`. `.rgignore` lists dependencies, build directories and generated context. `AGENTS.md` specifies the order: find filenames first, then read matching lines with context.
 
 ```sh
 rtk proxy rg -l 'createNativeStackNavigator' src
 rtk proxy rg -n -C 3 'createNativeStackNavigator<' src/navigation
 ```
 
-`.rgignore` не забороняє пряме читання файлів агентом. Не додавайте `--no-ignore` або `--hidden` без потреби. Якщо результат неповний, розширюйте scope явно.
+`.rgignore` does not prevent an agent from reading files directly. Add `--no-ignore` or `--hidden` only when needed. If results are incomplete, expand the scope explicitly.
 
 ## jq
 
-Встановіть `jq` з довіреного пакетного менеджера. Фільтр читається через `-f tools/jq/autolink.jq`. Команда в `AGENTS.md` запускає невеликий Node wrapper, який спочатку перевіряє exit code RN config, а потім jq; помилка producer не перетвориться на успішну порожню проєкцію.
+Install `jq` through a trusted package manager. Load the filter with `-f tools/jq/autolink.jq`. The command in `AGENTS.md` runs a small Node wrapper that checks the RN config exit code before invoking jq, so producer failures cannot become successful empty projections.
 
 ```sh
 rtk proxy node tools/agent-autolinks.mjs
 ```
 
-Очікуємо 8 native modules з `ios` / `android` прапорцями. Для налагодження одного модуля прочитайте його повний JSON-запис. Не використовуйте `eval` для даних JSON.
+Expect 8 native modules with `ios` / `android` flags. To debug one module, read its complete JSON entry. Do not use `eval` on JSON data.
 
 ## ast-grep
 
-Версія 0.51.1 зафіксована в `benchmarks/package-lock.json`; встановлення локальних інструментів: `rtk proxy npm --prefix benchmarks ci`. `sgconfig.yml` реєструє папку правил, YAML задає TSX-патерн без rewrite.
+Version 0.51.1 is pinned in `benchmarks/package-lock.json`; install local tools with `rtk proxy npm --prefix benchmarks ci`. `sgconfig.yml` registers the rules directory; the YAML specifies a TSX pattern without a rewrite.
 
 ```sh
 rtk proxy benchmarks/node_modules/.bin/ast-grep scan \
   --filter rn-navigation-call src/screens --color never
 ```
 
-Очікуємо 3 виклики. Правило шукає синтаксис, а не розв’язує типи / aliases. Не додавайте `--update-all` до пошукової інструкції; виправлення перевіряйте окремим diff.
+Expect 3 calls. The rule matches syntax; it does not resolve types / aliases. Do not add `--update-all` to a search instruction; review fixes in a separate diff.
 
 ## Repomix
 
-Версія 1.19.0 також зафіксована в локальному benchmark lockfile. `repomix.config.json` містить явний include лише `App.tsx` і `src/**/*`, `output.compress: true` та увімкнену перевірку секретів.
+Version 1.19.0 is also pinned in the local benchmark lockfile. `repomix.config.json` explicitly includes only `App.tsx` and `src/**/*`, with `output.compress: true` and secret scanning enabled.
 
 ```sh
 rtk proxy benchmarks/node_modules/.bin/repomix --config repomix.config.json
 ```
 
-Пакет зберігається в `.agent-context/app.xml` і виключений із Git. Перевірте 14 шляхів і вміст перед передачею моделі. Secretlint може пропустити секрет; не вимикайте його через `--no-security-check`. Реалізації функцій прибрані, тому для виправлення логіки потрібен оригінал.
+The bundle is saved to `.agent-context/app.xml` and excluded from Git. Check its 14 paths and contents before sending it to a model. Secretlint can miss a secret; do not disable it with `--no-security-check`. Function implementations are removed, so fixing logic requires the original source.
 
-## Перевірка, що агент застосував правила
+## Verify that the agent follows the rules
 
-1. Відкрийте нову сесію саме з `rn-token-lab/`. У Codex попросіть назвати активні instruction-файли й команду для пошуку native stack. У Claude перевірте `/memory` та `/context all`: має бути `CLAUDE.md` з імпортованими правилами.
-2. Попросіть знайти native stack без читання всього репозиторію. Перевірте реальний tool call: scope `src`, `rg`, потім вузьке читання. Сам переказ правил агентом не доводить їх виконання.
-3. Перевірте 8 modules, 3 navigation calls і 14 шляхів у структурному пакеті. Перегляньте `rtk gain --history`, raw status і коди завершення.
+1. Open a new session from `rn-token-lab/`. In Codex, ask for the active instruction files and the native-stack search command. In Claude, check `/memory` and `/context all`: `CLAUDE.md` should include the imported rules.
+2. Ask the agent to find the native stack without reading the entire repository. Inspect the actual tool call: scope `src`, use `rg`, then read narrowly. An agent restating the rules does not prove it follows them.
+3. Check 8 modules, 3 navigation calls and 14 paths in the structural bundle. Review `rtk gain --history`, raw status and exit codes.
 
-Сторонній репозиторій може містити шкідливі instruction-файли, hooks і package scripts. Рев’ю та sandbox залишаються потрібними. Інструкція в Markdown сама по собі не встановлює CLI, не запускає hook і не створює доступів.
+Third-party repositories may contain malicious instruction files, hooks and package scripts. Review and sandboxing remain necessary. A Markdown instruction alone does not install a CLI, run a hook or grant access.
 
-## Джерела, перевірені 09.11.2026
+## Sources checked on 9 November 2026
 
 - [Codex AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md)
 - [Codex configuration](https://learn.chatgpt.com/docs/config-file/config-advanced)
 - [Claude memory and imports](https://code.claude.com/docs/en/memory)
 - [Claude settings scopes](https://code.claude.com/docs/en/settings)
-- [RTK integration](https://github.com/rtk-ai/rtk) та локальний `rtk init --help` / dry-run 0.40.0
+- [RTK integration](https://github.com/rtk-ai/rtk) and local `rtk init --help` / dry-run 0.40.0
 - [ripgrep guide](https://raw.githubusercontent.com/BurntSushi/ripgrep/master/GUIDE.md)
 - [jq manual](https://jqlang.org/manual/)
 - [ast-grep project config](https://ast-grep.github.io/reference/sgconfig.html)
-- [Repomix config](https://repomix.com/guide/configuration) і [security](https://repomix.com/guide/security)
+- [Repomix configuration](https://repomix.com/guide/configuration) and [security](https://repomix.com/guide/security)

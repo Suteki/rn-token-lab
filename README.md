@@ -1,8 +1,8 @@
 # RN Token Lab
 
-[Reproduction guide / Повторити всі кроки](docs/REPRODUCING.md) · [Frozen results](benchmarks/snapshots/2026-11-09/RESULTS.md) · [Agent setup](docs/AGENT-SETUP.md)
+[Reproduction guide](docs/REPRODUCING.md) · [Frozen results](benchmarks/snapshots/2026-11-09/RESULTS.md) · [Agent setup](docs/AGENT-SETUP.md)
 
-Public companion project for the Ukrainian talk «Економія токенів на (пет) проєктах». This is the actual app used for the measurements, not a separate mock fixture.
+Public companion project for the talk "Saving Tokens in (Pet) Projects". This is the actual app used for the measurements, not a separate mock fixture.
 
 ```sh
 git clone https://github.com/Suteki/rn-token-lab.git
@@ -100,7 +100,7 @@ rtk proxy npx --yes @react-native-community/cli@20.2.0 init TokenSavingsRN \
   --skip-git-init --install-pods false
 ```
 
-The baseline scaffold and installed dependencies are in Git commit `1bac4f5`; the subsequent commit contains the integrated app and publication/reproduction setup. Regenerating results can change timings, paths and token counts. The presentation uses the original 9 November 2026 measurements. Personal path prefixes in published captures have been redacted: original measurements and public-text token counts are explicitly separated. See [the reproduction boundaries](docs/REPRODUCING.md#що-саме-відтворюється).
+The baseline scaffold and installed dependencies are in Git commit `1bac4f5`; the subsequent commit contains the integrated app and publication/reproduction setup. Regenerating results can change timings, paths and token counts. The presentation uses the original 9 November 2026 measurements. Personal path prefixes in published captures have been redacted: original measurements and public-text token counts are explicitly separated. See [the reproduction boundaries](docs/REPRODUCING.md#what-is-reproduced).
 
 ## License
 

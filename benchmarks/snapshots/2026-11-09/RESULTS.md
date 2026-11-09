@@ -1,6 +1,6 @@
 # React Native token benchmark
 
-**Historical measurements before path redaction.** Personal absolute path prefixes have been replaced in public captures. Original counts below match the dated slides; exact reproducible counts for the public text are in [published-counts.json](published-counts.json). Run `npm run bench:verify` from the repository root. See [reproduction boundaries](../../../docs/REPRODUCING.md#що-саме-відтворюється).
+**Historical measurements before path redaction.** Personal absolute path prefixes have been replaced in public captures. Original counts below match the dated slides; exact reproducible counts for the public text are in [published-counts.json](published-counts.json). Run `npm run bench:verify` from the repository root. See [reproduction boundaries](../../../docs/REPRODUCING.md#what-is-reproduced).
 
 Captured on 9 November 2026 in TokenSavingsRN, initialized with Community CLI 20.2.0, React Native 0.88.1 and React 19.3.0. Ten additional app projects and their native support dependencies are installed.
 
